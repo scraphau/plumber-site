@@ -35,15 +35,15 @@ const aboutImage =
 
 const reviews = [
   {
-    quote: "Quick response, turned up on time and fixed the leak the same morning.",
+    quote: "Called at 7am about a burst pipe and they had it sorted before lunch. Clean, professional and stress-free.",
     name: "Matt H.",
   },
   {
-    quote: "Easy to deal with, clear quote, great work. Would use again.",
+    quote: "Clear pricing, great communication and quality workmanship. Exactly what you want from a plumber.",
     name: "Sarah T.",
   },
   {
-    quote: "Solved our blocked drain issue fast and explained everything clearly.",
+    quote: "They diagnosed our blocked drain fast, explained the fix, and gave practical advice to prevent it happening again.",
     name: "James R.",
   },
 ] as const;
@@ -237,15 +237,15 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="max-w-3xl text-white">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur">
               <CheckCircle2 className="h-4 w-4" />
-              Trusted local plumbers across Sydney's Northern Beaches
+              Licensed local plumbers serving Sydney's Northern Beaches
             </div>
 
             <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
-              Reliable, fast and professional plumbing solutions across Sydney's Northern Beaches.
+              Fast, reliable plumbing done right the first time.
             </h1>
 
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-100">
-              Fix It Now Plumbing provides reliable plumbing services for homes and businesses across Sydney. From blocked drains and burst pipes to hot water systems and emergency callouts, we focus on fast response, quality workmanship and clear communication.
+              From emergency leaks and blocked drains to hot water repairs and ongoing maintenance, Fix It Now Plumbing delivers prompt service, upfront communication, and workmanship you can trust.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -253,7 +253,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 onClick={() => goTo("contact")}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white hover:bg-sky-700"
               >
-                Contact Us
+                Request a Quote
                 <ChevronRight className="h-4 w-4" />
               </button>
               <a
@@ -288,7 +288,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl md:p-7">
             <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
-            <p className="mt-2 text-slate-600">Fast local help for urgent plumbing, drainage and maintenance jobs.</p>
+            <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
             <div className="mt-6 space-y-4">
               <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Name" />
               <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Phone" />
@@ -305,10 +305,10 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-4 px-6 py-6 md:grid-cols-4">
           {[
-            "Trusted Northern Beaches plumbing service",
-            "Emergency callouts available",
-            "Residential & commercial plumbing",
-            "Fast local response",
+            "Upfront, honest advice and pricing",
+            "Rapid response for urgent callouts",
+            "Residential, strata & small business",
+            "Quality workmanship, every job",
           ].map((item) => (
             <div key={item} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-700">
               <CheckCircle2 className="h-4 w-4 text-sky-700" />
@@ -321,8 +321,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading
           eyebrow="Featured services"
-          title="Popular plumbing services"
-          text="Browse the most requested plumbing services and jump into a dedicated page for each one."
+          title="Our most requested services"
+          text="Explore the plumbing services customers call us for most, each backed by fast response and reliable results."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {serviceRows.map((service) => {
