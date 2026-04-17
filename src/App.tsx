@@ -292,7 +292,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 <div className="p-7">
                   <div className="inline-flex items-center gap-2 font-semibold text-sky-700">
                     <Icon className="h-5 w-5" />
-                    67
+                    Fix It Now Plumbing
                   </div>
                   <h3 className="mt-4 text-2xl font-bold tracking-tight">{service.title}</h3>
                   <p className="mt-3 text-slate-600">{service.desc}</p>
