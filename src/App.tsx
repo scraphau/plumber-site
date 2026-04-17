@@ -32,6 +32,7 @@ type PageKey =
   | "kitchen-plumbing"
   | "bathroom-plumbing"
   | "laundry-plumbing"
+  | "guarantee"
   | "contact"
   | "terms";
 
@@ -186,7 +187,8 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "kitchen-plumbing", label: "Kitchen Plumbing" },
   { key: "bathroom-plumbing", label: "Bathroom Plumbing" },
   { key: "laundry-plumbing", label: "Laundry Plumbing" },
-  { key: "contact", label: "Contact" },
+  { key: "guarantee", label: "Guarantee" },
+  { key: "contact", label: "Contact Us" },
 ];
 
 function SectionHeading({
@@ -660,6 +662,84 @@ function EmergencyPage() {
   );
 }
 
+function GuaranteePage() {
+  const guaranteePoints = [
+    "You will always speak to a plumber — no inexperienced call centre staff",
+    "Upfront prices with no surprises",
+    "100% materials and workmanship guarantee",
+    "Qualified, experienced, fully licensed and insured plumbers",
+    "Same day service",
+    "A call 30 minutes prior to arrival so you are not waiting unnecessarily",
+    "Honest advice and up-to-date information from polite, friendly tradesmen",
+    "Your property left cleaner than before the job",
+    "Easy payment options with credit card, EFTPOS, direct deposit and cash",
+  ];
+
+  const pricingPoints = [
+    "An assessment fee is payable for attending your property and reviewing your situation",
+    "You receive an obligation-free fixed price before work begins",
+    "With your approval, we fix it now",
+  ];
+
+  return (
+    <>
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <SectionHeading
+            eyebrow="Guarantee"
+            title="Plumbing Guarantee"
+            text="For your peace of mind, Fix It Now Plumbing offers both a service guarantee and a pricing guarantee so you know exactly what to expect."
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {guaranteePoints.map((item) => (
+              <div key={item} className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-sky-700" />
+                  <span className="font-medium text-slate-800">{item}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <SectionHeading
+          eyebrow="Pricing Guarantee"
+          title="Clear pricing before any work starts"
+          text="To keep things easy and upfront, we provide a fixed-price approach after assessment so you can approve the work with confidence."
+        />
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {pricingPoints.map((item) => (
+            <div key={item} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-sky-700" />
+                <span className="font-medium text-slate-800">{item}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <a
+            href="tel:0414248131"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800"
+          >
+            <Phone className="h-4 w-4" />
+            Call 0414 248 131
+          </a>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 px-6 py-4 font-semibold text-slate-800"
+          >
+            Back to top
+          </button>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function ContactPage() {
   return <ContactPanel />;
 }
@@ -888,12 +968,15 @@ export default function NorthernBeachesPlumberDemo() {
                 </div>
               ) : null}
             </div>
+            <button onClick={() => changePage("guarantee")} className="hover:text-sky-700">
+              Guarantee
+            </button>
 
             <button onClick={() => changePage("gallery")} className="hover:text-sky-700">
               Gallery
             </button>
             <button onClick={() => changePage("contact")} className="hover:text-sky-700">
-              Contact
+              Contact Us
             </button>
           </nav>
 
@@ -1120,6 +1203,7 @@ export default function NorthernBeachesPlumberDemo() {
           ]}
         />
       ) : null}
+      {currentPage === "guarantee" ? <GuaranteePage /> : null}
       {currentPage === "emergency" ? <EmergencyPage /> : null}
       {currentPage === "contact" ? <ContactPage /> : null}
       {currentPage === "terms" ? <TermsPage /> : null}
