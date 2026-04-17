@@ -1,0 +1,23 @@
+<svg width="560" height="160" viewBox="0 0 560 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="drop" x1="28" y1="20" x2="94" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ED5FF" />
+      <stop offset="1" stop-color="#3D92D0" />
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M62 12C49 32 22 55 22 84C22 112 40 132 64 132C88 132 106 112 106 84C106 55 79 32 66 12C65 10 63 10 62 12Z"
+    fill="url(#drop)"
+    stroke="#7A7A7A"
+    stroke-width="6"
+  />
+  <ellipse cx="46" cy="58" rx="16" ry="20" fill="white" opacity="0.35" />
+
+  <text x="112" y="88" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" fill="#6F6F6F">fix</text>
+  <text x="244" y="88" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" fill="#67A9DC">it</text>
+  <text x="304" y="88" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" fill="#67A9DC">now</text>
+  <text x="114" y="122" font-family="Arial, Helvetica, sans-serif" font-size="36" font-style="italic" font-weight="500" fill="#2D2D2D">
+    Plumbing, Drainage &amp; Gasfitting
+  </text>
+</svg>

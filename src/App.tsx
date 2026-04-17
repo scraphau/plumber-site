@@ -17,6 +17,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import fixItNowLogo from "./assets/fixitnow-logo.svg";
 
 type PageKey =
   | "home"
@@ -941,9 +942,8 @@ export default function NorthernBeachesPlumberDemo() {
 
       <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
-          <button onClick={() => changePage("home")} className="text-left">
-            <div className="text-2xl font-bold tracking-tight text-sky-800">Fix It Now Plumbing</div>
-            <div className="text-sm text-slate-500">Fast, reliable plumbing across Sydney</div>
+          <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
+            <img src={fixItNowLogo} alt="Fix It Now Plumbing logo" className="h-14 w-auto md:h-16" />
           </button>
 
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 md:flex">
@@ -1287,7 +1287,7 @@ export default function NorthernBeachesPlumberDemo() {
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-xl font-bold text-sky-800">Fix It Now Plumbing</div>
+            <img src={fixItNowLogo} alt="Fix It Now Plumbing logo" className="h-12 w-auto" />
             <div className="mt-1 text-sm text-slate-500">Sydney-wide plumbing service</div>
           </div>
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
