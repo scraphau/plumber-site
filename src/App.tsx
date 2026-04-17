@@ -620,6 +620,35 @@ function GalleryPage() {
 }
 
 function EmergencyPage() {
+  const emergencySupportPoints = [
+    "Genuine 24/7 emergency plumbing, 365 days a year",
+    "Emergency plumber on standby for urgent call-outs",
+    "Experienced, qualified, licensed and insured plumbers",
+    "Fully stocked vehicles ready to respond",
+    "Direct access to a licensed plumber when you call",
+    "Sydney metro coverage across key service areas",
+  ];
+
+  const emergencyJobs = [
+    "Blocked drains",
+    "Burst pipes",
+    "No hot water",
+    "Burst hot water units",
+    "Taps that cannot be turned off",
+    "Gas leak emergencies",
+  ];
+
+  const emergencyPromise = [
+    "You always speak to a plumber — no inexperienced call centre staff",
+    "Upfront prices with no surprises",
+    "100% materials and workmanship guarantee",
+    "Same day service whenever possible",
+    "A call 30 minutes before arrival so you are not waiting around",
+    "Honest advice from polite, friendly tradesmen",
+    "Your property left cleaner than before the job",
+    "Easy payment options: credit card, EFTPOS, direct deposit and cash",
+  ];
+
   return (
     <>
       <section className="border-b border-slate-200 bg-slate-50">
@@ -627,18 +656,11 @@ function EmergencyPage() {
           <SectionHeading
             eyebrow="Emergency"
             title="24/7 Emergency Plumber Northern Beaches"
-            text="Fast response emergency plumbing when you need it most. Burst pipes, major leaks and urgent issues handled quickly and professionally."
+            text="Need an emergency plumber right now? We provide a genuine 24-hour emergency plumbing service with licensed plumbers on standby."
           />
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {[
-              "24/7 emergency response",
-              "Fast arrival times",
-              "Burst pipe repairs",
-              "Major leak control",
-              "Blocked drains emergency",
-              "No hot water urgent repairs",
-            ].map((item) => (
+            {emergencySupportPoints.map((item) => (
               <div key={item} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4">
                 <CheckCircle2 className="h-4 w-4 text-sky-700" />
                 <span className="font-medium">{item}</span>
@@ -646,16 +668,70 @@ function EmergencyPage() {
             ))}
           </div>
 
+          <div className="mt-10 rounded-[2rem] border border-sky-200 bg-white p-7 shadow-sm">
+            <h3 className="text-2xl font-bold text-slate-900">Emergency plumbing service 24 hours</h3>
+            <p className="mt-4 leading-relaxed text-slate-700">
+              We know plumbing emergencies do not always happen during normal business hours. If you are dealing with an urgent
+              issue, call us and speak directly with a licensed plumber who can help you take the right next step.
+            </p>
+            <p className="mt-4 leading-relaxed text-slate-700">
+              In some situations we can talk you through immediate actions over the phone and schedule the best follow-up time,
+              helping you avoid unnecessary after-hours costs where possible.
+            </p>
+          </div>
+
           <div className="mt-10 flex gap-4">
-            <a href="tel:0414248131" className="rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white">
-              Call Now
+            <a
+              href="tel:0414248131"
+              className="inline-flex items-center gap-2 rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800"
+            >
+              <Phone className="h-4 w-4" />
+              Call 0414 248 131
             </a>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <SectionHeading eyebrow="Why choose us" title="Reliable emergency plumbing when it matters most" />
+        <SectionHeading
+          eyebrow="Common urgent jobs"
+          title="Emergency plumbing issues we handle"
+          text="If your situation is urgent and causing damage, risk, or loss of service, we can help quickly."
+        />
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {emergencyJobs.map((item) => (
+            <div key={item} className="rounded-2xl border border-slate-200 bg-white p-5">
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-sky-700" />
+                <span className="font-medium text-slate-800">{item}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <SectionHeading
+            eyebrow="Why call us now"
+            title="Whatever your emergency plumbing needs"
+            text="You get fast support, clear communication and a reliable process from first call to completed repair."
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {emergencyPromise.map((item) => (
+              <div key={item} className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-sky-700" />
+                  <span className="font-medium text-slate-800">{item}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <SectionHeading eyebrow="Reviews" title="Reliable emergency plumbing when it matters most" />
         <ReviewCards />
       </section>
     </>
