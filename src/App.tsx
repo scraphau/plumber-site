@@ -8,6 +8,7 @@ import {
   Star,
   Clock3,
   ChevronRight,
+  ChevronDown,
   CheckCircle2,
   Mail,
   Home,
@@ -740,20 +741,33 @@ export default function NorthernBeachesPlumberDemo() {
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
-              <button onClick={() => changePage("services")} className="hover:text-sky-700">
+              <button
+                onClick={() => setServicesOpen((value) => !value)}
+                className="inline-flex items-center gap-1 hover:text-sky-700"
+                aria-expanded={servicesOpen}
+                aria-haspopup="menu"
+              >
                 Services
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${servicesOpen ? "rotate-180" : "rotate-0"}`}
+                />
               </button>
               {servicesOpen ? (
-                <div className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white py-2 shadow-lg">
+                <div
+                  className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white py-2 shadow-lg"
+                  role="menu"
+                >
                   <button
                     onClick={() => changePage("services")}
                     className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
                   >
                     All Services
                   </button>
                   <button
                     onClick={() => changePage("emergency")}
                     className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
                   >
                     Emergency Plumber
                   </button>
