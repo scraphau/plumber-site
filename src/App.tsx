@@ -782,18 +782,26 @@ export default function NorthernBeachesPlumberDemo() {
                   >
                     Emergency Plumber
                   </button>
+                  <button
+                    onClick={() => changePage("blocked-drains")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Blocked Drains
+                  </button>
+                  <button
+                    onClick={() => changePage("hot-water")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Hot Water
+                  </button>
                 </div>
               ) : null}
             </div>
 
             <button onClick={() => changePage("gallery")} className="hover:text-sky-700">
               Gallery
-            </button>
-            <button onClick={() => changePage("blocked-drains")} className="hover:text-sky-700">
-              Blocked Drains
-            </button>
-            <button onClick={() => changePage("hot-water")} className="hover:text-sky-700">
-              Hot Water
             </button>
             <button onClick={() => changePage("contact")} className="hover:text-sky-700">
               Contact
