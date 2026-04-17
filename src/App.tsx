@@ -26,6 +26,12 @@ type PageKey =
   | "blocked-drains"
   | "hot-water"
   | "emergency"
+  | "taps-toilets"
+  | "burst-pipes"
+  | "gas-fitting"
+  | "kitchen-plumbing"
+  | "bathroom-plumbing"
+  | "laundry-plumbing"
   | "contact"
   | "terms";
 
@@ -82,6 +88,54 @@ const serviceRows = [
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
     icon: Hammer,
   },
+  {
+    key: "taps-toilets" as const,
+    title: "Taps & Toilets",
+    desc: "Leaking taps, running toilets and faulty fixtures repaired fast with quality parts and tidy workmanship.",
+    image:
+      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80",
+    icon: Droplets,
+  },
+  {
+    key: "burst-pipes" as const,
+    title: "Burst Pipes",
+    desc: "Rapid burst and leaking pipe repairs to protect your property and restore safe water flow.",
+    image:
+      "https://images.unsplash.com/photo-1581093196277-9f608bb3b3d8?auto=format&fit=crop&w=1200&q=80",
+    icon: Wrench,
+  },
+  {
+    key: "gas-fitting" as const,
+    title: "Gas Fitting",
+    desc: "Licensed gas fitting and gas installations completed safely, compliantly and with upfront advice.",
+    image:
+      "https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=1200&q=80",
+    icon: Flame,
+  },
+  {
+    key: "kitchen-plumbing" as const,
+    title: "Kitchen Plumbing",
+    desc: "Kitchen plumbing repairs and installations for sinks, mixers, dishwashers and water filters.",
+    image:
+      "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80",
+    icon: Hammer,
+  },
+  {
+    key: "bathroom-plumbing" as const,
+    title: "Bathroom Plumbing",
+    desc: "Bathroom plumbing for leaks, fixtures, drains and upgrades carried out by licensed plumbers.",
+    image:
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
+    icon: Home,
+  },
+  {
+    key: "laundry-plumbing" as const,
+    title: "Laundry Plumbing",
+    desc: "Laundry plumbing services for tubs, washing machine connections, taps and drain improvements.",
+    image:
+      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80",
+    icon: Droplets,
+  },
 ] as const;
 
 const serviceList = [
@@ -136,6 +190,12 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "gallery", label: "Gallery" },
   { key: "blocked-drains", label: "Blocked Drains" },
   { key: "hot-water", label: "Hot Water" },
+  { key: "taps-toilets", label: "Taps & Toilets" },
+  { key: "burst-pipes", label: "Burst Pipes" },
+  { key: "gas-fitting", label: "Gas Fitting" },
+  { key: "kitchen-plumbing", label: "Kitchen Plumbing" },
+  { key: "bathroom-plumbing", label: "Bathroom Plumbing" },
+  { key: "laundry-plumbing", label: "Laundry Plumbing" },
   { key: "contact", label: "Contact" },
 ];
 
@@ -793,6 +853,48 @@ export default function NorthernBeachesPlumberDemo() {
                   >
                     Hot Water
                   </button>
+                  <button
+                    onClick={() => changePage("taps-toilets")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Taps & Toilets
+                  </button>
+                  <button
+                    onClick={() => changePage("burst-pipes")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Burst Pipes
+                  </button>
+                  <button
+                    onClick={() => changePage("gas-fitting")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Gas Fitting
+                  </button>
+                  <button
+                    onClick={() => changePage("kitchen-plumbing")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Kitchen Plumbing
+                  </button>
+                  <button
+                    onClick={() => changePage("bathroom-plumbing")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Bathroom Plumbing
+                  </button>
+                  <button
+                    onClick={() => changePage("laundry-plumbing")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Laundry Plumbing
+                  </button>
                 </div>
               ) : null}
             </div>
@@ -935,6 +1037,96 @@ export default function NorthernBeachesPlumberDemo() {
             "System replacements and installs",
             "Gas and electric hot water support",
             "Fast response across Sydney",
+          ]}
+        />
+      ) : null}
+      {currentPage === "taps-toilets" ? (
+        <ServiceDetailPage
+          title="Taps & Toilets"
+          image="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80"
+          intro="Leaking taps and toilet problems waste water and quickly become frustrating. We repair and replace taps, cisterns, valves and toilet components to get everything running properly again."
+          points={[
+            "Leaking tap and mixer repairs",
+            "Running, noisy or overflowing toilet fixes",
+            "Tap washers, cartridges and valve replacements",
+            "Toilet pan and cistern fault diagnosis",
+            "Upfront fixed-price options before work starts",
+            "Licensed, insured plumbers and tidy workmanship",
+          ]}
+        />
+      ) : null}
+      {currentPage === "burst-pipes" ? (
+        <ServiceDetailPage
+          title="Burst Pipes"
+          image="https://images.unsplash.com/photo-1581093196277-9f608bb3b3d8?auto=format&fit=crop&w=1200&q=80"
+          intro="A burst or leaking pipe can cause serious water damage fast. Our team provides urgent isolation, fault finding and durable repairs to protect your property and restore your plumbing."
+          points={[
+            "Rapid response for burst and leaking pipes",
+            "Pipe isolation and damage control",
+            "Accurate leak location and repair",
+            "Replacement of damaged pipe sections",
+            "Emergency support available 24/7",
+            "Honest advice to reduce repeat failures",
+          ]}
+        />
+      ) : null}
+      {currentPage === "gas-fitting" ? (
+        <ServiceDetailPage
+          title="Gas Fitting"
+          image="https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=1200&q=80"
+          intro="Fix It Now Plumbing provides licensed gas fitting and gas installation services for homes and small businesses, with safety, compliance and clear communication at every step."
+          points={[
+            "Licensed gas fitting and compliance-focused work",
+            "Gas appliance and line installations",
+            "Gas leak investigation and rectification",
+            "Safe connection, testing and commissioning",
+            "Upfront pricing with no surprises",
+            "Qualified, experienced and insured plumbers",
+          ]}
+        />
+      ) : null}
+      {currentPage === "kitchen-plumbing" ? (
+        <ServiceDetailPage
+          title="Kitchen Plumbing"
+          image="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80"
+          intro="From leaking sinks to dishwasher and water filter installations, we handle kitchen plumbing jobs quickly and properly so your kitchen stays practical and reliable."
+          points={[
+            "Sink, mixer and trap repairs",
+            "Dishwasher and water filter installations",
+            "Leaking pipe and fixture repairs",
+            "Blocked kitchen waste line assistance",
+            "Clear recommendations and practical solutions",
+            "Property left clean at completion",
+          ]}
+        />
+      ) : null}
+      {currentPage === "bathroom-plumbing" ? (
+        <ServiceDetailPage
+          title="Bathroom Plumbing"
+          image="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80"
+          intro="We provide dependable bathroom plumbing for leaks, fixture replacements and upgrades, delivered by licensed plumbers who respect your home and keep you informed."
+          points={[
+            "Shower, basin and toilet plumbing repairs",
+            "Fixture replacement and upgrade support",
+            "Drainage and leak fault finding",
+            "Tapware and valve replacements",
+            "Same-day service where available",
+            "Friendly, polite and professional tradesmen",
+          ]}
+        />
+      ) : null}
+      {currentPage === "laundry-plumbing" ? (
+        <ServiceDetailPage
+          title="Laundry Plumbing"
+          image="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80"
+          intro="Need help with laundry plumbing? We repair and install taps, tubs, washing machine connections and drainage components to keep your laundry functioning properly."
+          points={[
+            "Laundry tub and tap repairs",
+            "Washing machine hose and valve connections",
+            "Laundry drain troubleshooting",
+            "Pipework repairs and replacements",
+            "Call 30 minutes prior to arrival",
+            "Easy payment options available",
           ]}
         />
       ) : null}
