@@ -71,7 +71,7 @@ const serviceRows = [
     title: "Hot Water Repairs",
     desc: "Repairs, replacements and new installs to get hot water systems working properly again.",
     image:
-      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1200&q=80",
+      "https://sydneyhotwatersystems.com.au/wp-content/uploads/2026/04/Is-It-Time-to-Replace-Your-Hot-Water-Unit-Signs-Repair-Wont-Cut-It.jpg",
     icon: Flame,
   },
   {
@@ -150,7 +150,7 @@ const galleryImages = [
   {
     title: "Hot water system work",
     image:
-      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1200&q=80",
+      "https://sydneyhotwatersystems.com.au/wp-content/uploads/2026/04/Is-It-Time-to-Replace-Your-Hot-Water-Unit-Signs-Repair-Wont-Cut-It.jpg",
   },
   {
     title: "On-site plumbing repairs",
@@ -1248,7 +1248,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "hot-water" ? (
         <ServiceDetailPage
           title="Hot Water Repairs"
-          image="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1200&q=80"
+          image="https://sydneyhotwatersystems.com.au/wp-content/uploads/2026/04/Is-It-Time-to-Replace-Your-Hot-Water-Unit-Signs-Repair-Wont-Cut-It.jpg"
           intro="No hot water is never convenient. We repair, replace and install hot water systems with a focus on fast service and dependable workmanship."
           points={[
             "Hot water fault finding",
