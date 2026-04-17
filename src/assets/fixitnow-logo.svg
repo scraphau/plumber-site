@@ -1,23 +1,38 @@
-<svg width="560" height="160" viewBox="0 0 560 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="377" height="142" viewBox="0 0 377 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="377" height="142" fill="#BCD0E2" />
+
   <defs>
-    <linearGradient id="drop" x1="28" y1="20" x2="94" y2="108" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#8ED5FF" />
-      <stop offset="1" stop-color="#3D92D0" />
+    <linearGradient id="dropOuter" x1="32" y1="18" x2="87" y2="105" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7AC6F8" />
+      <stop offset="1" stop-color="#2D8FD0" />
+    </linearGradient>
+    <linearGradient id="dropInner" x1="41" y1="31" x2="83" y2="98" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A6DFFF" />
+      <stop offset="1" stop-color="#4FA9E3" />
+    </linearGradient>
+    <linearGradient id="shadow" x1="72" y1="23" x2="104" y2="93" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55595E" />
+      <stop offset="1" stop-color="#1A1B1E" />
     </linearGradient>
   </defs>
 
   <path
-    d="M62 12C49 32 22 55 22 84C22 112 40 132 64 132C88 132 106 112 106 84C106 55 79 32 66 12C65 10 63 10 62 12Z"
-    fill="url(#drop)"
-    stroke="#7A7A7A"
-    stroke-width="6"
+    d="M57 14C45 30 22 51 22 77C22 103 38 120 58 120C80 120 95 102 95 77C95 51 72 30 60 14C59 12 58 12 57 14Z"
+    fill="url(#dropOuter)"
+    stroke="#7C838B"
+    stroke-width="2.2"
   />
-  <ellipse cx="46" cy="58" rx="16" ry="20" fill="white" opacity="0.35" />
+  <path
+    d="M59 28C50 41 34 58 34 77C34 95 44 108 58 108C72 108 82 95 82 77C82 58 67 41 59 28Z"
+    fill="url(#dropInner)"
+  />
+  <ellipse cx="44" cy="58" rx="10" ry="15" fill="white" opacity="0.4" />
+  <path d="M61 22C75 34 95 54 95 77C95 94 86 107 72 114C94 111 112 97 112 77C112 54 90 33 75 20L61 22Z" fill="url(#shadow)" />
 
-  <text x="112" y="88" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" fill="#6F6F6F">fix</text>
-  <text x="244" y="88" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" fill="#67A9DC">it</text>
-  <text x="304" y="88" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" fill="#67A9DC">now</text>
-  <text x="114" y="122" font-family="Arial, Helvetica, sans-serif" font-size="36" font-style="italic" font-weight="500" fill="#2D2D2D">
+  <text x="129" y="80" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" fill="#82858A">fix</text>
+  <text x="220" y="80" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" fill="#2F2F34">it</text>
+  <text x="258" y="80" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" fill="#59A6E0">now</text>
+  <text x="130" y="112" font-family="Arial, Helvetica, sans-serif" font-size="33" font-style="italic" font-weight="500" fill="#2D2F33">
     Plumbing, Drainage &amp; Gasfitting
   </text>
 </svg>
