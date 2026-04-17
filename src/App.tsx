@@ -369,10 +369,7 @@ function AboutPage() {
         <SectionHeading eyebrow="About us" title="You can rely on us for plumbing emergencies and everyday repairs" />
         <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-600">
           <p>
-            When plumbing issues happen, you need a team that responds quickly and gets the job done properly the first time. We focus on fast response times, honest advice and reliable workmanship on every job.
-          </p>
-          <p>
-            From blocked drains and hot water repairs to leaks and general maintenance, Fix It Now Plumbing is a dependable local option for homes and small businesses across Sydney and surrounding suburbs.
+            Fix It Now Plumbing is a family owned and operated business built on referrals from our always impressed repeat customers. We’re here to help you with any plumbing services you may require including fixing a blocked drain; repairing leaking taps & toilets; a burst pipe, hot water problems, gasfitting and gas installations, dishwasher or waterfilter installations, noisy or hammering pipes, bathroom plumbing, kitchen plumbing, laundry plumbing and many more including emergency plumbing 24 hours a day, 7 days a week!
           </p>
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
