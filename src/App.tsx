@@ -40,7 +40,7 @@ type PageKey =
 const heroImage =
   "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80";
 const aboutImage =
-  "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80";
+  "https://mrflowplumbing.com.au/wp-content/uploads/2024/07/male-plumber-working-fix-problems-client-s-house_23-2150990735.jpg";
 
 const reviews = [
   {
@@ -512,7 +512,7 @@ function AboutPage() {
         <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-slate-200 bg-white/92 p-5 shadow-lg backdrop-blur">
           <div className="text-lg font-bold text-slate-900">Local, established and easy to contact</div>
           <p className="mt-2 text-slate-600">
-            A proper website gives customers a fast way to call, enquire and trust the business without relying only on Facebook.
+            You can rely on us for plumbing emergencies and everyday repairs.
           </p>
         </div>
       </div>
