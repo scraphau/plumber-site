@@ -79,7 +79,7 @@ const serviceRows = [
     title: "Emergency Plumbing",
     desc: "Urgent leaks, burst pipes and fast-response plumbing help across Sydney's Northern Beaches.",
     image:
-      "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80",
+      "https://elmershomeservices.com/wp-content/uploads/2025/03/emergency-plumber-1024x682-1.jpeg",
     icon: Wrench,
   },
   {
@@ -94,7 +94,7 @@ const serviceRows = [
     key: "burst-pipes" as const,
     title: "Burst Pipes",
     desc: "Rapid burst and leaking pipe repairs to protect your property and restore safe water flow.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/88/Burst_pipe_from_freezing.jpg",
+    image: "https://northeastplumbing.com.au/wp-content/uploads/2024/09/Burst-pipe-causes.jpg",
     icon: Wrench,
   },
   {
@@ -102,7 +102,7 @@ const serviceRows = [
     title: "Gas Fitting",
     desc: "Licensed gas fitting and gas installations completed safely, compliantly and with upfront advice.",
     image:
-      "https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=1200&q=80",
+      "https://trueflowplumbing.net.au/wp-content/uploads/2024/09/Install-gas-line.jpg",
     icon: Flame,
   },
   {
@@ -110,7 +110,7 @@ const serviceRows = [
     title: "Kitchen Plumbing",
     desc: "Kitchen plumbing repairs and installations for sinks, mixers, dishwashers and water filters.",
     image:
-      "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80",
+      "https://goldcoastplumbingexperts.com.au/wp-content/uploads/2023/10/plumber-under-new-sink-optimized.jpg",
     icon: Hammer,
   },
   {
@@ -118,15 +118,14 @@ const serviceRows = [
     title: "Bathroom Plumbing",
     desc: "Bathroom plumbing for leaks, fixtures, drains and upgrades carried out by licensed plumbers.",
     image:
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
+      "https://www.empiretiles.com.au/wp-content/uploads/2025/06/Why-Sydney-Homeowners-Move-Bathroom-Plumbing-1024x683.jpg",
     icon: Home,
   },
   {
     key: "laundry-plumbing" as const,
     title: "Laundry Plumbing",
     desc: "Laundry plumbing services for tubs, washing machine connections, taps and drain improvements.",
-    image:
-      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80",
+    image: "https://i.redd.it/f3t4nefn1ea61.jpg",
     icon: Droplets,
   },
 ] as const;
@@ -170,7 +169,7 @@ const galleryImages = [
   {
     title: "Emergency plumbing response",
     image:
-      "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80",
+      "https://elmershomeservices.com/wp-content/uploads/2025/03/emergency-plumber-1024x682-1.jpeg",
   },
 ] as const;
 
@@ -1276,7 +1275,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "burst-pipes" ? (
         <ServiceDetailPage
           title="Burst Pipes"
-          image="https://upload.wikimedia.org/wikipedia/commons/8/88/Burst_pipe_from_freezing.jpg"
+          image="https://northeastplumbing.com.au/wp-content/uploads/2024/09/Burst-pipe-causes.jpg"
           intro="A burst or leaking pipe can cause serious water damage fast. Our team provides urgent isolation, fault finding and durable repairs to protect your property and restore your plumbing."
           points={[
             "Rapid response for burst and leaking pipes",
@@ -1291,7 +1290,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "gas-fitting" ? (
         <ServiceDetailPage
           title="Gas Fitting"
-          image="https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=1200&q=80"
+          image="https://trueflowplumbing.net.au/wp-content/uploads/2024/09/Install-gas-line.jpg"
           intro="Fix It Now Plumbing provides licensed gas fitting and gas installation services for homes and small businesses, with safety, compliance and clear communication at every step."
           points={[
             "Licensed gas fitting and compliance-focused work",
@@ -1306,7 +1305,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "kitchen-plumbing" ? (
         <ServiceDetailPage
           title="Kitchen Plumbing"
-          image="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80"
+          image="https://goldcoastplumbingexperts.com.au/wp-content/uploads/2023/10/plumber-under-new-sink-optimized.jpg"
           intro="From leaking sinks to dishwasher and water filter installations, we handle kitchen plumbing jobs quickly and properly so your kitchen stays practical and reliable."
           points={[
             "Sink, mixer and trap repairs",
@@ -1321,7 +1320,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "bathroom-plumbing" ? (
         <ServiceDetailPage
           title="Bathroom Plumbing"
-          image="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80"
+          image="https://www.empiretiles.com.au/wp-content/uploads/2025/06/Why-Sydney-Homeowners-Move-Bathroom-Plumbing-1024x683.jpg"
           intro="We provide dependable bathroom plumbing for leaks, fixture replacements and upgrades, delivered by licensed plumbers who respect your home and keep you informed."
           points={[
             "Shower, basin and toilet plumbing repairs",
@@ -1336,7 +1335,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "laundry-plumbing" ? (
         <ServiceDetailPage
           title="Laundry Plumbing"
-          image="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80"
+          image="https://i.redd.it/f3t4nefn1ea61.jpg"
           intro="Need help with laundry plumbing? We repair and install taps, tubs, washing machine connections and drainage components to keep your laundry functioning properly."
           points={[
             "Laundry tub and tap repairs",
