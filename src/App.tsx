@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import {
   Phone,
   Wrench,
@@ -17,7 +17,16 @@ import {
   X,
 } from "lucide-react";
 
-type PageKey = "home" | "about" | "services" | "gallery" | "blocked-drains" | "hot-water" | "contact" | "terms";
+type PageKey =
+  | "home"
+  | "about"
+  | "services"
+  | "gallery"
+  | "blocked-drains"
+  | "hot-water"
+  | "emergency"
+  | "contact"
+  | "terms";
 
 const heroImage =
   "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80";
@@ -44,7 +53,8 @@ const serviceRows = [
     key: "blocked-drains" as const,
     title: "Blocked Drains",
     desc: "Kitchen, bathroom and stormwater drainage issues diagnosed and cleared with practical long-term solutions.",
-    image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
     icon: Droplets,
   },
   {
@@ -56,11 +66,11 @@ const serviceRows = [
     icon: Flame,
   },
   {
-    key: "services" as const,
+    key: "emergency" as const,
     title: "Emergency Plumbing",
-    desc: "Urgent leaks, burst pipes and fast-response plumbing help across Sydney.",
+    desc: "Urgent leaks, burst pipes and fast-response plumbing help across Sydney's Northern Beaches.",
     image:
-      "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80",
     icon: Wrench,
   },
   {
@@ -87,45 +97,62 @@ const serviceList = [
 const galleryImages = [
   {
     title: "Blocked drain clearing",
-    image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
   },
   {
     title: "Hot water system work",
-    image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1200&q=80",
   },
   {
     title: "On-site plumbing repairs",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80",
   },
   {
     title: "Plumbing tools and fittings",
-    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80",
   },
   {
     title: "Maintenance plumbing job",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
   },
   {
     title: "Emergency plumbing response",
-    image: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80",
   },
 ] as const;
 
-const navItems: Array<{ key: PageKey; label: string }> = [
+const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "home", label: "Home" },
   { key: "about", label: "About" },
   { key: "services", label: "Services" },
+  { key: "emergency", label: "Emergency Plumber" },
   { key: "gallery", label: "Gallery" },
   { key: "blocked-drains", label: "Blocked Drains" },
   { key: "hot-water", label: "Hot Water" },
   { key: "contact", label: "Contact" },
 ];
 
-function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
+function SectionHeading({
+  eyebrow,
+  title,
+  text,
+}: {
+  eyebrow: string;
+  title: string;
+  text?: string;
+}) {
   return (
     <div className="max-w-3xl">
-      <div className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-700">{eyebrow}</div>
-      <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">{title}</h2>
+      <div className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-700">
+        {eyebrow}
+      </div>
+      <h2 className="mt-3 text-5xl font-bold tracking-tight md:text-6xl">{title}</h2>
       {text ? <p className="mt-4 text-lg text-slate-600">{text}</p> : null}
     </div>
   );
@@ -154,8 +181,12 @@ function ContactPanel() {
     <section className="mx-auto max-w-7xl px-6 py-20">
       <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="rounded-[2rem] bg-sky-800 p-8 text-white shadow-xl md:p-10">
-          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-100">Contact</div>
-          <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">Need plumbing help in Sydney?</h2>
+          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-100">
+            Contact
+          </div>
+          <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+            Need plumbing help in Sydney?
+          </h2>
           <p className="mt-4 max-w-2xl text-lg text-sky-50/90">
             Call now for urgent plumbing help or send through an enquiry and we’ll get back to you as soon as possible.
           </p>
@@ -183,7 +214,9 @@ function ContactPanel() {
             <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Email" />
             <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Address" />
             <textarea className="min-h-32 w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Message" />
-            <button className="w-full rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800">Send message</button>
+            <button className="w-full rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800">
+              Send message
+            </button>
           </div>
         </div>
       </div>
@@ -204,11 +237,11 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="max-w-3xl text-white">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur">
               <CheckCircle2 className="h-4 w-4" />
-              Trusted local plumbers across Sydney
+              Trusted local plumbers across Sydney's Northern Beaches
             </div>
 
             <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
-              Reliable, fast and professional plumbing solutions across Sydney.
+              Reliable, fast and professional plumbing solutions across Sydney's Northern Beaches.
             </h1>
 
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-100">
@@ -223,7 +256,10 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 Contact Us
                 <ChevronRight className="h-4 w-4" />
               </button>
-              <a href="tel:0414248131" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-semibold text-sky-800">
+              <a
+                href="tel:0414248131"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-semibold text-sky-800"
+              >
                 <Phone className="h-4 w-4" />
                 Call 0414 248 131
               </a>
@@ -240,8 +276,12 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               </div>
 
               <div className="flex items-center gap-3 rounded-xl bg-white px-4 py-2 text-slate-900 shadow">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-4" />
-                <span className="text-sm font-medium">Rated 5 Stars on Google</span>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                  alt="Google"
+                  className="h-4"
+                />
+                <span className="text-sm font-medium">Trusted Sydney's Northern Beaches plumbing service</span>
               </div>
             </div>
           </div>
@@ -254,7 +294,9 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Phone" />
               <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Email" />
               <textarea className="min-h-32 w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Tell us what plumbing help you need" />
-              <button className="w-full rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800">Send message</button>
+              <button className="w-full rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800">
+                Send message
+              </button>
             </div>
           </div>
         </div>
@@ -263,7 +305,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-4 px-6 py-6 md:grid-cols-4">
           {[
-            "Trusted Sydney-wide plumbing service",
+            "Trusted Northern Beaches plumbing service",
             "Emergency callouts available",
             "Residential & commercial plumbing",
             "Fast local response",
@@ -283,11 +325,10 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           text="Browse the most requested plumbing services and jump into a dedicated page for each one."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {serviceRows.map((service, index) => {
+          {serviceRows.map((service) => {
             const Icon = service.icon;
-            const targetPage = index === 0 ? "blocked-drains" : index === 1 ? "hot-water" : "services";
             return (
-              <div key={`${service.title}-${index}`} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
+              <div key={service.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
                 <img src={service.image} alt={service.title} className="h-64 w-full object-cover" />
                 <div className="p-7">
                   <div className="inline-flex items-center gap-2 font-semibold text-sky-700">
@@ -297,7 +338,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                   <h3 className="mt-4 text-2xl font-bold tracking-tight">{service.title}</h3>
                   <p className="mt-3 text-slate-600">{service.desc}</p>
                   <button
-                    onClick={() => goTo(targetPage)}
+                    onClick={() => goTo(service.key)}
                     className="mt-5 inline-flex items-center gap-2 rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white hover:bg-sky-800"
                   >
                     View service page
@@ -322,7 +363,7 @@ function AboutPage() {
   ];
 
   return (
-    <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr] items-center">
+    <section className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr]">
       <div>
         <SectionHeading eyebrow="About us" title="You can rely on us for plumbing emergencies and everyday repairs" />
         <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-600">
@@ -337,10 +378,7 @@ function AboutPage() {
           {features.map((feature) => {
             const FeatureIcon = feature.icon;
             return (
-              <div
-                key={feature.label}
-                className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4"
-              >
+              <div key={feature.label} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4">
                 <FeatureIcon className="h-5 w-5 text-sky-700" />
                 <span className="font-medium text-slate-800">{feature.label}</span>
               </div>
@@ -350,11 +388,7 @@ function AboutPage() {
       </div>
 
       <div className="relative">
-        <img
-          src={aboutImage}
-          alt="Plumbing tools and fittings"
-          className="h-[520px] w-full rounded-[2rem] object-cover shadow-xl"
-        />
+        <img src={aboutImage} alt="Plumbing tools and fittings" className="h-[520px] w-full rounded-[2rem] object-cover shadow-xl" />
         <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-slate-200 bg-white/92 p-5 shadow-lg backdrop-blur">
           <div className="text-lg font-bold text-slate-900">Local, established and easy to contact</div>
           <p className="mt-2 text-slate-600">
@@ -378,12 +412,11 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
           />
 
           <div className="mt-12 space-y-8">
-            {serviceRows.map((service, index) => {
+            {serviceRows.map((service) => {
               const ServiceIcon = service.icon;
-              const targetPage = index === 0 ? "blocked-drains" : index === 1 ? "hot-water" : "contact";
               return (
-                <div key={`${service.title}-${index}`} className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm lg:grid-cols-2">
-                  <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div key={service.title} className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm lg:grid-cols-2">
+                  <div>
                     <img src={service.image} alt={service.title} className="h-full min-h-[320px] w-full object-cover" />
                   </div>
                   <div className="flex flex-col justify-center p-8 md:p-10">
@@ -395,12 +428,15 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
                     <p className="mt-4 text-lg leading-relaxed text-slate-600">{service.desc}</p>
                     <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                       <button
-                        onClick={() => goTo(targetPage)}
+                        onClick={() => goTo(service.key)}
                         className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white hover:bg-sky-800"
                       >
-                        {targetPage === "contact" ? "Contact us" : "View page"}
+                        View page
                       </button>
-                      <a href="tel:0414248131" className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 px-5 py-3 font-semibold text-slate-800">
+                      <a
+                        href="tel:0414248131"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 px-5 py-3 font-semibold text-slate-800"
+                      >
                         <Phone className="h-4 w-4" />
                         Call now
                       </a>
@@ -416,7 +452,11 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <SectionHeading eyebrow="More services" title="Choose a trusted local plumber" text="We cover all aspects of plumbing, so you only need one reliable team for every job around your home or business." />
+            <SectionHeading
+              eyebrow="More services"
+              title="Choose a trusted local plumber"
+              text="We cover all aspects of plumbing, so you only need one reliable team for every job around your home or business."
+            />
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {serviceList.map((item) => (
@@ -529,6 +569,49 @@ function GalleryPage() {
   );
 }
 
+function EmergencyPage() {
+  return (
+    <>
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <SectionHeading
+            eyebrow="Emergency"
+            title="24/7 Emergency Plumber Northern Beaches"
+            text="Fast response emergency plumbing when you need it most. Burst pipes, major leaks and urgent issues handled quickly and professionally."
+          />
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {[
+              "24/7 emergency response",
+              "Fast arrival times",
+              "Burst pipe repairs",
+              "Major leak control",
+              "Blocked drains emergency",
+              "No hot water urgent repairs",
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+                <CheckCircle2 className="h-4 w-4 text-sky-700" />
+                <span className="font-medium">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex gap-4">
+            <a href="tel:0414248131" className="rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white">
+              Call Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <SectionHeading eyebrow="Why choose us" title="Reliable emergency plumbing when it matters most" />
+        <ReviewCards />
+      </section>
+    </>
+  );
+}
+
 function ContactPage() {
   return <ContactPanel />;
 }
@@ -545,56 +628,56 @@ function TermsPage() {
       <div className="mt-10 space-y-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm md:p-10">
         <div>
           <h3 className="text-2xl font-bold text-slate-900">General</h3>
-          <p className="mt-3 text-slate-600 leading-relaxed">
+          <p className="mt-3 leading-relaxed text-slate-600">
             By booking or using our services, you agree to these terms and conditions. Fix It Now Plumbing provides plumbing, drainage, maintenance and related services across Sydney and surrounding areas.
           </p>
         </div>
 
         <div>
           <h3 className="text-2xl font-bold text-slate-900">Quotes and pricing</h3>
-          <p className="mt-3 text-slate-600 leading-relaxed">
+          <p className="mt-3 leading-relaxed text-slate-600">
             Any quote provided is based on the information available at the time. If additional faults, hidden defects or extra labour and materials are required once work begins, pricing may change. Any variation will be explained where reasonably possible before extra work proceeds.
           </p>
         </div>
 
         <div>
           <h3 className="text-2xl font-bold text-slate-900">Payment terms</h3>
-          <p className="mt-3 text-slate-600 leading-relaxed">
+          <p className="mt-3 leading-relaxed text-slate-600">
             Payment is due on completion unless otherwise agreed in writing. We may request deposits for larger jobs, special-order materials or scheduled installation work. Late payments may incur reasonable recovery costs or fees where permitted.
           </p>
         </div>
 
         <div>
           <h3 className="text-2xl font-bold text-slate-900">Access and site conditions</h3>
-          <p className="mt-3 text-slate-600 leading-relaxed">
+          <p className="mt-3 leading-relaxed text-slate-600">
             Customers must provide safe and reasonable access to the work area. We are not responsible for delays or additional costs caused by restricted access, unsafe conditions, concealed pipework, asbestos, structural issues or other site conditions outside our control.
           </p>
         </div>
 
         <div>
           <h3 className="text-2xl font-bold text-slate-900">Cancellations and call-outs</h3>
-          <p className="mt-3 text-slate-600 leading-relaxed">
+          <p className="mt-3 leading-relaxed text-slate-600">
             Reasonable notice is required for cancellations or rescheduling. Missed appointments, late cancellations or emergency call-outs that cannot proceed on arrival may incur a call-out fee or time charge.
           </p>
         </div>
 
         <div>
           <h3 className="text-2xl font-bold text-slate-900">Warranty</h3>
-          <p className="mt-3 text-slate-600 leading-relaxed">
+          <p className="mt-3 leading-relaxed text-slate-600">
             We stand by our workmanship and will address issues directly related to our labour within a reasonable period, subject to Australian Consumer Law. This does not cover misuse, lack of maintenance, fair wear and tear, third-party work, manufacturer faults or pre-existing issues beyond our control.
           </p>
         </div>
 
         <div>
           <h3 className="text-2xl font-bold text-slate-900">Liability</h3>
-          <p className="mt-3 text-slate-600 leading-relaxed">
+          <p className="mt-3 leading-relaxed text-slate-600">
             To the extent permitted by law, our liability is limited to the cost of re-supplying the services or repairing defects in our workmanship. We are not liable for indirect or consequential loss, or for problems caused by pre-existing defects, ageing infrastructure, hidden failures or customer-supplied materials.
           </p>
         </div>
 
         <div>
           <h3 className="text-2xl font-bold text-slate-900">Contact</h3>
-          <p className="mt-3 text-slate-600 leading-relaxed">
+          <p className="mt-3 leading-relaxed text-slate-600">
             For any questions about these terms and conditions, please contact Fix It Now Plumbing by phone on 0414 248 131 or email at paul@fixitnowplumbing.com.au.
           </p>
         </div>
@@ -605,36 +688,17 @@ function TermsPage() {
 
 export default function NorthernBeachesPlumberDemo() {
   const [currentPage, setCurrentPage] = useState<PageKey>("home");
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   const changePage = (page: PageKey) => {
     setCurrentPage(page);
-    setMobileOpen(false);
+    setMobileMenuOpen(false);
+    setServicesOpen(false);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-
-  const currentTitle = useMemo(() => {
-    switch (currentPage) {
-      case "about":
-        return "About";
-      case "services":
-        return "Services";
-      case "gallery":
-        return "Gallery";
-      case "blocked-drains":
-        return "Blocked Drains";
-      case "hot-water":
-        return "Hot Water Repairs";
-      case "contact":
-        return "Contact";
-      case "terms":
-        return "Terms & Conditions";
-      default:
-        return "Home";
-    }
-  }, [currentPage]);
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
@@ -664,39 +728,81 @@ export default function NorthernBeachesPlumberDemo() {
           </button>
 
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 md:flex">
-            {navItems.map((item) => (
-              <button
-                key={item.key}
-                onClick={() => changePage(item.key)}
-                className={`hover:text-sky-700 ${currentPage === item.key ? "text-sky-700" : ""}`}
-              >
-                {item.label}
+            <button onClick={() => changePage("home")} className="hover:text-sky-700">
+              Home
+            </button>
+            <button onClick={() => changePage("about")} className="hover:text-sky-700">
+              About
+            </button>
+
+            <div
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button onClick={() => changePage("services")} className="hover:text-sky-700">
+                Services
               </button>
-            ))}
+              {servicesOpen ? (
+                <div className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white py-2 shadow-lg">
+                  <button
+                    onClick={() => changePage("services")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                  >
+                    All Services
+                  </button>
+                  <button
+                    onClick={() => changePage("emergency")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                  >
+                    Emergency Plumber
+                  </button>
+                </div>
+              ) : null}
+            </div>
+
+            <button onClick={() => changePage("gallery")} className="hover:text-sky-700">
+              Gallery
+            </button>
+            <button onClick={() => changePage("blocked-drains")} className="hover:text-sky-700">
+              Blocked Drains
+            </button>
+            <button onClick={() => changePage("hot-water")} className="hover:text-sky-700">
+              Hot Water
+            </button>
+            <button onClick={() => changePage("contact")} className="hover:text-sky-700">
+              Contact
+            </button>
           </nav>
 
           <div className="flex items-center gap-3">
-            <a href="tel:0414248131" className="hidden items-center gap-2 rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white shadow-sm hover:bg-sky-800 md:inline-flex">
+            <a
+              href="tel:0414248131"
+              className="hidden items-center gap-2 rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white shadow-sm hover:bg-sky-800 md:inline-flex"
+            >
               <Phone className="h-4 w-4" />
               0414 248 131
             </a>
             <button
-              onClick={() => setMobileOpen((v) => !v)}
+              onClick={() => setMobileMenuOpen((value) => !value)}
               className="inline-flex rounded-xl border border-slate-300 p-3 md:hidden"
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
-        {mobileOpen ? (
+
+        {mobileMenuOpen ? (
           <div className="border-t border-slate-200 bg-white px-6 py-4 md:hidden">
             <div className="flex flex-col gap-3">
-              {navItems.map((item) => (
+              {mobileNavItems.map((item) => (
                 <button
                   key={item.key}
                   onClick={() => changePage(item.key)}
-                  className={`rounded-xl px-3 py-2 text-left font-medium ${currentPage === item.key ? "bg-sky-50 text-sky-700" : "text-slate-700"}`}
+                  className={`rounded-xl px-3 py-2 text-left font-medium ${
+                    currentPage === item.key ? "bg-sky-50 text-sky-700" : "text-slate-700"
+                  }`}
                 >
                   {item.label}
                 </button>
@@ -706,34 +812,88 @@ export default function NorthernBeachesPlumberDemo() {
         ) : null}
       </header>
 
-      <div className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-700">Current page</div>
-            <div className="mt-1 text-2xl font-bold text-slate-900">{currentTitle}</div>
-          </div>
-          <button onClick={() => changePage("contact")} className="rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white hover:bg-sky-800">
-            Request Quote
-          </button>
-        </div>
-      </div>
-
       {currentPage === "home" ? <HomePage goTo={changePage} /> : null}
       {currentPage === "about" ? <AboutPage /> : null}
       {currentPage === "services" ? <ServicesPage goTo={changePage} /> : null}
       {currentPage === "gallery" ? <GalleryPage /> : null}
       {currentPage === "blocked-drains" ? (
-        <ServiceDetailPage
-          title="Blocked Drains"
-          image="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80"
-          intro="Blocked drains can quickly turn into a messy, disruptive problem. We diagnose the cause properly and work to clear drains fast so your plumbing is back to normal as soon as possible."
-          points={[
-            "Kitchen and bathroom drain blockages",
-            "Stormwater drainage issues",
-            "Fast fault diagnosis",
-            "Practical long-term solutions",
-          ]}
-        />
+        <>
+          <ServiceDetailPage
+            title="Blocked Drains"
+            image="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80"
+            intro="Blocked drains can quickly turn into a messy, disruptive problem. We diagnose the cause properly using modern equipment and clear drains fast so your plumbing is back to normal as soon as possible."
+            points={[
+              "Kitchen, bathroom & stormwater blockages",
+              "CCTV drain camera inspections",
+              "Pipe locating & accurate fault finding",
+              "High pressure drain cleaning",
+              "Tree root & severe blockage removal",
+              "Long-term solutions to prevent reoccurrence",
+            ]}
+          />
+
+          <section className="mx-auto max-w-7xl px-6 py-20">
+            <SectionHeading
+              eyebrow="Why choose us"
+              title="Northern Beaches blocked drain specialists"
+              text="We combine experience, proper equipment and honest service to fix blocked drains properly the first time."
+            />
+
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
+              {[
+                "Speak directly to a qualified plumber",
+                "Upfront pricing with no surprises",
+                "Fully licensed & insured professionals",
+                "24/7 emergency plumbing available",
+                "We call before arrival so you're not waiting",
+                "We leave your property clean",
+                "Friendly, honest advice every time",
+                "Multiple payment options available",
+                "Reliable service you can trust",
+              ].map((item) => (
+                <div key={item} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-4 w-4 text-sky-700" />
+                    <span className="font-medium">{item}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-7xl px-6 pb-20">
+            <SectionHeading eyebrow="How we fix it" title="Our blocked drain process" />
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              {[
+                {
+                  title: "1. Inspection",
+                  text: "We use CCTV drain cameras to inspect inside your pipes and find the exact cause of the blockage.",
+                },
+                {
+                  title: "2. Locate",
+                  text: "Pipe locating equipment pinpoints the exact location and depth of the issue.",
+                },
+                {
+                  title: "3. Clear",
+                  text: "High pressure jetting or specialised tools are used to completely remove the blockage.",
+                },
+                {
+                  title: "4. Confirm",
+                  text: "We re-check the drain with cameras to make sure the problem is fully resolved.",
+                },
+                {
+                  title: "5. Prevent",
+                  text: "We give honest advice and solutions to stop the issue from happening again.",
+                },
+              ].map((step) => (
+                <div key={step.title} className="rounded-2xl border border-slate-200 bg-white p-6">
+                  <div className="font-bold text-slate-900">{step.title}</div>
+                  <p className="mt-2 text-slate-600">{step.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </>
       ) : null}
       {currentPage === "hot-water" ? (
         <ServiceDetailPage
@@ -748,6 +908,7 @@ export default function NorthernBeachesPlumberDemo() {
           ]}
         />
       ) : null}
+      {currentPage === "emergency" ? <EmergencyPage /> : null}
       {currentPage === "contact" ? <ContactPage /> : null}
       {currentPage === "terms" ? <TermsPage /> : null}
 
@@ -758,9 +919,15 @@ export default function NorthernBeachesPlumberDemo() {
             <div className="mt-1 text-sm text-slate-500">Sydney-wide plumbing service</div>
           </div>
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
-            <a href="tel:0414248131" className="hover:text-sky-700">0414 248 131</a>
-            <a href="mailto:paul@fixitnowplumbing.com.au" className="hover:text-sky-700">paul@fixitnowplumbing.com.au</a>
-            <button onClick={() => changePage("terms")} className="hover:text-sky-700">Terms & Conditions</button>
+            <a href="tel:0414248131" className="hover:text-sky-700">
+              0414 248 131
+            </a>
+            <a href="mailto:paul@fixitnowplumbing.com.au" className="hover:text-sky-700">
+              paul@fixitnowplumbing.com.au
+            </a>
+            <button onClick={() => changePage("terms")} className="hover:text-sky-700">
+              Terms & Conditions
+            </button>
           </div>
         </div>
       </footer>
