@@ -36,14 +36,17 @@ const aboutImage =
 const reviews = [
   {
     quote: "Quick response, turned up on time and fixed the leak the same morning.",
+    quote: "Called at 7am about a burst pipe and they had it sorted before lunch. Clean, professional and stress-free.",
     name: "Matt H.",
   },
   {
     quote: "Easy to deal with, clear quote, great work. Would use again.",
+    quote: "Clear pricing, great communication and quality workmanship. Exactly what you want from a plumber.",
     name: "Sarah T.",
   },
   {
     quote: "Solved our blocked drain issue fast and explained everything clearly.",
+    quote: "They diagnosed our blocked drain fast, explained the fix, and gave practical advice to prevent it happening again.",
     name: "James R.",
   },
 ] as const;
@@ -69,149 +72,7 @@ const serviceRows = [
     key: "emergency" as const,
     title: "Emergency Plumbing",
     desc: "Urgent leaks, burst pipes and fast-response plumbing help across Sydney's Northern Beaches.",
-    image:
-      "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80",
-    icon: Wrench,
-  },
-  {
-    key: "services" as const,
-    title: "Maintenance Plumbing",
-    desc: "Reliable maintenance plumbing for homes, strata and small business properties throughout the area.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
-    icon: Hammer,
-  },
-] as const;
-
-const serviceList = [
-  "Emergency plumbing",
-  "Blocked drains",
-  "Hot water repairs",
-  "Leak detection",
-  "Burst pipe repairs",
-  "Gas fitting services",
-  "Maintenance plumbing",
-  "Drainage solutions",
-] as const;
-
-const galleryImages = [
-  {
-    title: "Blocked drain clearing",
-    image:
-      "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Hot water system work",
-    image:
-      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "On-site plumbing repairs",
-    image:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Plumbing tools and fittings",
-    image:
-      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Maintenance plumbing job",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Emergency plumbing response",
-    image:
-      "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80",
-  },
-] as const;
-
-const mobileNavItems: Array<{ key: PageKey; label: string }> = [
-  { key: "home", label: "Home" },
-  { key: "about", label: "About" },
-  { key: "services", label: "Services" },
-  { key: "emergency", label: "Emergency Plumber" },
-  { key: "gallery", label: "Gallery" },
-  { key: "blocked-drains", label: "Blocked Drains" },
-  { key: "hot-water", label: "Hot Water" },
-  { key: "contact", label: "Contact" },
-];
-
-function SectionHeading({
-  eyebrow,
-  title,
-  text,
-}: {
-  eyebrow: string;
-  title: string;
-  text?: string;
-}) {
-  return (
-    <div className="max-w-3xl">
-      <div className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-700">
-        {eyebrow}
-      </div>
-      <h2 className="mt-3 text-5xl font-bold tracking-tight md:text-6xl">{title}</h2>
-      {text ? <p className="mt-4 text-lg text-slate-600">{text}</p> : null}
-    </div>
-  );
-}
-
-function ReviewCards() {
-  return (
-    <div className="mt-10 grid gap-6 lg:grid-cols-3">
-      {reviews.map((review, i) => (
-        <div key={i} className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm">
-          <div className="flex gap-1 text-yellow-400">
-            {Array.from({ length: 5 }).map((_, idx) => (
-              <Star key={idx} className="h-4 w-4 fill-current" />
-            ))}
-          </div>
-          <p className="mt-5 text-lg leading-relaxed text-slate-700">“{review.quote}”</p>
-          <div className="mt-6 text-sm font-medium text-slate-500">{review.name}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function ContactPanel() {
-  return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
-      <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="rounded-[2rem] bg-sky-800 p-8 text-white shadow-xl md:p-10">
-          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-100">
-            Contact
-          </div>
-          <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-            Need plumbing help in Sydney?
-          </h2>
-          <p className="mt-4 max-w-2xl text-lg text-sky-50/90">
-            Call now for urgent plumbing help or send through an enquiry and we’ll get back to you as soon as possible.
-          </p>
-          <div className="mt-8 space-y-4 text-sky-50">
-            <div className="flex items-center gap-3">
-              <Phone className="h-5 w-5" />
-              <span>0414 248 131</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Mail className="h-5 w-5" />
-              <span>paul@fixitnowplumbing.com.au</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="h-5 w-5" />
-              <span>Sydney Wide Plumbing Service Area</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm md:p-10">
-          <div className="text-2xl font-bold text-slate-900">Send an enquiry</div>
-          <div className="mt-6 space-y-4">
-            <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Name" />
-            <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Phone" />
-            <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Email" />
+@@ -215,136 +215,136 @@ function ContactPanel() {
             <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Address" />
             <textarea className="min-h-32 w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Message" />
             <button className="w-full rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800">
@@ -238,14 +99,17 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur">
               <CheckCircle2 className="h-4 w-4" />
               Trusted local plumbers across Sydney's Northern Beaches
+              Licensed local plumbers serving Sydney's Northern Beaches
             </div>
 
             <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
               Reliable, fast and professional plumbing solutions across Sydney's Northern Beaches.
+              Fast, reliable plumbing done right the first time.
             </h1>
 
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-100">
               Fix It Now Plumbing provides reliable plumbing services for homes and businesses across Sydney. From blocked drains and burst pipes to hot water systems and emergency callouts, we focus on fast response, quality workmanship and clear communication.
+              From emergency leaks and blocked drains to hot water repairs and ongoing maintenance, Fix It Now Plumbing delivers prompt service, upfront communication, and workmanship you can trust.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -254,6 +118,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white hover:bg-sky-700"
               >
                 Contact Us
+                Request a Quote
                 <ChevronRight className="h-4 w-4" />
               </button>
               <a
@@ -289,6 +154,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl md:p-7">
             <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
             <p className="mt-2 text-slate-600">Fast local help for urgent plumbing, drainage and maintenance jobs.</p>
+            <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
             <div className="mt-6 space-y-4">
               <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Name" />
               <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Phone" />
@@ -309,6 +175,10 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             "Emergency callouts available",
             "Residential & commercial plumbing",
             "Fast local response",
+            "Upfront, honest advice and pricing",
+            "Rapid response for urgent callouts",
+            "Residential, strata & small business",
+            "Quality workmanship, every job",
           ].map((item) => (
             <div key={item} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-700">
               <CheckCircle2 className="h-4 w-4 text-sky-700" />
@@ -323,6 +193,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           eyebrow="Featured services"
           title="Popular plumbing services"
           text="Browse the most requested plumbing services and jump into a dedicated page for each one."
+          title="Our most requested services"
+          text="Explore the plumbing services customers call us for most, each backed by fast response and reliable results."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {serviceRows.map((service) => {
