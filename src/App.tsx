@@ -63,7 +63,7 @@ const serviceRows = [
     title: "Blocked Drains",
     desc: "Kitchen, bathroom and stormwater drainage issues diagnosed and cleared with practical long-term solutions.",
     image:
-      "https://www.fixitnowplumbing.com.au/wp-content/uploads/2015/12/Camera-web.jpg",
+      "https://www.obrien.com.au/wp-content/uploads/2025/03/A-Plumber-Cleaning-A-Blocked-Drain.jpg",
     icon: Droplets,
   },
   {
@@ -145,7 +145,7 @@ const galleryImages = [
   {
     title: "Blocked drain clearing",
     image:
-      "https://www.fixitnowplumbing.com.au/wp-content/uploads/2015/12/Camera-web.jpg",
+      "https://www.obrien.com.au/wp-content/uploads/2025/03/A-Plumber-Cleaning-A-Blocked-Drain.jpg",
   },
   {
     title: "Hot water system work",
@@ -1170,7 +1170,7 @@ export default function NorthernBeachesPlumberDemo() {
         <>
           <ServiceDetailPage
             title="Blocked Drains"
-            image="https://www.fixitnowplumbing.com.au/wp-content/uploads/2015/12/Camera-web.jpg"
+            image="https://www.obrien.com.au/wp-content/uploads/2025/03/A-Plumber-Cleaning-A-Blocked-Drain.jpg"
             intro="Blocked drains can quickly turn into a messy, disruptive problem. We diagnose the cause properly using modern equipment and clear drains fast so your plumbing is back to normal as soon as possible."
             points={[
               "Kitchen, bathroom & stormwater blockages",
