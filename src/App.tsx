@@ -41,6 +41,7 @@ const heroImage =
   "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80";
 const aboutImage =
   "https://mrflowplumbing.com.au/wp-content/uploads/2024/07/male-plumber-working-fix-problems-client-s-house_23-2150990735.jpg";
+const enquiryEmail = "paul@fixitnowplumbing.com.au";
 
 const reviews = [
   {
@@ -211,6 +212,21 @@ function SectionHeading({
   );
 }
 
+function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: string) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+
+  const lines = Array.from(formData.entries())
+    .filter(([, value]) => String(value).trim().length > 0)
+    .map(([key, value]) => `${key}: ${String(value).trim()}`);
+
+  const body = lines.length > 0 ? lines.join("\n") : "New website enquiry.";
+  const mailtoUrl = `mailto:${enquiryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailtoUrl;
+}
+
 function ReviewCards() {
   return (
     <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -272,16 +288,36 @@ function ContactPanel() {
 
         <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm md:p-10">
           <div className="text-2xl font-bold text-slate-900">Send an enquiry</div>
-          <div className="mt-6 space-y-4">
-            <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Name" />
-            <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Phone" />
-            <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Email" />
-            <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Address" />
-            <textarea className="min-h-32 w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Message" />
-            <button className="w-full rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800">
+          <form onSubmit={(event) => handleEnquirySubmit(event, "Website enquiry")} className="mt-6 space-y-4">
+            <input
+              name="Name"
+              className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
+              placeholder="Name"
+            />
+            <input
+              name="Phone"
+              className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
+              placeholder="Phone"
+            />
+            <input
+              name="Email"
+              className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
+              placeholder="Email"
+            />
+            <input
+              name="Address"
+              className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
+              placeholder="Address"
+            />
+            <textarea
+              name="Message"
+              className="min-h-32 w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
+              placeholder="Message"
+            />
+            <button type="submit" className="w-full rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800">
               Send message
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </section>
@@ -383,15 +419,31 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl md:p-7">
             <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
             <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
-            <div className="mt-6 space-y-4">
-              <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Name" />
-              <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Phone" />
-              <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Email" />
-              <textarea className="min-h-32 w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Tell us what plumbing help you need" />
-              <button className="w-full rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800">
+            <form onSubmit={(event) => handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
+              <input
+                name="Name"
+                className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
+                placeholder="Name"
+              />
+              <input
+                name="Phone"
+                className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
+                placeholder="Phone"
+              />
+              <input
+                name="Email"
+                className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
+                placeholder="Email"
+              />
+              <textarea
+                name="Message"
+                className="min-h-32 w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
+                placeholder="Tell us what plumbing help you need"
+              />
+              <button type="submit" className="w-full rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800">
                 Send message
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </section>
