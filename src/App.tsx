@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Phone,
   Wrench,
@@ -691,6 +691,21 @@ export default function NorthernBeachesPlumberDemo() {
   const [currentPage, setCurrentPage] = useState<PageKey>("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesMenuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!servicesMenuRef.current) return;
+      if (!servicesMenuRef.current.contains(event.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const changePage = (page: PageKey) => {
     setCurrentPage(page);
@@ -736,11 +751,7 @@ export default function NorthernBeachesPlumberDemo() {
               About
             </button>
 
-            <div
-              className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
+            <div className="relative" ref={servicesMenuRef}>
               <button
                 onClick={() => setServicesOpen((value) => !value)}
                 className="inline-flex items-center gap-1 hover:text-sky-700"
