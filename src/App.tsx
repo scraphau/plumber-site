@@ -279,6 +279,36 @@ function ContactPanel() {
 }
 
 function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
+  const guaranteeItems = [
+    "You will always speak to a plumber — no inexperienced call centre staff",
+    "Upfront prices with no surprises",
+    "100% materials and workmanship guarantee",
+    "Qualified, experienced, fully licensed and insured plumbers",
+    "A call 30 minutes prior to arrival so you are not waiting unnecessarily",
+    "Honest advice and up-to-date information from polite, friendly tradesmen",
+    "Your property left cleaner than before the job",
+    "Easy payment options with credit card, EFTPOS, direct deposit and cash",
+    "Reliability — we mean what we say",
+  ];
+
+  const pricingSteps = [
+    "An assessment fee is payable for attending your property and reviewing your situation",
+    "You receive an obligation-free fixed price before work begins",
+    "With your approval, we fix it now",
+  ];
+
+  const homeServices = [
+    "Emergency plumbing 24 hours, 7 days",
+    "Blocked drains and CCTV diagnostics",
+    "Leaking taps and toilets",
+    "Burst pipe and leak repairs",
+    "Hot water repairs and replacements",
+    "Gasfitting and gas installations",
+    "Dishwasher and water filter installs",
+    "Noisy or hammering pipes",
+    "Bathroom, kitchen and laundry plumbing",
+  ];
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50">
@@ -374,34 +404,73 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading
-          eyebrow="Featured services"
-          title="Our most requested services"
-          text="Explore the plumbing services customers call us for most, each backed by fast response and reliable results."
+          eyebrow="Fix It Now Plumbing"
+          title="Family owned, fully licensed, and available for urgent plumbing work"
+          text="Fix It Now Plumbing is built on repeat customers and referrals, with genuine 24/7 emergency plumbing support and clear communication from start to finish."
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {serviceRows.map((service) => {
-            const Icon = service.icon;
-            return (
-              <div key={service.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
-                <img src={service.image} alt={service.title} className="h-64 w-full object-cover" />
-                <div className="p-7">
-                  <div className="inline-flex items-center gap-2 font-semibold text-sky-700">
-                    <Icon className="h-5 w-5" />
-                    Fix It Now Plumbing
-                  </div>
-                  <h3 className="mt-4 text-2xl font-bold tracking-tight">{service.title}</h3>
-                  <p className="mt-3 text-slate-600">{service.desc}</p>
-                  <button
-                    onClick={() => goTo(service.key)}
-                    className="mt-5 inline-flex items-center gap-2 rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white hover:bg-sky-800"
-                  >
-                    View service page
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {homeServices.map((item) => (
+            <div key={item} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-sky-700" />
+                <span className="font-medium text-slate-800">{item}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 rounded-[2rem] border border-slate-200 bg-slate-50 p-8">
+          <h3 className="text-3xl font-bold tracking-tight text-slate-900">Our service guarantee</h3>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {guaranteeItems.map((item) => (
+              <div key={item} className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-sky-700" />
+                  <span className="font-medium text-slate-800">{item}</span>
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+            <h3 className="text-3xl font-bold tracking-tight text-slate-900">Our pricing guarantee</h3>
+            <p className="mt-4 text-slate-600">
+              We keep pricing simple and transparent so you can approve work with confidence before we begin.
+            </p>
+            <div className="mt-6 space-y-3">
+              {pricingSteps.map((item) => (
+                <div key={item} className="flex items-start gap-3 rounded-xl bg-slate-50 px-4 py-4">
+                  <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-sky-700" />
+                  <span className="font-medium text-slate-800">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-sky-200 bg-sky-50 p-8 shadow-sm">
+            <h3 className="text-3xl font-bold tracking-tight text-slate-900">Need a plumber now?</h3>
+            <p className="mt-4 text-slate-700">
+              For emergency plumbing, blocked drains, burst pipes or urgent hot water problems, call now and speak directly with a licensed plumber.
+            </p>
+            <div className="mt-8 flex flex-col gap-3">
+              <a
+                href="tel:0414248131"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800"
+              >
+                <Phone className="h-4 w-4" />
+                Call 0414 248 131
+              </a>
+              <button
+                onClick={() => goTo("contact")}
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-4 font-semibold text-slate-800 hover:bg-slate-100"
+              >
+                Request a quote
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </>
