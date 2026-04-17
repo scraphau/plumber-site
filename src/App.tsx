@@ -314,6 +314,13 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 }
 
 function AboutPage() {
+  const features = [
+    { label: "Licensed plumbing support", icon: ShieldCheck },
+    { label: "Prompt local response", icon: Clock3 },
+    { label: "Drainage and leak expertise", icon: Droplets },
+    { label: "Friendly family-run service", icon: Home },
+  ];
+
   return (
     <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr] items-center">
       <div>
@@ -327,17 +334,15 @@ function AboutPage() {
           </p>
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {[
-            ["Licensed plumbing support", ShieldCheck],
-            ["Prompt local response", Clock3],
-            ["Drainage and leak expertise", Droplets],
-            ["Friendly family-run service", Home],
-          ].map(([label, Icon]) => {
-            const FeatureIcon = Icon as typeof ShieldCheck;
+          {features.map((feature) => {
+            const FeatureIcon = feature.icon;
             return (
-              <div key={label} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4">
+              <div
+                key={feature.label}
+                className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4"
+              >
                 <FeatureIcon className="h-5 w-5 text-sky-700" />
-                <span className="font-medium text-slate-800">{label}</span>
+                <span className="font-medium text-slate-800">{feature.label}</span>
               </div>
             );
           })}
@@ -345,7 +350,11 @@ function AboutPage() {
       </div>
 
       <div className="relative">
-        <img src={aboutImage} alt="Plumbing tools and fittings" className="h-[520px] w-full rounded-[2rem] object-cover shadow-xl" />
+        <img
+          src={aboutImage}
+          alt="Plumbing tools and fittings"
+          className="h-[520px] w-full rounded-[2rem] object-cover shadow-xl"
+        />
         <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-slate-200 bg-white/92 p-5 shadow-lg backdrop-blur">
           <div className="text-lg font-bold text-slate-900">Local, established and easy to contact</div>
           <p className="mt-2 text-slate-600">
