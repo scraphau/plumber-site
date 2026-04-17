@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Phone,
   Wrench,
@@ -8,6 +8,7 @@ import {
   Star,
   Clock3,
   ChevronRight,
+  ChevronDown,
   CheckCircle2,
   Mail,
   Home,
@@ -25,6 +26,13 @@ type PageKey =
   | "blocked-drains"
   | "hot-water"
   | "emergency"
+  | "taps-toilets"
+  | "burst-pipes"
+  | "gas-fitting"
+  | "kitchen-plumbing"
+  | "bathroom-plumbing"
+  | "laundry-plumbing"
+  | "guarantee"
   | "contact"
   | "terms";
 
@@ -35,15 +43,15 @@ const aboutImage =
 
 const reviews = [
   {
-    quote: "Quick response, turned up on time and fixed the leak the same morning.",
+    quote: "Called at 7am about a burst pipe and they had it sorted before lunch. Clean, professional and stress-free.",
     name: "Matt H.",
   },
   {
-    quote: "Easy to deal with, clear quote, great work. Would use again.",
+    quote: "Clear pricing, great communication and quality workmanship. Exactly what you want from a plumber.",
     name: "Sarah T.",
   },
   {
-    quote: "Solved our blocked drain issue fast and explained everything clearly.",
+    quote: "They diagnosed our blocked drain fast, explained the fix, and gave practical advice to prevent it happening again.",
     name: "James R.",
   },
 ] as const;
@@ -74,12 +82,51 @@ const serviceRows = [
     icon: Wrench,
   },
   {
-    key: "services" as const,
-    title: "Maintenance Plumbing",
-    desc: "Reliable maintenance plumbing for homes, strata and small business properties throughout the area.",
+    key: "taps-toilets" as const,
+    title: "Taps & Toilets",
+    desc: "Leaking taps, running toilets and faulty fixtures repaired fast with quality parts and tidy workmanship.",
     image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80",
+    icon: Droplets,
+  },
+  {
+    key: "burst-pipes" as const,
+    title: "Burst Pipes",
+    desc: "Rapid burst and leaking pipe repairs to protect your property and restore safe water flow.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/88/Burst_pipe_from_freezing.jpg",
+    icon: Wrench,
+  },
+  {
+    key: "gas-fitting" as const,
+    title: "Gas Fitting",
+    desc: "Licensed gas fitting and gas installations completed safely, compliantly and with upfront advice.",
+    image:
+      "https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=1200&q=80",
+    icon: Flame,
+  },
+  {
+    key: "kitchen-plumbing" as const,
+    title: "Kitchen Plumbing",
+    desc: "Kitchen plumbing repairs and installations for sinks, mixers, dishwashers and water filters.",
+    image:
+      "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80",
     icon: Hammer,
+  },
+  {
+    key: "bathroom-plumbing" as const,
+    title: "Bathroom Plumbing",
+    desc: "Bathroom plumbing for leaks, fixtures, drains and upgrades carried out by licensed plumbers.",
+    image:
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
+    icon: Home,
+  },
+  {
+    key: "laundry-plumbing" as const,
+    title: "Laundry Plumbing",
+    desc: "Laundry plumbing services for tubs, washing machine connections, taps and drain improvements.",
+    image:
+      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80",
+    icon: Droplets,
   },
 ] as const;
 
@@ -90,7 +137,6 @@ const serviceList = [
   "Leak detection",
   "Burst pipe repairs",
   "Gas fitting services",
-  "Maintenance plumbing",
   "Drainage solutions",
 ] as const;
 
@@ -135,7 +181,14 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "gallery", label: "Gallery" },
   { key: "blocked-drains", label: "Blocked Drains" },
   { key: "hot-water", label: "Hot Water" },
-  { key: "contact", label: "Contact" },
+  { key: "taps-toilets", label: "Taps & Toilets" },
+  { key: "burst-pipes", label: "Burst Pipes" },
+  { key: "gas-fitting", label: "Gas Fitting" },
+  { key: "kitchen-plumbing", label: "Kitchen Plumbing" },
+  { key: "bathroom-plumbing", label: "Bathroom Plumbing" },
+  { key: "laundry-plumbing", label: "Laundry Plumbing" },
+  { key: "guarantee", label: "Guarantee" },
+  { key: "contact", label: "Contact Us" },
 ];
 
 function SectionHeading({
@@ -237,15 +290,15 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="max-w-3xl text-white">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur">
               <CheckCircle2 className="h-4 w-4" />
-              Trusted local plumbers across Sydney's Northern Beaches
+              Licensed local plumbers serving Sydney's Northern Beaches
             </div>
 
             <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
-              Reliable, fast and professional plumbing solutions across Sydney's Northern Beaches.
+              Fast, reliable plumbing done right the first time.
             </h1>
 
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-100">
-              Fix It Now Plumbing provides reliable plumbing services for homes and businesses across Sydney. From blocked drains and burst pipes to hot water systems and emergency callouts, we focus on fast response, quality workmanship and clear communication.
+              From emergency leaks and blocked drains to hot water repairs and ongoing maintenance, Fix It Now Plumbing delivers prompt service, upfront communication, and workmanship you can trust.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -253,7 +306,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 onClick={() => goTo("contact")}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white hover:bg-sky-700"
               >
-                Contact Us
+                Request a Quote
                 <ChevronRight className="h-4 w-4" />
               </button>
               <a
@@ -288,7 +341,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl md:p-7">
             <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
-            <p className="mt-2 text-slate-600">Fast local help for urgent plumbing, drainage and maintenance jobs.</p>
+            <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
             <div className="mt-6 space-y-4">
               <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Name" />
               <input className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600" placeholder="Phone" />
@@ -305,10 +358,10 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-4 px-6 py-6 md:grid-cols-4">
           {[
-            "Trusted Northern Beaches plumbing service",
-            "Emergency callouts available",
-            "Residential & commercial plumbing",
-            "Fast local response",
+            "Upfront, honest advice and pricing",
+            "Rapid response for urgent callouts",
+            "Residential, strata & small business",
+            "Quality workmanship, every job",
           ].map((item) => (
             <div key={item} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-700">
               <CheckCircle2 className="h-4 w-4 text-sky-700" />
@@ -321,8 +374,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading
           eyebrow="Featured services"
-          title="Popular plumbing services"
-          text="Browse the most requested plumbing services and jump into a dedicated page for each one."
+          title="Our most requested services"
+          text="Explore the plumbing services customers call us for most, each backed by fast response and reliable results."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {serviceRows.map((service) => {
@@ -368,10 +421,7 @@ function AboutPage() {
         <SectionHeading eyebrow="About us" title="You can rely on us for plumbing emergencies and everyday repairs" />
         <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-600">
           <p>
-            When plumbing issues happen, you need a team that responds quickly and gets the job done properly the first time. We focus on fast response times, honest advice and reliable workmanship on every job.
-          </p>
-          <p>
-            From blocked drains and hot water repairs to leaks and general maintenance, Fix It Now Plumbing is a dependable local option for homes and small businesses across Sydney and surrounding suburbs.
+            Fix It Now Plumbing is a family owned and operated business built on referrals from our always impressed repeat customers. We’re here to help you with any plumbing services you may require including fixing a blocked drain; repairing leaking taps & toilets; a burst pipe, hot water problems, gasfitting and gas installations, dishwasher or waterfilter installations, noisy or hammering pipes, bathroom plumbing, kitchen plumbing, laundry plumbing and many more including emergency plumbing 24 hours a day, 7 days a week!
           </p>
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -612,6 +662,84 @@ function EmergencyPage() {
   );
 }
 
+function GuaranteePage() {
+  const guaranteePoints = [
+    "You will always speak to a plumber — no inexperienced call centre staff",
+    "Upfront prices with no surprises",
+    "100% materials and workmanship guarantee",
+    "Qualified, experienced, fully licensed and insured plumbers",
+    "Same day service",
+    "A call 30 minutes prior to arrival so you are not waiting unnecessarily",
+    "Honest advice and up-to-date information from polite, friendly tradesmen",
+    "Your property left cleaner than before the job",
+    "Easy payment options with credit card, EFTPOS, direct deposit and cash",
+  ];
+
+  const pricingPoints = [
+    "An assessment fee is payable for attending your property and reviewing your situation",
+    "You receive an obligation-free fixed price before work begins",
+    "With your approval, we fix it now",
+  ];
+
+  return (
+    <>
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <SectionHeading
+            eyebrow="Guarantee"
+            title="Plumbing Guarantee"
+            text="For your peace of mind, Fix It Now Plumbing offers both a service guarantee and a pricing guarantee so you know exactly what to expect."
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {guaranteePoints.map((item) => (
+              <div key={item} className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-sky-700" />
+                  <span className="font-medium text-slate-800">{item}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <SectionHeading
+          eyebrow="Pricing Guarantee"
+          title="Clear pricing before any work starts"
+          text="To keep things easy and upfront, we provide a fixed-price approach after assessment so you can approve the work with confidence."
+        />
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {pricingPoints.map((item) => (
+            <div key={item} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-sky-700" />
+                <span className="font-medium text-slate-800">{item}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <a
+            href="tel:0414248131"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-700 px-6 py-4 font-semibold text-white hover:bg-sky-800"
+          >
+            <Phone className="h-4 w-4" />
+            Call 0414 248 131
+          </a>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 px-6 py-4 font-semibold text-slate-800"
+          >
+            Back to top
+          </button>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function ContactPage() {
   return <ContactPanel />;
 }
@@ -690,6 +818,21 @@ export default function NorthernBeachesPlumberDemo() {
   const [currentPage, setCurrentPage] = useState<PageKey>("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesMenuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!servicesMenuRef.current) return;
+      if (!servicesMenuRef.current.contains(event.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const changePage = (page: PageKey) => {
     setCurrentPage(page);
@@ -735,43 +878,105 @@ export default function NorthernBeachesPlumberDemo() {
               About
             </button>
 
-            <div
-              className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
-              <button onClick={() => changePage("services")} className="hover:text-sky-700">
+            <div className="relative" ref={servicesMenuRef}>
+              <button
+                onClick={() => setServicesOpen((value) => !value)}
+                className="inline-flex items-center gap-1 hover:text-sky-700"
+                aria-expanded={servicesOpen}
+                aria-haspopup="menu"
+              >
                 Services
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${servicesOpen ? "rotate-180" : "rotate-0"}`}
+                />
               </button>
               {servicesOpen ? (
-                <div className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white py-2 shadow-lg">
+                <div
+                  className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white py-2 shadow-lg"
+                  role="menu"
+                >
                   <button
                     onClick={() => changePage("services")}
                     className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
                   >
                     All Services
                   </button>
                   <button
                     onClick={() => changePage("emergency")}
                     className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
                   >
                     Emergency Plumber
+                  </button>
+                  <button
+                    onClick={() => changePage("blocked-drains")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Blocked Drains
+                  </button>
+                  <button
+                    onClick={() => changePage("hot-water")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Hot Water
+                  </button>
+                  <button
+                    onClick={() => changePage("taps-toilets")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Taps & Toilets
+                  </button>
+                  <button
+                    onClick={() => changePage("burst-pipes")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Burst Pipes
+                  </button>
+                  <button
+                    onClick={() => changePage("gas-fitting")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Gas Fitting
+                  </button>
+                  <button
+                    onClick={() => changePage("kitchen-plumbing")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Kitchen Plumbing
+                  </button>
+                  <button
+                    onClick={() => changePage("bathroom-plumbing")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Bathroom Plumbing
+                  </button>
+                  <button
+                    onClick={() => changePage("laundry-plumbing")}
+                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
+                    role="menuitem"
+                  >
+                    Laundry Plumbing
                   </button>
                 </div>
               ) : null}
             </div>
+            <button onClick={() => changePage("guarantee")} className="hover:text-sky-700">
+              Guarantee
+            </button>
 
             <button onClick={() => changePage("gallery")} className="hover:text-sky-700">
               Gallery
             </button>
-            <button onClick={() => changePage("blocked-drains")} className="hover:text-sky-700">
-              Blocked Drains
-            </button>
-            <button onClick={() => changePage("hot-water")} className="hover:text-sky-700">
-              Hot Water
-            </button>
             <button onClick={() => changePage("contact")} className="hover:text-sky-700">
-              Contact
+              Contact Us
             </button>
           </nav>
 
@@ -908,6 +1113,97 @@ export default function NorthernBeachesPlumberDemo() {
           ]}
         />
       ) : null}
+      {currentPage === "taps-toilets" ? (
+        <ServiceDetailPage
+          title="Taps & Toilets"
+          image="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80"
+          intro="Leaking taps and toilet problems waste water and quickly become frustrating. We repair and replace taps, cisterns, valves and toilet components to get everything running properly again."
+          points={[
+            "Leaking tap and mixer repairs",
+            "Running, noisy or overflowing toilet fixes",
+            "Tap washers, cartridges and valve replacements",
+            "Toilet pan and cistern fault diagnosis",
+            "Upfront fixed-price options before work starts",
+            "Licensed, insured plumbers and tidy workmanship",
+          ]}
+        />
+      ) : null}
+      {currentPage === "burst-pipes" ? (
+        <ServiceDetailPage
+          title="Burst Pipes"
+          image="https://upload.wikimedia.org/wikipedia/commons/8/88/Burst_pipe_from_freezing.jpg"
+          intro="A burst or leaking pipe can cause serious water damage fast. Our team provides urgent isolation, fault finding and durable repairs to protect your property and restore your plumbing."
+          points={[
+            "Rapid response for burst and leaking pipes",
+            "Pipe isolation and damage control",
+            "Accurate leak location and repair",
+            "Replacement of damaged pipe sections",
+            "Emergency support available 24/7",
+            "Honest advice to reduce repeat failures",
+          ]}
+        />
+      ) : null}
+      {currentPage === "gas-fitting" ? (
+        <ServiceDetailPage
+          title="Gas Fitting"
+          image="https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=1200&q=80"
+          intro="Fix It Now Plumbing provides licensed gas fitting and gas installation services for homes and small businesses, with safety, compliance and clear communication at every step."
+          points={[
+            "Licensed gas fitting and compliance-focused work",
+            "Gas appliance and line installations",
+            "Gas leak investigation and rectification",
+            "Safe connection, testing and commissioning",
+            "Upfront pricing with no surprises",
+            "Qualified, experienced and insured plumbers",
+          ]}
+        />
+      ) : null}
+      {currentPage === "kitchen-plumbing" ? (
+        <ServiceDetailPage
+          title="Kitchen Plumbing"
+          image="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80"
+          intro="From leaking sinks to dishwasher and water filter installations, we handle kitchen plumbing jobs quickly and properly so your kitchen stays practical and reliable."
+          points={[
+            "Sink, mixer and trap repairs",
+            "Dishwasher and water filter installations",
+            "Leaking pipe and fixture repairs",
+            "Blocked kitchen waste line assistance",
+            "Clear recommendations and practical solutions",
+            "Property left clean at completion",
+          ]}
+        />
+      ) : null}
+      {currentPage === "bathroom-plumbing" ? (
+        <ServiceDetailPage
+          title="Bathroom Plumbing"
+          image="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80"
+          intro="We provide dependable bathroom plumbing for leaks, fixture replacements and upgrades, delivered by licensed plumbers who respect your home and keep you informed."
+          points={[
+            "Shower, basin and toilet plumbing repairs",
+            "Fixture replacement and upgrade support",
+            "Drainage and leak fault finding",
+            "Tapware and valve replacements",
+            "Same-day service where available",
+            "Friendly, polite and professional tradesmen",
+          ]}
+        />
+      ) : null}
+      {currentPage === "laundry-plumbing" ? (
+        <ServiceDetailPage
+          title="Laundry Plumbing"
+          image="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80"
+          intro="Need help with laundry plumbing? We repair and install taps, tubs, washing machine connections and drainage components to keep your laundry functioning properly."
+          points={[
+            "Laundry tub and tap repairs",
+            "Washing machine hose and valve connections",
+            "Laundry drain troubleshooting",
+            "Pipework repairs and replacements",
+            "Call 30 minutes prior to arrival",
+            "Easy payment options available",
+          ]}
+        />
+      ) : null}
+      {currentPage === "guarantee" ? <GuaranteePage /> : null}
       {currentPage === "emergency" ? <EmergencyPage /> : null}
       {currentPage === "contact" ? <ContactPage /> : null}
       {currentPage === "terms" ? <TermsPage /> : null}
