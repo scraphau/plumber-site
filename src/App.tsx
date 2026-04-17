@@ -81,14 +81,6 @@ const serviceRows = [
     icon: Wrench,
   },
   {
-    key: "services" as const,
-    title: "Maintenance Plumbing",
-    desc: "Reliable maintenance plumbing for homes, strata and small business properties throughout the area.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
-    icon: Hammer,
-  },
-  {
     key: "taps-toilets" as const,
     title: "Taps & Toilets",
     desc: "Leaking taps, running toilets and faulty fixtures repaired fast with quality parts and tidy workmanship.",
@@ -100,8 +92,7 @@ const serviceRows = [
     key: "burst-pipes" as const,
     title: "Burst Pipes",
     desc: "Rapid burst and leaking pipe repairs to protect your property and restore safe water flow.",
-    image:
-      "https://images.unsplash.com/photo-1581093196277-9f608bb3b3d8?auto=format&fit=crop&w=1200&q=80",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/88/Burst_pipe_from_freezing.jpg",
     icon: Wrench,
   },
   {
@@ -145,7 +136,6 @@ const serviceList = [
   "Leak detection",
   "Burst pipe repairs",
   "Gas fitting services",
-  "Maintenance plumbing",
   "Drainage solutions",
 ] as const;
 
@@ -1058,7 +1048,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "burst-pipes" ? (
         <ServiceDetailPage
           title="Burst Pipes"
-          image="https://images.unsplash.com/photo-1581093196277-9f608bb3b3d8?auto=format&fit=crop&w=1200&q=80"
+          image="https://upload.wikimedia.org/wikipedia/commons/8/88/Burst_pipe_from_freezing.jpg"
           intro="A burst or leaking pipe can cause serious water damage fast. Our team provides urgent isolation, fault finding and durable repairs to protect your property and restore your plumbing."
           points={[
             "Rapid response for burst and leaking pipes",
