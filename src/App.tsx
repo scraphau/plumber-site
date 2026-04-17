@@ -246,15 +246,26 @@ function ContactPanel() {
           <div className="mt-8 space-y-4 text-sky-50">
             <div className="flex items-center gap-3">
               <Phone className="h-5 w-5" />
-              <span>0414 248 131</span>
+              <a href="tel:0414248131" className="hover:underline">
+                0414 248 131
+              </a>
             </div>
             <div className="flex items-center gap-3">
               <Mail className="h-5 w-5" />
-              <span>paul@fixitnowplumbing.com.au</span>
+              <a href="mailto:paul@fixitnowplumbing.com.au" className="hover:underline">
+                paul@fixitnowplumbing.com.au
+              </a>
             </div>
             <div className="flex items-center gap-3">
               <MapPin className="h-5 w-5" />
-              <span>Sydney Wide Plumbing Service Area</span>
+              <a
+                href="https://www.google.com/maps/place/Plumber+Northern+Beaches+@+Fix+It+Now+Plumbing/@-33.6720467,151.2620779,12z/data=!3m1!4b1!4m6!3m5!1s0x6b12a542a9d25031:0xdebe3731c81deb0b!8m2!3d-33.6720468!4d151.2620779!16s%2Fg%2F11xl8trtt?entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline"
+              >
+                Sydney Wide Plumbing Service Area
+              </a>
             </div>
           </div>
         </div>
