@@ -143,34 +143,68 @@ const serviceList = [
 
 const galleryImages = [
   {
-    title: "Blocked drain clearing",
-    image:
-      "https://www.obrien.com.au/wp-content/uploads/2025/03/A-Plumber-Cleaning-A-Blocked-Drain.jpg",
+    title: "Broken stormwater pipe Davidson",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Broken%20stormwaer%20pipe%20Davidson%20sml.jpg",
   },
   {
-    title: "Hot water system work",
-    image:
-      "https://sydneyhotwatersystems.com.au/wp-content/uploads/2026/04/Is-It-Time-to-Replace-Your-Hot-Water-Unit-Signs-Repair-Wont-Cut-It.jpg",
+    title: "Rusted flexible hose replacement",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Rusted%20flexible%20hose%20to%20be%20replaced%20before%20it%20burst.jpg",
   },
   {
-    title: "On-site plumbing repairs",
-    image:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80",
+    title: "Stormwater Elanora Heights",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Stormwater%20Elanora%20Heights%203.jpg",
   },
   {
-    title: "Plumbing tools and fittings",
-    image:
-      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80",
+    title: "Mona Vale burst pipe",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Mona%20Vale%20Burst%20Pipe.jpg",
   },
   {
-    title: "Maintenance plumbing job",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+    title: "Blocked drain tree roots broken pipe",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Blocked%20drain%20tree%20roots%20broken%20pipe.jpg",
   },
   {
-    title: "Emergency plumbing response",
-    image:
-      "https://elmershomeservices.com/wp-content/uploads/2025/03/emergency-plumber-1024x682-1.jpeg",
+    title: "Cromer blocked drain tree roots removed",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Cromer%20Blocked%20Drain%20Tree%20Roots%20Removed.JPG",
+  },
+  {
+    title: "Broken stormwater pipes in Davidson",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/broken%20stormwater%20pipes%20in%20Davidson%20needing%20plumber.jpg",
+  },
+  {
+    title: "New bathroom Chatswood",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/New%20Bathroom%20Chatswood.jpg",
+  },
+  {
+    title: "Leaking pipe plumber",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Leaking%20pipe%20plumber.jpg",
+  },
+  {
+    title: "Broken pipe",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Broken%20pipe.jpg",
+  },
+  {
+    title: "Narrabeen blocked drain",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Narrabeen%20Blocked%20Drain.jpg",
+  },
+  {
+    title: "Bilgolah Plateau kitchen renovation",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Bilgolah%20Plateau%20kitchen%20renovation.JPG",
+  },
+  {
+    title: "Blocked drain sewer Collaroy Plateau",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Blocked%20Drain%20Sewer%20Collaroy%20Plateau%20Plumber.JPG",
+  },
+  {
+    title: "Mona Vale kitchen renovation",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Mona%20Vale%20Kitchen%20Renovation.JPG",
+  },
+  {
+    title: "Blocked drain Brookvale 2",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Blocked%20Drain%20Brookvale%202.jpg",
+  },
+  {
+    title: "Cromer blocked drain tree roots 2",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Cromer%20Blocked%20Drain%20Tree%20Roots%202.jpg",
   },
 ] as const;
 
@@ -721,13 +755,12 @@ function GalleryPage() {
             title="Recent plumbing work and job gallery"
             text="Thank you for visiting the Fix It Now Plumbing Gallery Page. Here are some pictures of the jobs completed regularly!"
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {galleryImages.map((item) => (
               <div key={item.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
-                <img src={item.image} alt={item.title} className="h-72 w-full object-cover" />
+                <img src={item.image} alt={item.title} className="h-36 w-full object-cover" />
                 <div className="p-5">
                   <div className="text-lg font-semibold text-slate-900">{item.title}</div>
-                  <div className="mt-2 text-sm text-slate-500">Fix It Now Plumbing</div>
                 </div>
               </div>
             ))}
