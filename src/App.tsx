@@ -719,7 +719,7 @@ function GalleryPage() {
           <SectionHeading
             eyebrow="Gallery"
             title="Recent plumbing work and job gallery"
-            text="A gallery page like this helps show the range of plumbing jobs completed and gives customers more confidence before they call."
+            text="Thank you for visiting the Fix It Now Plumbing Gallery Page. Here are some pictures of the jobs completed regularly!"
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((item) => (
@@ -738,8 +738,8 @@ function GalleryPage() {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading
           eyebrow="Why it matters"
-          title="Show customers the kind of work you do"
-          text="Before-and-after style photos, hot water replacements, blocked drain clearances and general plumbing job shots all help turn more visitors into enquiries."
+          title="Real plumbing work, completed by our team"
+          text="This gallery shows the type of practical, day-to-day plumbing work we complete for local homes and businesses — helping customers see the quality and range of our services before they call."
         />
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
