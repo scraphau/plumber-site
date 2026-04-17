@@ -87,7 +87,7 @@ const serviceRows = [
     title: "Taps & Toilets",
     desc: "Leaking taps, running toilets and faulty fixtures repaired fast with quality parts and tidy workmanship.",
     image:
-      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80",
+      "https://reedplumbingsolutions.com.au/wp-content/uploads/2021/03/What-is-preventative-maintenance-1024x683.webp",
     icon: Droplets,
   },
   {
@@ -537,7 +537,7 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
               return (
                 <div key={service.title} className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm lg:grid-cols-2">
                   <div>
-                    <img src={service.image} alt={service.title} className="h-full min-h-[320px] w-full object-cover" />
+                    <img src={service.image} alt={service.title} className="h-[320px] w-full object-cover" />
                   </div>
                   <div className="flex flex-col justify-center p-8 md:p-10">
                     <div className="inline-flex items-center gap-2 font-semibold text-sky-700">
@@ -1261,7 +1261,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "taps-toilets" ? (
         <ServiceDetailPage
           title="Taps & Toilets"
-          image="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=80"
+          image="https://reedplumbingsolutions.com.au/wp-content/uploads/2021/03/What-is-preventative-maintenance-1024x683.webp"
           intro="Leaking taps and toilet problems waste water and quickly become frustrating. We repair and replace taps, cisterns, valves and toilet components to get everything running properly again."
           points={[
             "Leaking tap and mixer repairs",
