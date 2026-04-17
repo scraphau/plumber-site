@@ -562,7 +562,7 @@ function AboutPage() {
         <SectionHeading eyebrow="About us" title="You can rely on us for plumbing emergencies and everyday repairs" />
         <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-600">
           <p>
-            Fix It Now Plumbing is a family owned and operated business built on referrals from our always impressed repeat customers. We’re here to help you with any plumbing services you may require including fixing a blocked drain; repairing leaking taps & toilets; a burst pipe, hot water problems, gasfitting and gas installations, dishwasher or waterfilter installations, noisy or hammering pipes, bathroom plumbing, kitchen plumbing, laundry plumbing and many more including emergency plumbing 24 hours a day, 7 days a week!
+            Fix It Now Plumbing is a family owned and 20+ year operated business built on referrals from our always impressed repeat customers. We’re here to help you with any plumbing services you may require including fixing a blocked drain; repairing leaking taps & toilets; a burst pipe, hot water problems, gasfitting and gas installations, dishwasher or waterfilter installations, noisy or hammering pipes, bathroom plumbing, kitchen plumbing, laundry plumbing and many more including emergency plumbing 24 hours a day, 7 days a week!
           </p>
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
