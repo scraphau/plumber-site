@@ -17,7 +17,7 @@ import {
   X,
 } from "lucide-react";
 
-type PageKey = "home" | "about" | "services" | "gallery" | "blocked-drains" | "hot-water" | "contact";
+type PageKey = "home" | "about" | "services" | "gallery" | "blocked-drains" | "hot-water" | "contact" | "terms";
 
 const heroImage =
   "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80";
@@ -533,6 +533,76 @@ function ContactPage() {
   return <ContactPanel />;
 }
 
+function TermsPage() {
+  return (
+    <section className="mx-auto max-w-5xl px-6 py-20">
+      <SectionHeading
+        eyebrow="Legal"
+        title="Terms & Conditions"
+        text="These terms and conditions apply to plumbing services provided by Fix It Now Plumbing."
+      />
+
+      <div className="mt-10 space-y-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm md:p-10">
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900">General</h3>
+          <p className="mt-3 text-slate-600 leading-relaxed">
+            By booking or using our services, you agree to these terms and conditions. Fix It Now Plumbing provides plumbing, drainage, maintenance and related services across Sydney and surrounding areas.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900">Quotes and pricing</h3>
+          <p className="mt-3 text-slate-600 leading-relaxed">
+            Any quote provided is based on the information available at the time. If additional faults, hidden defects or extra labour and materials are required once work begins, pricing may change. Any variation will be explained where reasonably possible before extra work proceeds.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900">Payment terms</h3>
+          <p className="mt-3 text-slate-600 leading-relaxed">
+            Payment is due on completion unless otherwise agreed in writing. We may request deposits for larger jobs, special-order materials or scheduled installation work. Late payments may incur reasonable recovery costs or fees where permitted.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900">Access and site conditions</h3>
+          <p className="mt-3 text-slate-600 leading-relaxed">
+            Customers must provide safe and reasonable access to the work area. We are not responsible for delays or additional costs caused by restricted access, unsafe conditions, concealed pipework, asbestos, structural issues or other site conditions outside our control.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900">Cancellations and call-outs</h3>
+          <p className="mt-3 text-slate-600 leading-relaxed">
+            Reasonable notice is required for cancellations or rescheduling. Missed appointments, late cancellations or emergency call-outs that cannot proceed on arrival may incur a call-out fee or time charge.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900">Warranty</h3>
+          <p className="mt-3 text-slate-600 leading-relaxed">
+            We stand by our workmanship and will address issues directly related to our labour within a reasonable period, subject to Australian Consumer Law. This does not cover misuse, lack of maintenance, fair wear and tear, third-party work, manufacturer faults or pre-existing issues beyond our control.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900">Liability</h3>
+          <p className="mt-3 text-slate-600 leading-relaxed">
+            To the extent permitted by law, our liability is limited to the cost of re-supplying the services or repairing defects in our workmanship. We are not liable for indirect or consequential loss, or for problems caused by pre-existing defects, ageing infrastructure, hidden failures or customer-supplied materials.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900">Contact</h3>
+          <p className="mt-3 text-slate-600 leading-relaxed">
+            For any questions about these terms and conditions, please contact Fix It Now Plumbing by phone on 0414 248 131 or email at paul@fixitnowplumbing.com.au.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function NorthernBeachesPlumberDemo() {
   const [currentPage, setCurrentPage] = useState<PageKey>("home");
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -559,6 +629,8 @@ export default function NorthernBeachesPlumberDemo() {
         return "Hot Water Repairs";
       case "contact":
         return "Contact";
+      case "terms":
+        return "Terms & Conditions";
       default:
         return "Home";
     }
@@ -677,6 +749,7 @@ export default function NorthernBeachesPlumberDemo() {
         />
       ) : null}
       {currentPage === "contact" ? <ContactPage /> : null}
+      {currentPage === "terms" ? <TermsPage /> : null}
 
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between">
@@ -687,6 +760,7 @@ export default function NorthernBeachesPlumberDemo() {
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
             <a href="tel:0414248131" className="hover:text-sky-700">0414 248 131</a>
             <a href="mailto:paul@fixitnowplumbing.com.au" className="hover:text-sky-700">paul@fixitnowplumbing.com.au</a>
+            <button onClick={() => changePage("terms")} className="hover:text-sky-700">Terms & Conditions</button>
           </div>
         </div>
       </footer>
