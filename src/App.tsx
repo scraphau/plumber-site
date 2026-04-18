@@ -457,8 +457,9 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
     },
     {
       question: "Which areas do you service?",
-      answer:
-        "We service suburbs across Sydney’s Northern Beaches. Visit our Service Areas page for the full suburb list.",
+      answer: "We service suburbs across Sydney’s Northern Beaches. Visit our",
+      linkLabel: "Service Areas",
+      answerSuffix: "page for the full suburb list.",
     },
   ] as const;
 
@@ -658,7 +659,20 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             {faqs.map((faq) => (
               <div key={faq.question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-bold text-slate-900">{faq.question}</h3>
-                <p className="mt-2 text-slate-600">{faq.answer}</p>
+                <p className="mt-2 text-slate-600">
+                  {faq.answer}{" "}
+                  {"linkLabel" in faq ? (
+                    <>
+                      <button
+                        onClick={() => goTo("service-areas")}
+                        className="font-semibold text-sky-700 underline hover:text-sky-800"
+                      >
+                        {faq.linkLabel}
+                      </button>{" "}
+                      {faq.answerSuffix}
+                    </>
+                  ) : null}
+                </p>
               </div>
             ))}
           </div>
