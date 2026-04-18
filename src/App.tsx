@@ -1213,7 +1213,7 @@ function ServiceAreasPage() {
             <p className="mt-3 text-slate-600">
               If your suburb is listed below, our team can help with prompt plumbing service.
             </p>
-            <div className="mt-8 columns-1 gap-3 sm:columns-2 lg:columns-4">
+            <div className="mt-8 columns-1 gap-3 lg:columns-4">
               {northernBeachesSuburbs.map((suburb) => (
                 <div
                   key={suburb}
