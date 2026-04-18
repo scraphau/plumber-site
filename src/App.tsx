@@ -1198,7 +1198,7 @@ export default function NorthernBeachesPlumberDemo() {
       </div>
 
       <header className="sticky top-11 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-8 py-5">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
@@ -1207,7 +1207,7 @@ export default function NorthernBeachesPlumberDemo() {
             />
           </button>
 
-          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 md:flex">
+          <nav className="hidden items-center gap-12 text-base font-semibold text-slate-700 md:flex">
             <button onClick={() => changePage("home")} className="hover:text-sky-700">
               Home
             </button>
