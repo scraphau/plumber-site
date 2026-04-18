@@ -436,30 +436,29 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
   const faqs = [
     {
-      question: "Do you provide emergency plumbing across the Northern Beaches?",
+      question: "Why do I hear a hammering noise everytime I turn off my taps ?",
       answer:
-        "Yes. We provide 24/7 emergency plumbing support for urgent issues like burst pipes, major leaks, blocked drains and no hot water.",
+        "This can be caused by many factors from unsecured pipework, jumping washers or high water pressure just to name a few. Its best we have a highly recognized and qualified technician come out to inspect and Identify.",
     },
     {
-      question: "Do you give fixed pricing before starting work?",
+      question: "Why do my taps keep leaking ?",
       answer:
-        "Yes. After assessing the job, we provide an obligation-free fixed price so you can approve the work before we begin.",
+        "Leaking taps arn’t only annoying to hear while your trying to get some quality rest and sleep but can also put a large dent in your pocket ! that could be thousands of liters a year which can ultimately result in hundreds or thousands of dollars from your pocket each year. This issue can arise from worn out seals and washers. Give us a call to have a highly qualified technician fix your leaking taps or pipes.",
     },
     {
-      question: "Can you help with blocked drains and CCTV inspections?",
+      question: "Why is my Water or Gas bill so high ?",
       answer:
-        "Absolutely. We clear blocked drains and can use CCTV diagnostics and pipe locating to identify causes and recommend long-term solutions.",
+        "Having an unusually high gas or water bill could be a result of some serious issues. These can be leaking pipes, valves and fittings. sometimes we don’t notice them because they are under ground or behind walls. contact us now to have one of our qualified technicians rectify your issue.",
     },
     {
-      question: "What plumbing jobs do you handle for homes?",
+      question: "Why are my walls mouldy and have a funky smell ?",
       answer:
-        "We handle leaking taps and toilets, hot water repairs/replacements, burst pipes, gas fitting, and kitchen, bathroom and laundry plumbing.",
+        "This could be for a number of reasons. to name a few common issues relating are..\n\n• Leaking pipes.\n• leaking roof flashings.\n• failed waterproofing membrane in bathrooms.\n\nContact us now to solve these issues before they get worse.",
     },
     {
-      question: "Which areas do you service?",
-      answer: "We service suburbs across Sydney’s Northern Beaches. Visit our",
-      linkLabel: "Service Areas",
-      answerSuffix: "page for the full suburb list.",
+      question: "Why isnt my hot water hot enough anymore ?",
+      answer:
+        "Most times if your hot water isn’t as hot as it used to be then there's usually an issue causing it. This can range from a old hot water heater which needs servicing and replacing anodes, thermostats and tempering valves. also inadequate water pressure can be a major factor contributing to low water temperature as well as under sized pipework.\n\nContact us now to have a licensed and qualified technician resolve your cold shoulder.",
     },
   ] as const;
 
@@ -674,20 +673,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
                     {isOpen ? (
                       <div className="px-6 pb-6 md:px-8">
-                        <p className="text-base leading-relaxed text-white/95 md:text-lg">
-                          {faq.answer}{" "}
-                          {"linkLabel" in faq ? (
-                            <>
-                              <button
-                                onClick={() => goTo("service-areas")}
-                                className="font-semibold text-white underline decoration-2 underline-offset-2 hover:text-sky-100"
-                              >
-                                {faq.linkLabel}
-                              </button>{" "}
-                              {faq.answerSuffix}
-                            </>
-                          ) : null}
-                        </p>
+                        <p className="whitespace-pre-line text-base leading-relaxed text-white/95 md:text-lg">{faq.answer}</p>
                       </div>
                     ) : null}
                   </div>
