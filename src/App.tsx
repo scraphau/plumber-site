@@ -33,14 +33,12 @@ type PageKey =
   | "kitchen-plumbing"
   | "bathroom-plumbing"
   | "laundry-plumbing"
-  | "service-areas"
   | "guarantee"
   | "contact"
-  | "privacy"
   | "terms";
 
 const heroImage =
-  "https://www.worldskills.org.au/wp-content/uploads/2014/06/construction-plumbing.jpg";
+  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80";
 const aboutImage =
   "https://mrflowplumbing.com.au/wp-content/uploads/2024/07/male-plumber-working-fix-problems-client-s-house_23-2150990735.jpg";
 const enquiryEmail = "paul@fixitnowplumbing.com.au";
@@ -216,15 +214,8 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "guarantee", label: "Guarantee" },
   { key: "testimonials", label: "Testimonials" },
   { key: "gallery", label: "Gallery" },
-<<<<<<< codex/edit-website-content-gtbcc5
-  { key: "service-areas", label: "Service Areas" },
   { key: "about", label: "About" },
   { key: "contact", label: "Contact Us" },
-  { key: "privacy", label: "Privacy Policy" },
-=======
-  { key: "about", label: "About" },
-  { key: "contact", label: "Contact Us" },
->>>>>>> main
   { key: "emergency", label: "Emergency Plumber" },
   { key: "blocked-drains", label: "Blocked Drains" },
   { key: "hot-water", label: "Hot Water" },
@@ -234,10 +225,7 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "kitchen-plumbing", label: "Kitchen Plumbing" },
   { key: "bathroom-plumbing", label: "Bathroom Plumbing" },
   { key: "laundry-plumbing", label: "Laundry Plumbing" },
-<<<<<<< codex/edit-website-content-gtbcc5
-=======
   { key: "guarantee", label: "Guarantee" },
->>>>>>> main
 ];
 
 function SectionHeading({
@@ -260,11 +248,7 @@ function SectionHeading({
   );
 }
 
-<<<<<<< codex/edit-website-content-gtbcc5
-async function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: string) {
-=======
 function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: string) {
->>>>>>> main
   event.preventDefault();
 
   const form = event.currentTarget;
@@ -275,35 +259,6 @@ function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: s
     .map(([key, value]) => `${key}: ${String(value).trim()}`);
 
   const body = lines.length > 0 ? lines.join("\n") : "New website enquiry.";
-<<<<<<< codex/edit-website-content-gtbcc5
-  const payload: Record<string, string> = Object.fromEntries(
-    Array.from(formData.entries()).map(([key, value]) => [key, String(value)])
-  );
-
-  try {
-    const response = await fetch(`https://formsubmit.co/ajax/${enquiryEmail}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        _subject: subject,
-        ...payload,
-      }),
-    });
-
-    if (response.ok) {
-      form.reset();
-      window.alert("Thanks — your enquiry has been sent.");
-      return;
-    }
-  } catch {
-    // fallback below
-  }
-
-=======
->>>>>>> main
   const mailtoUrl = `mailto:${enquiryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href = mailtoUrl;
 }
@@ -369,11 +324,7 @@ function ContactPanel() {
 
         <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm md:p-10">
           <div className="text-2xl font-bold text-slate-900">Send an enquiry</div>
-<<<<<<< codex/edit-website-content-gtbcc5
-          <form onSubmit={(event) => void handleEnquirySubmit(event, "Website enquiry")} className="mt-6 space-y-4">
-=======
           <form onSubmit={(event) => handleEnquirySubmit(event, "Website enquiry")} className="mt-6 space-y-4">
->>>>>>> main
             <input
               name="Name"
               className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
@@ -445,7 +396,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50">
         <div className="absolute inset-0">
           <img src={heroImage} alt="Plumber working on site" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-900/55 to-slate-900/35" />
+          <div className="absolute inset-0 bg-slate-950/45" />
         </div>
 
         <div className="absolute left-6 top-6 z-10 rounded-2xl border border-white/40 bg-slate-900/70 px-4 py-3 text-white shadow-lg backdrop-blur">
@@ -459,13 +410,9 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-3xl text-white">
-            <div className="inline-block rounded-2xl border border-white/40 bg-slate-900/70 px-4 py-3 text-white shadow-lg backdrop-blur">
-              <div className="flex gap-1 text-yellow-400">
-                {Array.from({ length: 5 }).map((_, idx) => (
-                  <Star key={idx} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <div className="mt-2 text-sm font-semibold">20+ years in business</div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur">
+              <CheckCircle2 className="h-4 w-4" />
+              Licensed local plumbers serving Sydney's Northern Beaches
             </div>
 
             <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
@@ -479,14 +426,14 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <button
                 onClick={() => goTo("contact")}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:-translate-y-0.5 hover:bg-sky-700"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white hover:bg-sky-700"
               >
                 Request a Quote
                 <ChevronRight className="h-4 w-4" />
               </button>
               <a
                 href="tel:0414248131"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-semibold text-sky-800 shadow-lg shadow-slate-950/20 transition hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-semibold text-sky-800"
               >
                 <Phone className="h-4 w-4" />
                 Call 0414 248 131
@@ -514,14 +461,10 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/30 bg-white/95 p-6 shadow-2xl backdrop-blur md:p-7">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl md:p-7">
             <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
             <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
-<<<<<<< codex/edit-website-content-gtbcc5
-            <form onSubmit={(event) => void handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
-=======
             <form onSubmit={(event) => handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
->>>>>>> main
               <input
                 name="Name"
                 className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
@@ -635,34 +578,6 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               </button>
             </div>
           </div>
-<<<<<<< codex/edit-website-content-gtbcc5
-        </div>
-
-        <div className="mt-12 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-          <h3 className="text-3xl font-bold tracking-tight text-slate-900">Frequently asked questions</h3>
-          <div className="mt-6 space-y-4">
-            {[
-              {
-                q: "Do you provide 24/7 emergency plumbing?",
-                a: "Yes — we offer emergency plumbing support 24 hours a day, 7 days a week across Sydney’s Northern Beaches.",
-              },
-              {
-                q: "Do I get pricing before work starts?",
-                a: "Absolutely. We assess the issue first, then provide clear pricing so you can approve the work before we begin.",
-              },
-              {
-                q: "What areas do you service?",
-                a: "We service homes and businesses across Sydney’s Northern Beaches and nearby suburbs.",
-              },
-            ].map((item) => (
-              <div key={item.q} className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-                <div className="font-semibold text-slate-900">{item.q}</div>
-                <p className="mt-2 text-slate-600">{item.a}</p>
-              </div>
-            ))}
-          </div>
-=======
->>>>>>> main
         </div>
       </section>
     </>
@@ -727,10 +642,7 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
             {serviceRows.map((service) => {
               const ServiceIcon = service.icon;
               return (
-                <div
-                  key={service.title}
-                  className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl lg:grid-cols-2"
-                >
+                <div key={service.title} className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm lg:grid-cols-2">
                   <div>
                     <img src={service.image} alt={service.title} className="h-[320px] w-full object-cover" />
                   </div>
@@ -847,14 +759,7 @@ function GalleryPage() {
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((item) => (
-<<<<<<< codex/edit-website-content-gtbcc5
-              <div
-                key={item.title}
-                className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl"
-              >
-=======
               <div key={item.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm">
->>>>>>> main
                 <img src={item.image} alt={item.title} className="h-72 w-full object-contain" />
               </div>
             ))}
@@ -941,15 +846,7 @@ function TestimonialsPage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((item) => (
-<<<<<<< codex/edit-website-content-gtbcc5
-            <div
-              key={`${item.name}-${item.quote}`}
-              className="relative rounded-[1.8rem] border border-slate-200 bg-slate-100 p-8 transition hover:-translate-y-0.5 hover:shadow-xl"
-            >
-              <div className="absolute right-6 top-5 text-4xl font-bold text-slate-300">G+</div>
-=======
             <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-8">
->>>>>>> main
               <div className="flex gap-1 text-amber-500">
                 {Array.from({ length: 5 }).map((_, idx) => (
                   <Star key={idx} className="h-5 w-5 fill-current" />
@@ -1168,102 +1065,6 @@ function ContactPage() {
   return <ContactPanel />;
 }
 
-function ServiceAreasPage() {
-  const areas = [
-    "Allambie Heights",
-    "Avalon",
-    "Balgowlah Heights",
-    "Bayview",
-    "Beacon Hill",
-    "Bilgola",
-    "Brookvale",
-    "Bungan Head",
-    "Careel Bay",
-    "Church Point",
-    "Clareville",
-    "Clontarf",
-    "Collaroy",
-    "Collaroy Plateau",
-    "Cromer",
-    "Cromer Heights",
-    "Curl Curl",
-    "Dee Why",
-    "Elanora Heights",
-    "Fairlight",
-    "Harbord",
-    "Ingleside",
-    "Manly",
-    "Manly Vale",
-    "Mona Vale",
-    "Narrabeen",
-    "Narraweena",
-    "Newport",
-    "North Curl Curl",
-    "North Manly",
-    "North Narrabeen",
-    "Oxford Falls",
-    "Palm Beach",
-    "Queenscliff",
-    "Seaforth",
-    "Warriewood",
-    "Whale Beach",
-    "Wheeler Heights",
-  ];
-
-  return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
-      <SectionHeading
-        eyebrow="Service Areas"
-        title="Plumbing across Sydney’s Northern Beaches"
-        text="Fix It Now Plumbing provides fast, reliable plumbing services throughout the Northern Beaches, from urgent emergencies to everyday repairs and maintenance."
-      />
-      <p className="mt-6 max-w-4xl text-lg leading-relaxed text-slate-600">
-        If you are located in the Northern Beaches region, we can help with emergency plumbing, blocked drains, burst pipes, hot
-        water problems, gas fitting and general plumbing services.
-      </p>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {areas.map((area) => (
-          <div key={area} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <div className="flex items-center gap-2 font-medium text-slate-800">
-              <MapPin className="h-4 w-4 text-sky-700" />
-              {area}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function PrivacyPage() {
-  return (
-    <section className="mx-auto max-w-5xl px-6 py-20">
-      <SectionHeading
-        eyebrow="Legal"
-        title="Privacy Policy"
-        text="We respect your privacy and only collect information needed to respond to enquiries and deliver plumbing services."
-      />
-      <div className="mt-10 space-y-6 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-        <p className="leading-relaxed text-slate-600">
-          Any information submitted through our website forms (such as your name, phone, email and job details) is used only to
-          contact you regarding your enquiry and provide plumbing services.
-        </p>
-        <p className="leading-relaxed text-slate-600">
-          We do not sell your personal information. We may use trusted third-party services to help process enquiries and website
-          operations where required.
-        </p>
-        <p className="leading-relaxed text-slate-600">
-          For privacy questions, please contact us at{" "}
-          <a href="mailto:paul@fixitnowplumbing.com.au" className="text-sky-700 underline">
-            paul@fixitnowplumbing.com.au
-          </a>
-          .
-        </p>
-      </div>
-    </section>
-  );
-}
-
 function TermsPage() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-20">
@@ -1368,11 +1169,7 @@ export default function NorthernBeachesPlumberDemo() {
   };
 
   return (
-<<<<<<< codex/edit-website-content-gtbcc5
-    <div className="min-h-screen bg-white pb-20 pt-11 text-slate-900 md:pb-0">
-=======
     <div className="min-h-screen bg-white pt-11 text-slate-900">
->>>>>>> main
       <div className="fixed left-0 right-0 top-0 z-40 bg-sky-700 text-sm text-white shadow">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <div className="flex flex-wrap items-center gap-4">
@@ -1401,11 +1198,7 @@ export default function NorthernBeachesPlumberDemo() {
       </div>
 
       <header className="sticky top-11 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-<<<<<<< codex/edit-website-content-gtbcc5
-        <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-8 px-10 py-5">
-=======
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-8 py-5">
->>>>>>> main
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
@@ -1414,11 +1207,7 @@ export default function NorthernBeachesPlumberDemo() {
             />
           </button>
 
-<<<<<<< codex/edit-website-content-gtbcc5
-          <nav className="hidden items-center gap-14 text-base font-semibold text-slate-700 md:flex">
-=======
           <nav className="hidden items-center gap-12 text-base font-semibold text-slate-700 md:flex">
->>>>>>> main
             <button onClick={() => changePage("home")} className="hover:text-sky-700">
               Home
             </button>
@@ -1526,9 +1315,6 @@ export default function NorthernBeachesPlumberDemo() {
             </button>
             <button onClick={() => changePage("contact")} className="hover:text-sky-700">
               Contact Us
-            </button>
-            <button onClick={() => changePage("service-areas")} className="hover:text-sky-700">
-              Service Areas
             </button>
           </nav>
 
@@ -1756,34 +1542,11 @@ export default function NorthernBeachesPlumberDemo() {
           ]}
         />
       ) : null}
-      {currentPage === "service-areas" ? <ServiceAreasPage /> : null}
       {currentPage === "guarantee" ? <GuaranteePage /> : null}
       {currentPage === "emergency" ? <EmergencyPage /> : null}
       {currentPage === "contact" ? <ContactPage /> : null}
-      {currentPage === "privacy" ? <PrivacyPage /> : null}
       {currentPage === "terms" ? <TermsPage /> : null}
 
-<<<<<<< codex/edit-website-content-gtbcc5
-      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
-        <div className="mx-auto flex max-w-7xl gap-3">
-          <a
-            href="tel:0414248131"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-sky-700 px-4 py-3 font-semibold text-white"
-          >
-            <Phone className="h-4 w-4" />
-            Call Now
-          </a>
-          <button
-            onClick={() => changePage("contact")}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-3 font-semibold text-slate-800"
-          >
-            Request Quote
-          </button>
-        </div>
-      </div>
-
-=======
->>>>>>> main
       <footer className="border-t border-slate-800 bg-black text-white">
         <div className="mx-auto max-w-7xl px-6 py-12">
           <div className="grid gap-10 md:grid-cols-3">
@@ -1824,15 +1587,6 @@ export default function NorthernBeachesPlumberDemo() {
                 <button onClick={() => changePage("contact")} className="text-left hover:text-sky-300">
                   Contact Us
                 </button>
-<<<<<<< codex/edit-website-content-gtbcc5
-                <button onClick={() => changePage("service-areas")} className="text-left hover:text-sky-300">
-                  Service Areas
-                </button>
-                <button onClick={() => changePage("privacy")} className="text-left hover:text-sky-300">
-                  Privacy Policy
-                </button>
-=======
->>>>>>> main
                 <button onClick={() => changePage("terms")} className="text-left hover:text-sky-300">
                   Terms & Conditions
                 </button>
