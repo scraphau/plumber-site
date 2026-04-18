@@ -210,11 +210,12 @@ const galleryImages = [
 
 const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "home", label: "Home" },
-  { key: "about", label: "About" },
   { key: "services", label: "Services" },
   { key: "testimonials", label: "Testimonials" },
-  { key: "emergency", label: "Emergency Plumber" },
   { key: "gallery", label: "Gallery" },
+  { key: "about", label: "About" },
+  { key: "contact", label: "Contact Us" },
+  { key: "emergency", label: "Emergency Plumber" },
   { key: "blocked-drains", label: "Blocked Drains" },
   { key: "hot-water", label: "Hot Water" },
   { key: "taps-toilets", label: "Taps & Toilets" },
@@ -224,7 +225,6 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "bathroom-plumbing", label: "Bathroom Plumbing" },
   { key: "laundry-plumbing", label: "Laundry Plumbing" },
   { key: "guarantee", label: "Guarantee" },
-  { key: "contact", label: "Contact Us" },
 ];
 
 function SectionHeading({
@@ -1217,13 +1217,6 @@ export default function NorthernBeachesPlumberDemo() {
             <button onClick={() => changePage("home")} className="hover:text-sky-700">
               Home
             </button>
-            <button onClick={() => changePage("about")} className="hover:text-sky-700">
-              About
-            </button>
-            <button onClick={() => changePage("testimonials")} className="hover:text-sky-700">
-              Testimonials
-            </button>
-
             <div className="relative" ref={servicesMenuRef}>
               <button
                 onClick={() => setServicesOpen((value) => !value)}
@@ -1314,12 +1307,14 @@ export default function NorthernBeachesPlumberDemo() {
                 </div>
               ) : null}
             </div>
-            <button onClick={() => changePage("guarantee")} className="hover:text-sky-700">
-              Guarantee
+            <button onClick={() => changePage("testimonials")} className="hover:text-sky-700">
+              Testimonials
             </button>
-
             <button onClick={() => changePage("gallery")} className="hover:text-sky-700">
               Gallery
+            </button>
+            <button onClick={() => changePage("about")} className="hover:text-sky-700">
+              About
             </button>
             <button onClick={() => changePage("contact")} className="hover:text-sky-700">
               Contact Us
@@ -1563,7 +1558,7 @@ export default function NorthernBeachesPlumberDemo() {
                 <img
                   src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
                   alt="Fix It Now Plumbing logo"
-                  className="h-12 w-auto rounded-lg bg-white p-1.5"
+                  className="h-24 w-auto rounded-lg bg-white p-3"
                 />
               </button>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
@@ -1613,7 +1608,7 @@ export default function NorthernBeachesPlumberDemo() {
                   paul@fixitnowplumbing.com.au
                 </a>
                 <div className="flex items-center gap-2">
-                  <Clock3 className="h-4 w-4 text-purple-400" />
+                  <Clock3 className="h-4 w-4 text-sky-500" />
                   <span>Hours: Mon-Sun 24/7</span>
                 </div>
               </div>
