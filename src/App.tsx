@@ -1483,7 +1483,6 @@ export default function NorthernBeachesPlumberDemo() {
             <button
               onClick={() => setMobileMenuOpen((value) => !value)}
               className="inline-flex rounded-xl p-1 text-purple-700 md:hidden"
-              className="inline-flex rounded-xl p-1 text-sky-700 md:hidden"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="h-9 w-9" /> : <Menu className="h-9 w-9" />}
