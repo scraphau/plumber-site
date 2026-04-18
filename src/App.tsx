@@ -33,8 +33,10 @@ type PageKey =
   | "kitchen-plumbing"
   | "bathroom-plumbing"
   | "laundry-plumbing"
+  | "service-areas"
   | "guarantee"
   | "contact"
+  | "privacy"
   | "terms";
 
 const heroImage =
@@ -214,8 +216,10 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "guarantee", label: "Guarantee" },
   { key: "testimonials", label: "Testimonials" },
   { key: "gallery", label: "Gallery" },
+  { key: "service-areas", label: "Service Areas" },
   { key: "about", label: "About" },
   { key: "contact", label: "Contact Us" },
+  { key: "privacy", label: "Privacy Policy" },
   { key: "emergency", label: "Emergency Plumber" },
   { key: "blocked-drains", label: "Blocked Drains" },
   { key: "hot-water", label: "Hot Water" },
@@ -225,7 +229,6 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "kitchen-plumbing", label: "Kitchen Plumbing" },
   { key: "bathroom-plumbing", label: "Bathroom Plumbing" },
   { key: "laundry-plumbing", label: "Laundry Plumbing" },
-  { key: "guarantee", label: "Guarantee" },
 ];
 
 function SectionHeading({
@@ -248,7 +251,7 @@ function SectionHeading({
   );
 }
 
-function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: string) {
+async function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: string) {
   event.preventDefault();
 
   const form = event.currentTarget;
@@ -259,6 +262,32 @@ function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: s
     .map(([key, value]) => `${key}: ${String(value).trim()}`);
 
   const body = lines.length > 0 ? lines.join("\n") : "New website enquiry.";
+  const payload: Record<string, string> = Object.fromEntries(
+    Array.from(formData.entries()).map(([key, value]) => [key, String(value)])
+  );
+
+  try {
+    const response = await fetch(`https://formsubmit.co/ajax/${enquiryEmail}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        _subject: subject,
+        ...payload,
+      }),
+    });
+
+    if (response.ok) {
+      form.reset();
+      window.alert("Thanks — your enquiry has been sent.");
+      return;
+    }
+  } catch {
+    // fallback below
+  }
+
   const mailtoUrl = `mailto:${enquiryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href = mailtoUrl;
 }
@@ -324,7 +353,7 @@ function ContactPanel() {
 
         <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm md:p-10">
           <div className="text-2xl font-bold text-slate-900">Send an enquiry</div>
-          <form onSubmit={(event) => handleEnquirySubmit(event, "Website enquiry")} className="mt-6 space-y-4">
+          <form onSubmit={(event) => void handleEnquirySubmit(event, "Website enquiry")} className="mt-6 space-y-4">
             <input
               name="Name"
               className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
@@ -459,7 +488,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="rounded-3xl border border-white/30 bg-white/95 p-6 shadow-2xl backdrop-blur md:p-7">
             <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
             <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
-            <form onSubmit={(event) => handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
+            <form onSubmit={(event) => void handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
               <input
                 name="Name"
                 className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
@@ -572,6 +601,31 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 Request a quote
               </button>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-12 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+          <h3 className="text-3xl font-bold tracking-tight text-slate-900">Frequently asked questions</h3>
+          <div className="mt-6 space-y-4">
+            {[
+              {
+                q: "Do you provide 24/7 emergency plumbing?",
+                a: "Yes — we offer emergency plumbing support 24 hours a day, 7 days a week across Sydney’s Northern Beaches.",
+              },
+              {
+                q: "Do I get pricing before work starts?",
+                a: "Absolutely. We assess the issue first, then provide clear pricing so you can approve the work before we begin.",
+              },
+              {
+                q: "What areas do you service?",
+                a: "We service homes and businesses across Sydney’s Northern Beaches and nearby suburbs.",
+              },
+            ].map((item) => (
+              <div key={item.q} className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <div className="font-semibold text-slate-900">{item.q}</div>
+                <p className="mt-2 text-slate-600">{item.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1069,6 +1123,72 @@ function ContactPage() {
   return <ContactPanel />;
 }
 
+function ServiceAreasPage() {
+  const areas = [
+    "Manly",
+    "Dee Why",
+    "Brookvale",
+    "Narrabeen",
+    "Mona Vale",
+    "Warriewood",
+    "Frenchs Forest",
+    "Belrose",
+    "Collaroy",
+    "Avalon",
+    "Palm Beach",
+    "Wheeler Heights",
+  ];
+
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-20">
+      <SectionHeading
+        eyebrow="Service Areas"
+        title="Plumbing across Sydney’s Northern Beaches"
+        text="Fix It Now Plumbing services homes and businesses across the Northern Beaches with fast response times and reliable workmanship."
+      />
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {areas.map((area) => (
+          <div key={area} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 font-medium text-slate-800">
+              <MapPin className="h-4 w-4 text-sky-700" />
+              {area}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PrivacyPage() {
+  return (
+    <section className="mx-auto max-w-5xl px-6 py-20">
+      <SectionHeading
+        eyebrow="Legal"
+        title="Privacy Policy"
+        text="We respect your privacy and only collect information needed to respond to enquiries and deliver plumbing services."
+      />
+      <div className="mt-10 space-y-6 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+        <p className="leading-relaxed text-slate-600">
+          Any information submitted through our website forms (such as your name, phone, email and job details) is used only to
+          contact you regarding your enquiry and provide plumbing services.
+        </p>
+        <p className="leading-relaxed text-slate-600">
+          We do not sell your personal information. We may use trusted third-party services to help process enquiries and website
+          operations where required.
+        </p>
+        <p className="leading-relaxed text-slate-600">
+          For privacy questions, please contact us at{" "}
+          <a href="mailto:paul@fixitnowplumbing.com.au" className="text-sky-700 underline">
+            paul@fixitnowplumbing.com.au
+          </a>
+          .
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function TermsPage() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-20">
@@ -1173,7 +1293,7 @@ export default function NorthernBeachesPlumberDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-11 text-slate-900">
+    <div className="min-h-screen bg-white pb-20 pt-11 text-slate-900 md:pb-0">
       <div className="fixed left-0 right-0 top-0 z-40 bg-sky-700 text-sm text-white shadow">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <div className="flex flex-wrap items-center gap-4">
@@ -1316,6 +1436,9 @@ export default function NorthernBeachesPlumberDemo() {
             </button>
             <button onClick={() => changePage("about")} className="hover:text-sky-700">
               About
+            </button>
+            <button onClick={() => changePage("service-areas")} className="hover:text-sky-700">
+              Service Areas
             </button>
             <button onClick={() => changePage("contact")} className="hover:text-sky-700">
               Contact Us
@@ -1546,10 +1669,30 @@ export default function NorthernBeachesPlumberDemo() {
           ]}
         />
       ) : null}
+      {currentPage === "service-areas" ? <ServiceAreasPage /> : null}
       {currentPage === "guarantee" ? <GuaranteePage /> : null}
       {currentPage === "emergency" ? <EmergencyPage /> : null}
       {currentPage === "contact" ? <ContactPage /> : null}
+      {currentPage === "privacy" ? <PrivacyPage /> : null}
       {currentPage === "terms" ? <TermsPage /> : null}
+
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
+        <div className="mx-auto flex max-w-7xl gap-3">
+          <a
+            href="tel:0414248131"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-sky-700 px-4 py-3 font-semibold text-white"
+          >
+            <Phone className="h-4 w-4" />
+            Call Now
+          </a>
+          <button
+            onClick={() => changePage("contact")}
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-3 font-semibold text-slate-800"
+          >
+            Request Quote
+          </button>
+        </div>
+      </div>
 
       <footer className="border-t border-slate-800 bg-black text-white">
         <div className="mx-auto max-w-7xl px-6 py-12">
@@ -1590,6 +1733,12 @@ export default function NorthernBeachesPlumberDemo() {
                 </button>
                 <button onClick={() => changePage("contact")} className="text-left hover:text-sky-300">
                   Contact Us
+                </button>
+                <button onClick={() => changePage("service-areas")} className="text-left hover:text-sky-300">
+                  Service Areas
+                </button>
+                <button onClick={() => changePage("privacy")} className="text-left hover:text-sky-300">
+                  Privacy Policy
                 </button>
                 <button onClick={() => changePage("terms")} className="text-left hover:text-sky-300">
                   Terms & Conditions
