@@ -17,7 +17,6 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import fixItNowLogo from "./assets/fixitnow-logo.svg";
 
 type PageKey =
   | "home"
@@ -1095,7 +1094,7 @@ export default function NorthernBeachesPlumberDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-12 text-slate-900">
+    <div className="min-h-screen bg-white pt-11 text-slate-900">
       <div className="fixed left-0 right-0 top-0 z-40 bg-sky-700 text-sm text-white shadow">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <div className="flex flex-wrap items-center gap-4">
@@ -1123,10 +1122,14 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
       </div>
 
-      <header className="sticky top-12 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <header className="sticky top-11 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
-            <img src={fixItNowLogo} alt="Fix It Now Plumbing logo" className="h-14 w-auto md:h-16" />
+            <img
+              src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
+              alt="Fix It Now Plumbing logo"
+              className="h-14 w-auto md:h-16"
+            />
           </button>
 
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 md:flex">
@@ -1470,7 +1473,11 @@ export default function NorthernBeachesPlumberDemo() {
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between">
           <div>
-            <img src={fixItNowLogo} alt="Fix It Now Plumbing logo" className="h-12 w-auto" />
+            <img
+              src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
+              alt="Fix It Now Plumbing logo"
+              className="h-12 w-auto"
+            />
           </div>
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
             <a href="tel:0414248131" className="hover:text-sky-700">
