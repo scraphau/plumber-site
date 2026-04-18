@@ -14,13 +14,12 @@ import {
   Home,
   Flame,
   Hammer,
-  Menu,
-  X,
 } from "lucide-react";
 
 type PageKey =
   | "home"
   | "about"
+  | "service-areas"
   | "services"
   | "testimonials"
   | "gallery"
@@ -38,7 +37,7 @@ type PageKey =
   | "terms";
 
 const heroImage =
-  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80";
+  "https://cdn.seeklearning.com.au/media/images/career-guide/module/plumber-module.jpg";
 const aboutImage =
   "https://mrflowplumbing.com.au/wp-content/uploads/2024/07/male-plumber-working-fix-problems-client-s-house_23-2150990735.jpg";
 const enquiryEmail = "paul@fixitnowplumbing.com.au";
@@ -206,11 +205,20 @@ const galleryImages = [
     title: "Cromer blocked drain tree roots 2",
     image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Cromer%20Blocked%20Drain%20Tree%20Roots%202.jpg",
   },
+  {
+    title: "Warriewood new shower rail",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Warriewood%20new%20shower%20rail.JPG",
+  },
+  {
+    title: "Belrose dripping taps",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Belrose%20dripping%20taps.jpg",
+  },
 ] as const;
 
 const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "home", label: "Home" },
   { key: "services", label: "Services" },
+  { key: "service-areas", label: "Service Areas" },
   { key: "guarantee", label: "Guarantee" },
   { key: "testimonials", label: "Testimonials" },
   { key: "gallery", label: "Gallery" },
@@ -225,8 +233,48 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "kitchen-plumbing", label: "Kitchen Plumbing" },
   { key: "bathroom-plumbing", label: "Bathroom Plumbing" },
   { key: "laundry-plumbing", label: "Laundry Plumbing" },
-  { key: "guarantee", label: "Guarantee" },
 ];
+
+const northernBeachesSuburbs = [
+  "Allambie Heights",
+  "Avalon",
+  "Balgowlah Heights",
+  "Bayview",
+  "Beacon Hill",
+  "Bilgola",
+  "Brookvale",
+  "Bungan Head",
+  "Careel Bay",
+  "Church Point",
+  "Clareville",
+  "Clontarf",
+  "Collaroy",
+  "Collaroy Plateau",
+  "Cromer",
+  "Cromer Heights",
+  "Curl Curl",
+  "Dee Why",
+  "Elanora Heights",
+  "Fairlight",
+  "Harbord",
+  "Ingleside",
+  "Manly",
+  "Manly Vale",
+  "Mona Vale",
+  "Narrabeen",
+  "Narraweena",
+  "Newport",
+  "North Curl Curl",
+  "North Manly",
+  "North Narrabeen",
+  "Oxford Falls",
+  "Palm Beach",
+  "Queenscliff",
+  "Seaforth",
+  "Warriewood",
+  "Whale Beach",
+  "Wheeler Heights",
+] as const;
 
 function SectionHeading({
   eyebrow,
@@ -391,6 +439,36 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
     "Bathroom, kitchen and laundry plumbing",
   ];
 
+  const faqs = [
+    {
+      question: "Why do I hear a hammering noise everytime I turn off my taps ?",
+      answer:
+        "This can be caused by many factors from unsecured pipework, jumping washers or high water pressure just to name a few. Its best we have a highly recognized and qualified technician come out to inspect and Identify.",
+    },
+    {
+      question: "Why do my taps keep leaking ?",
+      answer:
+        "Leaking taps arn’t only annoying to hear while your trying to get some quality rest and sleep but can also put a large dent in your pocket ! that could be thousands of liters a year which can ultimately result in hundreds or thousands of dollars from your pocket each year. This issue can arise from worn out seals and washers. Give us a call to have a highly qualified technician fix your leaking taps or pipes.",
+    },
+    {
+      question: "Why is my Water or Gas bill so high ?",
+      answer:
+        "Having an unusually high gas or water bill could be a result of some serious issues. These can be leaking pipes, valves and fittings. sometimes we don’t notice them because they are under ground or behind walls. contact us now to have one of our qualified technicians rectify your issue.",
+    },
+    {
+      question: "Why are my walls mouldy and have a funky smell ?",
+      answer:
+        "This could be for a number of reasons. to name a few common issues relating are..\n\n• Leaking pipes.\n• leaking roof flashings.\n• failed waterproofing membrane in bathrooms.\n\nContact us now to solve these issues before they get worse.",
+    },
+    {
+      question: "Why isnt my hot water hot enough anymore ?",
+      answer:
+        "Most times if your hot water isn’t as hot as it used to be then there's usually an issue causing it. This can range from a old hot water heater which needs servicing and replacing anodes, thermostats and tempering valves. also inadequate water pressure can be a major factor contributing to low water temperature as well as under sized pipework.\n\nContact us now to have a licensed and qualified technician resolve your cold shoulder.",
+    },
+  ] as const;
+
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50">
@@ -399,20 +477,15 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="absolute inset-0 bg-slate-950/45" />
         </div>
 
-        <div className="absolute left-6 top-6 z-10 rounded-2xl border border-white/40 bg-slate-900/70 px-4 py-3 text-white shadow-lg backdrop-blur">
-          <div className="flex gap-1 text-yellow-400">
-            {Array.from({ length: 5 }).map((_, idx) => (
-              <Star key={idx} className="h-4 w-4 fill-current" />
-            ))}
-          </div>
-          <div className="mt-2 text-sm font-semibold">20+ years in business</div>
-        </div>
-
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-3xl text-white">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur">
-              <CheckCircle2 className="h-4 w-4" />
-              Licensed local plumbers serving Sydney's Northern Beaches
+            <div className="inline-flex flex-col rounded-2xl border border-white/40 bg-slate-900/70 px-5 py-3 text-white shadow-lg backdrop-blur">
+              <div className="flex gap-1 text-yellow-400">
+                {Array.from({ length: 5 }).map((_, idx) => (
+                  <Star key={idx} className="h-4 w-4 fill-current" />
+                ))}
+              </div>
+              <div className="mt-2 text-sm font-semibold">20+ years in business</div>
             </div>
 
             <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
@@ -576,6 +649,55 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               >
                 Request a quote
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="grid items-start gap-6 lg:grid-cols-2">
+            <div className="h-[560px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
+              <img
+                src="https://www.yourhome.gov.au/sites/default/files/inline-images/E_Hot%20water_11_0.jpg"
+                alt="Hot water system and plumbing pipes"
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <div className="overflow-hidden rounded-2xl border border-blue-300 bg-sky-700 text-white shadow-xl">
+              <div className="border-b border-white/30 px-5 py-6 md:px-6">
+                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Frequently Asked Questions</h2>
+              </div>
+
+              <div>
+                {faqs.map((faq, index) => {
+                  const isOpen = openFaqIndex === index;
+
+                  return (
+                    <div key={faq.question} className="border-b border-white/30 last:border-b-0">
+                      <button
+                        onClick={() => setOpenFaqIndex((prev) => (prev === index ? null : index))}
+                        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left md:px-6"
+                        aria-expanded={isOpen}
+                      >
+                        <span className="text-lg font-bold md:text-xl">{faq.question}</span>
+                        <ChevronRight className={`h-5 w-5 shrink-0 transition-transform duration-500 ${isOpen ? "rotate-90" : "rotate-0"}`} />
+                      </button>
+
+                      <div
+                        className={`grid transition-all duration-500 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                      >
+                        <div className="overflow-hidden">
+                          <div className="px-5 pb-5 md:px-6">
+                            <p className="whitespace-pre-line text-sm leading-relaxed text-white/95 md:text-base">{faq.answer}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -1065,6 +1187,47 @@ function ContactPage() {
   return <ContactPanel />;
 }
 
+function ServiceAreasPage() {
+  return (
+    <main className="bg-white">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
+          <SectionHeading
+            eyebrow="Service Areas"
+            title="Northern Beaches plumbing service areas"
+            text="Fix It Now Plumbing provides local plumbing support throughout Sydney’s Northern Beaches, including emergency callouts, blocked drains, hot water repairs, and general maintenance."
+          />
+          <p className="mt-6 max-w-4xl text-lg text-slate-600">
+            We service homes and businesses right across the region and aim to provide fast, clear communication and reliable workmanship wherever you are based on the Northern Beaches.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm md:p-10">
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Suburbs we service</h2>
+            <p className="mt-3 text-slate-600">
+              If your suburb is listed below, our team can help with prompt plumbing service.
+            </p>
+            <div className="mt-8 columns-1 gap-3 lg:columns-4">
+              {northernBeachesSuburbs.map((suburb) => (
+                <div
+                  key={suburb}
+                  className="mb-3 flex break-inside-avoid items-center gap-2 rounded-xl bg-slate-50 px-4 py-3 text-slate-700"
+                >
+                  <MapPin className="h-4 w-4 text-sky-700" />
+                  <span className="text-sm font-medium">{suburb}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function TermsPage() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-20">
@@ -1141,7 +1304,6 @@ function TermsPage() {
 
 export default function NorthernBeachesPlumberDemo() {
   const [currentPage, setCurrentPage] = useState<PageKey>("home");
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesMenuRef = useRef<HTMLDivElement | null>(null);
 
@@ -1161,7 +1323,6 @@ export default function NorthernBeachesPlumberDemo() {
 
   const changePage = (page: PageKey) => {
     setCurrentPage(page);
-    setMobileMenuOpen(false);
     setServicesOpen(false);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1198,7 +1359,7 @@ export default function NorthernBeachesPlumberDemo() {
       </div>
 
       <header className="sticky top-11 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-8 py-5">
+        <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-10 px-10 py-5">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
@@ -1207,7 +1368,7 @@ export default function NorthernBeachesPlumberDemo() {
             />
           </button>
 
-          <nav className="hidden items-center gap-12 text-base font-semibold text-slate-700 md:flex">
+          <nav className="hidden items-center gap-14 text-base font-semibold text-slate-700 md:flex">
             <button onClick={() => changePage("home")} className="hover:text-sky-700">
               Home
             </button>
@@ -1316,9 +1477,29 @@ export default function NorthernBeachesPlumberDemo() {
             <button onClick={() => changePage("contact")} className="hover:text-sky-700">
               Contact Us
             </button>
+            <button onClick={() => changePage("service-areas")} className="hover:text-sky-700">
+              Service Areas
+            </button>
           </nav>
 
           <div className="flex items-center gap-3">
+            <div className="flex flex-col items-end gap-2 md:hidden">
+              <a href="tel:0414248131" className="text-sm font-semibold text-sky-800">
+                📞 0414 248 131
+              </a>
+              <select
+                value={currentPage}
+                onChange={(event) => changePage(event.target.value as PageKey)}
+                className="w-52 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700"
+                aria-label="Select a page"
+              >
+                {mobileNavItems.map((item) => (
+                  <option key={item.key} value={item.key}>
+                    {item.label}
+                  </option>
+                ))}
+              </select>
+            </div>
             <a
               href="tel:0414248131"
               className="hidden items-center gap-2 rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white shadow-sm hover:bg-sky-800 md:inline-flex"
@@ -1326,37 +1507,13 @@ export default function NorthernBeachesPlumberDemo() {
               <Phone className="h-4 w-4" />
               0414 248 131
             </a>
-            <button
-              onClick={() => setMobileMenuOpen((value) => !value)}
-              className="inline-flex rounded-xl border border-slate-300 p-3 md:hidden"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
           </div>
         </div>
-
-        {mobileMenuOpen ? (
-          <div className="border-t border-slate-200 bg-white px-6 py-4 md:hidden">
-            <div className="flex flex-col gap-3">
-              {mobileNavItems.map((item) => (
-                <button
-                  key={item.key}
-                  onClick={() => changePage(item.key)}
-                  className={`rounded-xl px-3 py-2 text-left font-medium ${
-                    currentPage === item.key ? "bg-sky-50 text-sky-700" : "text-slate-700"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        ) : null}
       </header>
 
       {currentPage === "home" ? <HomePage goTo={changePage} /> : null}
       {currentPage === "about" ? <AboutPage /> : null}
+      {currentPage === "service-areas" ? <ServiceAreasPage /> : null}
       {currentPage === "services" ? <ServicesPage goTo={changePage} /> : null}
       {currentPage === "testimonials" ? <TestimonialsPage /> : null}
       {currentPage === "gallery" ? <GalleryPage /> : null}
@@ -1586,6 +1743,9 @@ export default function NorthernBeachesPlumberDemo() {
                 </button>
                 <button onClick={() => changePage("contact")} className="text-left hover:text-sky-300">
                   Contact Us
+                </button>
+                <button onClick={() => changePage("service-areas")} className="text-left hover:text-sky-300">
+                  Service Areas
                 </button>
                 <button onClick={() => changePage("terms")} className="text-left hover:text-sky-300">
                   Terms & Conditions
