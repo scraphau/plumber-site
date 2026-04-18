@@ -15,6 +15,7 @@ import {
   Flame,
   Hammer,
   Menu,
+  X,
 } from "lucide-react";
 
 type PageKey =
@@ -1367,7 +1368,7 @@ export default function NorthernBeachesPlumberDemo() {
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
               alt="Fix It Now Plumbing logo"
-              className="h-12 w-auto md:h-16"
+              className="h-10 w-auto md:h-16"
             />
           </button>
 
@@ -1487,7 +1488,7 @@ export default function NorthernBeachesPlumberDemo() {
 
           <div className="flex items-center gap-3">
             <a href="tel:0414248131" className="inline-flex items-center gap-2 text-xl font-bold text-slate-900 md:hidden">
-              <Phone className="h-5 w-5 text-purple-700" />
+              <Phone className="h-5 w-5 text-sky-600" />
               0414 248 131
             </a>
             <a
@@ -1502,20 +1503,24 @@ export default function NorthernBeachesPlumberDemo() {
               className="inline-flex rounded-xl p-1 text-purple-700 md:hidden"
               aria-label="Toggle menu"
             >
-              <Menu className="h-9 w-9" />
+              {mobileMenuOpen ? <X className="h-9 w-9" /> : <Menu className="h-9 w-9" />}
             </button>
           </div>
         </div>
 
-        {mobileMenuOpen ? (
-          <div className="border-t border-slate-200 bg-white px-4 py-3 md:hidden">
-            <div className="flex flex-col gap-2">
+        <div
+          className={`overflow-hidden border-t border-slate-200 bg-white transition-all duration-500 ease-in-out md:hidden ${
+            mobileMenuOpen ? "max-h-[75vh] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="h-[75vh] overflow-y-auto px-4 py-4">
+            <div className="flex flex-col items-center justify-start gap-5 text-center">
               {mobileNavItems.map((item) => (
                 <button
                   key={item.key}
                   onClick={() => changePage(item.key)}
-                  className={`rounded-xl px-3 py-2 text-left font-medium ${
-                    currentPage === item.key ? "bg-purple-50 text-purple-700" : "text-slate-700"
+                  className={`w-full rounded-xl px-3 py-3 font-medium text-lg ${
+                    currentPage === item.key ? "bg-purple-50 text-purple-700" : "text-slate-800"
                   }`}
                 >
                   {item.label}
@@ -1523,7 +1528,7 @@ export default function NorthernBeachesPlumberDemo() {
               ))}
             </div>
           </div>
-        ) : null}
+        </div>
       </header>
 
       {currentPage === "home" ? <HomePage goTo={changePage} /> : null}
