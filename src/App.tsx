@@ -38,7 +38,7 @@ type PageKey =
   | "terms";
 
 const heroImage =
-  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80";
+  "https://www.worldskills.org.au/wp-content/uploads/2014/06/construction-plumbing.jpg";
 const aboutImage =
   "https://mrflowplumbing.com.au/wp-content/uploads/2024/07/male-plumber-working-fix-problems-client-s-house_23-2150990735.jpg";
 const enquiryEmail = "paul@fixitnowplumbing.com.au";
@@ -399,15 +399,20 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="absolute inset-0 bg-slate-950/45" />
         </div>
 
+        <div className="absolute left-6 top-6 z-10 rounded-2xl border border-white/40 bg-slate-900/70 px-4 py-3 text-white shadow-lg backdrop-blur">
+          <div className="flex gap-1 text-yellow-400">
+            {Array.from({ length: 5 }).map((_, idx) => (
+              <Star key={idx} className="h-4 w-4 fill-current" />
+            ))}
+          </div>
+          <div className="mt-2 text-sm font-semibold">20+ years in business</div>
+        </div>
+
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-3xl text-white">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur">
-              <div className="flex gap-1 text-yellow-300">
-                {Array.from({ length: 5 }).map((_, idx) => (
-                  <Star key={idx} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <span>20+ years in business</span>
+              <CheckCircle2 className="h-4 w-4" />
+              Trusted local plumbers across Sydney's Northern Beaches
             </div>
 
             <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
