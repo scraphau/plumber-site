@@ -757,8 +757,8 @@ function GalleryPage() {
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((item) => (
-              <div key={item.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
-                <img src={item.image} alt={item.title} className="h-72 w-full object-cover" />
+              <div key={item.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm">
+                <img src={item.image} alt={item.title} className="h-72 w-full object-contain" />
               </div>
             ))}
           </div>
@@ -1095,26 +1095,28 @@ export default function NorthernBeachesPlumberDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <div className="bg-sky-700 text-sm text-white">
+    <div className="min-h-screen bg-white pt-12 text-slate-900">
+      <div className="fixed left-0 right-0 top-0 z-40 bg-purple-700 text-sm text-white shadow">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>Northern Beaches Wide Service</span>
+              <span>Sydney's Northern Beaches</span>
             </div>
+          </div>
+          <div className="flex items-center gap-5">
             <div className="flex items-center gap-2">
               <Clock3 className="h-4 w-4" />
               <span>Emergency plumbing available</span>
             </div>
+            <a href="tel:0414248131" className="font-semibold hover:underline">
+              Call: 0414 248 131
+            </a>
           </div>
-          <a href="tel:0414248131" className="font-semibold hover:underline">
-            Call: 0414 248 131
-          </a>
         </div>
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <header className="sticky top-12 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img src={fixItNowLogo} alt="Fix It Now Plumbing logo" className="h-14 w-auto md:h-16" />
