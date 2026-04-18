@@ -792,6 +792,45 @@ function GalleryPage() {
 }
 
 function TestimonialsPage() {
+  const testimonials = [
+    {
+      quote:
+        "Mardy came to inspect the work on Sunday and presented professionally. He arrived on time the next day, completed the bathroom rough-in in one day, and the workmanship was excellent.",
+      name: "Mohsen",
+      location: "Pennant Hills",
+    },
+    {
+      quote:
+        "Mardy takes pride in his work, replied quickly, communicated clearly, and delivered a fantastic job at a reasonable price. Highly recommend.",
+      name: "Robyn",
+      location: "Homebush West",
+    },
+    {
+      quote:
+        "Fantastic, honest and economic work done. Honest, on time, and very good at communicating. Great experience.",
+      name: "Arti",
+      location: "Claremont Meadows",
+    },
+    {
+      quote:
+        "Called at 7am about a burst pipe and they had it sorted before lunch. Clean, professional and stress-free.",
+      name: "Matt H.",
+      location: "Northern Beaches",
+    },
+    {
+      quote:
+        "Clear pricing, great communication and quality workmanship. Exactly what you want from a plumber.",
+      name: "Sarah T.",
+      location: "Sydney",
+    },
+    {
+      quote:
+        "They diagnosed our blocked drain quickly, explained the fix clearly, and gave practical advice to prevent it happening again.",
+      name: "James R.",
+      location: "Sydney",
+    },
+  ];
+
   return (
     <section className="border-b border-slate-200 bg-slate-50">
       <div className="mx-auto max-w-7xl px-6 py-20">
@@ -810,7 +849,22 @@ function TestimonialsPage() {
             View all Google reviews
           </a>
         </div>
-        <ReviewCards />
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {testimonials.map((item) => (
+            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-8">
+              <div className="flex gap-1 text-amber-500">
+                {Array.from({ length: 5 }).map((_, idx) => (
+                  <Star key={idx} className="h-5 w-5 fill-current" />
+                ))}
+              </div>
+              <p className="mt-8 text-[1.45rem] font-semibold leading-relaxed text-slate-900">“{item.quote}”</p>
+              <div className="mt-8">
+                <div className="text-lg font-extrabold uppercase tracking-[0.15em] text-slate-900">{item.name}</div>
+                <div className="text-xl text-slate-600">from {item.location}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -1501,7 +1555,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "contact" ? <ContactPage /> : null}
       {currentPage === "terms" ? <TermsPage /> : null}
 
-      <footer className="border-t border-slate-200 bg-white">
+      <footer className="border-t border-slate-800 bg-black text-white">
         <div className="mx-auto max-w-7xl px-6 py-12">
           <div className="grid gap-10 md:grid-cols-3">
             <div>
@@ -1512,49 +1566,49 @@ export default function NorthernBeachesPlumberDemo() {
                   className="h-12 w-auto"
                 />
               </button>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
                 Family owned and 20+ year operated plumbing business helping Sydney’s Northern Beaches with reliable service, clear communication and quality workmanship.
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-slate-900">Quick Links</h3>
-              <div className="mt-4 flex flex-col gap-2 text-sm text-slate-700">
-                <button onClick={() => changePage("home")} className="text-left hover:text-sky-700">
+              <h3 className="text-lg font-bold text-white">Quick Links</h3>
+              <div className="mt-4 flex flex-col gap-2 text-sm text-slate-200">
+                <button onClick={() => changePage("home")} className="text-left hover:text-sky-300">
                   Home
                 </button>
-                <button onClick={() => changePage("about")} className="text-left hover:text-sky-700">
+                <button onClick={() => changePage("about")} className="text-left hover:text-sky-300">
                   About
                 </button>
-                <button onClick={() => changePage("services")} className="text-left hover:text-sky-700">
+                <button onClick={() => changePage("services")} className="text-left hover:text-sky-300">
                   Services
                 </button>
-                <button onClick={() => changePage("testimonials")} className="text-left hover:text-sky-700">
+                <button onClick={() => changePage("testimonials")} className="text-left hover:text-sky-300">
                   Testimonials
                 </button>
-                <button onClick={() => changePage("emergency")} className="text-left hover:text-sky-700">
+                <button onClick={() => changePage("emergency")} className="text-left hover:text-sky-300">
                   Emergency Plumber
                 </button>
-                <button onClick={() => changePage("gallery")} className="text-left hover:text-sky-700">
+                <button onClick={() => changePage("gallery")} className="text-left hover:text-sky-300">
                   Gallery
                 </button>
-                <button onClick={() => changePage("contact")} className="text-left hover:text-sky-700">
+                <button onClick={() => changePage("contact")} className="text-left hover:text-sky-300">
                   Contact Us
                 </button>
-                <button onClick={() => changePage("terms")} className="text-left hover:text-sky-700">
+                <button onClick={() => changePage("terms")} className="text-left hover:text-sky-300">
                   Terms & Conditions
                 </button>
               </div>
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-slate-900">Get In Touch</h3>
-              <div className="mt-4 space-y-3 text-sm text-slate-700">
-                <a href="tel:0414248131" className="flex items-center gap-2 hover:text-sky-700">
+              <h3 className="text-lg font-bold text-white">Get In Touch</h3>
+              <div className="mt-4 space-y-3 text-sm text-slate-200">
+                <a href="tel:0414248131" className="flex items-center gap-2 hover:text-sky-300">
                   <Phone className="h-4 w-4 text-sky-700" />
                   0414 248 131
                 </a>
-                <a href="mailto:paul@fixitnowplumbing.com.au" className="flex items-center gap-2 hover:text-sky-700">
+                <a href="mailto:paul@fixitnowplumbing.com.au" className="flex items-center gap-2 hover:text-sky-300">
                   <Mail className="h-4 w-4 text-sky-700" />
                   paul@fixitnowplumbing.com.au
                 </a>
@@ -1562,7 +1616,7 @@ export default function NorthernBeachesPlumberDemo() {
                   href="https://www.google.com/maps/place/Plumber+Northern+Beaches+@+Fix+It+Now+Plumbing/@-33.6720467,151.2620779,12z/data=!3m1!4b1!4m6!3m5!1s0x6b12a542a9d25031:0xdebe3731c81deb0b!8m2!3d-33.6720468!4d151.2620779!16s%2Fg%2F11xl8trtt?entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 hover:text-sky-700"
+                  className="flex items-center gap-2 hover:text-sky-300"
                 >
                   <MapPin className="h-4 w-4 text-sky-700" />
                   Sydney’s Northern Beaches
@@ -1571,7 +1625,7 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
           </div>
 
-          <div className="mt-10 border-t border-slate-200 pt-5 text-xs text-slate-500">
+          <div className="mt-10 border-t border-slate-700 pt-5 text-xs text-slate-400">
             © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
           </div>
         </div>
