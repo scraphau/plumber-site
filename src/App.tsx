@@ -1125,17 +1125,43 @@ function ContactPage() {
 
 function ServiceAreasPage() {
   const areas = [
-    "Manly",
-    "Dee Why",
-    "Brookvale",
-    "Narrabeen",
-    "Mona Vale",
-    "Warriewood",
-    "Frenchs Forest",
-    "Belrose",
-    "Collaroy",
+    "Allambie Heights",
     "Avalon",
+    "Balgowlah Heights",
+    "Bayview",
+    "Beacon Hill",
+    "Bilgola",
+    "Brookvale",
+    "Bungan Head",
+    "Careel Bay",
+    "Church Point",
+    "Clareville",
+    "Clontarf",
+    "Collaroy",
+    "Collaroy Plateau",
+    "Cromer",
+    "Cromer Heights",
+    "Curl Curl",
+    "Dee Why",
+    "Elanora Heights",
+    "Fairlight",
+    "Harbord",
+    "Ingleside",
+    "Manly",
+    "Manly Vale",
+    "Mona Vale",
+    "Narrabeen",
+    "Narraweena",
+    "Newport",
+    "North Curl Curl",
+    "North Manly",
+    "North Narrabeen",
+    "Oxford Falls",
     "Palm Beach",
+    "Queenscliff",
+    "Seaforth",
+    "Warriewood",
+    "Whale Beach",
     "Wheeler Heights",
   ];
 
@@ -1144,8 +1170,12 @@ function ServiceAreasPage() {
       <SectionHeading
         eyebrow="Service Areas"
         title="Plumbing across Sydney’s Northern Beaches"
-        text="Fix It Now Plumbing services homes and businesses across the Northern Beaches with fast response times and reliable workmanship."
+        text="Fix It Now Plumbing provides fast, reliable plumbing services throughout the Northern Beaches, from urgent emergencies to everyday repairs and maintenance."
       />
+      <p className="mt-6 max-w-4xl text-lg leading-relaxed text-slate-600">
+        If you are located in the Northern Beaches region, we can help with emergency plumbing, blocked drains, burst pipes, hot
+        water problems, gas fitting and general plumbing services.
+      </p>
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {areas.map((area) => (
           <div key={area} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -1322,7 +1352,7 @@ export default function NorthernBeachesPlumberDemo() {
       </div>
 
       <header className="sticky top-11 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-8 py-5">
+        <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-8 px-10 py-5">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
@@ -1331,7 +1361,7 @@ export default function NorthernBeachesPlumberDemo() {
             />
           </button>
 
-          <nav className="hidden items-center gap-12 text-base font-semibold text-slate-700 md:flex">
+          <nav className="hidden items-center gap-14 text-base font-semibold text-slate-700 md:flex">
             <button onClick={() => changePage("home")} className="hover:text-sky-700">
               Home
             </button>
@@ -1437,11 +1467,11 @@ export default function NorthernBeachesPlumberDemo() {
             <button onClick={() => changePage("about")} className="hover:text-sky-700">
               About
             </button>
-            <button onClick={() => changePage("service-areas")} className="hover:text-sky-700">
-              Service Areas
-            </button>
             <button onClick={() => changePage("contact")} className="hover:text-sky-700">
               Contact Us
+            </button>
+            <button onClick={() => changePage("service-areas")} className="hover:text-sky-700">
+              Service Areas
             </button>
           </nav>
 
