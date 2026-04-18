@@ -240,43 +240,43 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
 
 const northernBeachesSuburbs = [
   "Allambie Heights",
-  "Avalon",
-  "Balgowlah Heights",
-  "Bayview",
-  "Beacon Hill",
-  "Bilgola",
-  "Brookvale",
-  "Bungan Head",
-  "Careel Bay",
-  "Church Point",
   "Clareville",
-  "Clontarf",
-  "Collaroy",
-  "Collaroy Plateau",
-  "Cromer",
-  "Cromer Heights",
-  "Curl Curl",
-  "Dee Why",
-  "Elanora Heights",
-  "Fairlight",
   "Harbord",
-  "Ingleside",
-  "Manly",
-  "Manly Vale",
-  "Mona Vale",
-  "Narrabeen",
-  "Narraweena",
-  "Newport",
-  "North Curl Curl",
-  "North Manly",
   "North Narrabeen",
+  "Avalon",
+  "Clontarf",
+  "Ingleside",
   "Oxford Falls",
+  "Balgowlah Heights",
+  "Collaroy",
+  "Manly",
   "Palm Beach",
+  "Bayview",
+  "Collaroy Plateau",
+  "Manly Vale",
   "Queenscliff",
+  "Beacon Hill",
+  "Cromer",
+  "Mona Vale",
   "Seaforth",
+  "Bilgola",
+  "Cromer Heights",
+  "Narrabeen",
   "Warriewood",
+  "Brookvale",
+  "Curl Curl",
+  "Narraweena",
   "Whale Beach",
+  "Bungan Head",
+  "Dee Why",
+  "Newport",
   "Wheeler Heights",
+  "Careel Bay",
+  "Elanora Heights",
+  "North Curl Curl",
+  "Church Point",
+  "Fairlight",
+  "North Manly",
 ] as const;
 
 function SectionHeading({
@@ -1213,12 +1213,9 @@ function ServiceAreasPage() {
             <p className="mt-3 text-slate-600">
               If your suburb is listed below, our team can help with prompt plumbing service.
             </p>
-            <div className="mt-8 columns-1 gap-3 lg:columns-4">
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {northernBeachesSuburbs.map((suburb) => (
-                <div
-                  key={suburb}
-                  className="mb-3 flex break-inside-avoid items-center gap-2 rounded-xl bg-slate-50 px-4 py-3 text-slate-700"
-                >
+                <div key={suburb} className="flex items-center gap-2 rounded-xl bg-slate-50 px-4 py-3 text-slate-700">
                   <MapPin className="h-4 w-4 text-sky-700" />
                   <span className="text-sm font-medium">{suburb}</span>
                 </div>
