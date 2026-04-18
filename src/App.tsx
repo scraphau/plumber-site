@@ -207,6 +207,14 @@ const galleryImages = [
     title: "Cromer blocked drain tree roots 2",
     image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Cromer%20Blocked%20Drain%20Tree%20Roots%202.jpg",
   },
+  {
+    title: "Warriewood new shower rail",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Warriewood%20new%20shower%20rail.JPG",
+  },
+  {
+    title: "Belrose dripping taps",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Belrose%20dripping%20taps.jpg",
+  },
 ] as const;
 
 const mobileNavItems: Array<{ key: PageKey; label: string }> = [
