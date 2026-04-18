@@ -1100,19 +1100,19 @@ export default function NorthernBeachesPlumberDemo() {
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
-              <span aria-hidden="true">📞</span>
+              <Phone className="h-4 w-4" />
               <a href="tel:0414248131" className="hover:underline">
                 0414 248 131
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <span aria-hidden="true">✉️</span>
+              <Mail className="h-4 w-4" />
               <a href="mailto:paul@fixitnowplumbing.com.au" className="hover:underline">
                 paul@fixitnowplumbing.com.au
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <span aria-hidden="true">📍</span>
+              <MapPin className="h-4 w-4" />
               <span>Sydney's Northern Beaches</span>
             </div>
           </div>
