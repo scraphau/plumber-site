@@ -434,6 +434,34 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
     "Bathroom, kitchen and laundry plumbing",
   ];
 
+  const faqs = [
+    {
+      question: "Do you provide emergency plumbing across the Northern Beaches?",
+      answer:
+        "Yes. We provide 24/7 emergency plumbing support for urgent issues like burst pipes, major leaks, blocked drains and no hot water.",
+    },
+    {
+      question: "Do you give fixed pricing before starting work?",
+      answer:
+        "Yes. After assessing the job, we provide an obligation-free fixed price so you can approve the work before we begin.",
+    },
+    {
+      question: "Can you help with blocked drains and CCTV inspections?",
+      answer:
+        "Absolutely. We clear blocked drains and can use CCTV diagnostics and pipe locating to identify causes and recommend long-term solutions.",
+    },
+    {
+      question: "What plumbing jobs do you handle for homes?",
+      answer:
+        "We handle leaking taps and toilets, hot water repairs/replacements, burst pipes, gas fitting, and kitchen, bathroom and laundry plumbing.",
+    },
+    {
+      question: "Which areas do you service?",
+      answer:
+        "We service suburbs across Sydney’s Northern Beaches. Visit our Service Areas page for the full suburb list.",
+    },
+  ] as const;
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50">
@@ -615,6 +643,24 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 Request a quote
               </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <SectionHeading
+            eyebrow="FAQs"
+            title="Frequently asked plumbing questions"
+            text="Quick answers to common questions from Northern Beaches homeowners and property managers."
+          />
+          <div className="mt-10 space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                <h3 className="text-lg font-bold text-slate-900">{faq.question}</h3>
+                <p className="mt-2 text-slate-600">{faq.answer}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1666,6 +1712,9 @@ export default function NorthernBeachesPlumberDemo() {
                 </button>
                 <button onClick={() => changePage("contact")} className="text-left hover:text-sky-300">
                   Contact Us
+                </button>
+                <button onClick={() => changePage("service-areas")} className="text-left hover:text-sky-300">
+                  Service Areas
                 </button>
                 <button onClick={() => changePage("terms")} className="text-left hover:text-sky-300">
                   Terms & Conditions
