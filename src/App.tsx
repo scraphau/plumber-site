@@ -1056,7 +1056,11 @@ function TermsPage() {
         <div>
           <h3 className="text-2xl font-bold text-slate-900">Contact</h3>
           <p className="mt-3 leading-relaxed text-slate-600">
-            For any questions about these terms and conditions, please contact Fix It Now Plumbing by phone on 0414 248 131 or email at paul@fixitnowplumbing.com.au.
+            For any questions about these terms and conditions, please contact Fix It Now Plumbing by phone on{" "}
+            <a href="tel:0414248131" className="text-sky-700 underline">
+              0414 248 131
+            </a>{" "}
+            or email at paul@fixitnowplumbing.com.au.
           </p>
         </div>
       </div>
@@ -1100,7 +1104,7 @@ export default function NorthernBeachesPlumberDemo() {
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>Sydney Wide Service</span>
+              <span>Northern Beaches Wide Service</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock3 className="h-4 w-4" />
@@ -1461,7 +1465,6 @@ export default function NorthernBeachesPlumberDemo() {
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between">
           <div>
             <img src={fixItNowLogo} alt="Fix It Now Plumbing logo" className="h-12 w-auto" />
-            <div className="mt-1 text-sm text-slate-500">Sydney-wide plumbing service</div>
           </div>
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
             <a href="tel:0414248131" className="hover:text-sky-700">
