@@ -217,66 +217,45 @@ const galleryImages = [
   },
 ] as const;
 
-const mobileNavItems: Array<{ key: PageKey; label: string }> = [
-  { key: "home", label: "Home" },
-  { key: "services", label: "Services" },
-  { key: "service-areas", label: "Service Areas" },
-  { key: "guarantee", label: "Guarantee" },
-  { key: "testimonials", label: "Testimonials" },
-  { key: "gallery", label: "Gallery" },
-  { key: "about", label: "About" },
-  { key: "contact", label: "Contact Us" },
-  { key: "emergency", label: "Emergency Plumber" },
-  { key: "blocked-drains", label: "Blocked Drains" },
-  { key: "hot-water", label: "Hot Water" },
-  { key: "taps-toilets", label: "Taps & Toilets" },
-  { key: "burst-pipes", label: "Burst Pipes" },
-  { key: "gas-fitting", label: "Gas Fitting" },
-  { key: "kitchen-plumbing", label: "Kitchen Plumbing" },
-  { key: "bathroom-plumbing", label: "Bathroom Plumbing" },
-  { key: "laundry-plumbing", label: "Laundry Plumbing" },
-  { key: "guarantee", label: "Guarantee" },
-];
-
 const northernBeachesSuburbs = [
   "Allambie Heights",
-  "Clareville",
-  "Harbord",
-  "North Narrabeen",
   "Avalon",
-  "Clontarf",
-  "Ingleside",
-  "Oxford Falls",
   "Balgowlah Heights",
-  "Collaroy",
-  "Manly",
-  "Palm Beach",
   "Bayview",
-  "Collaroy Plateau",
-  "Manly Vale",
-  "Queenscliff",
   "Beacon Hill",
-  "Cromer",
-  "Mona Vale",
-  "Seaforth",
   "Bilgola",
-  "Cromer Heights",
-  "Narrabeen",
-  "Warriewood",
   "Brookvale",
-  "Curl Curl",
-  "Narraweena",
-  "Whale Beach",
   "Bungan Head",
-  "Dee Why",
-  "Newport",
-  "Wheeler Heights",
   "Careel Bay",
-  "Elanora Heights",
-  "North Curl Curl",
   "Church Point",
+  "Clareville",
+  "Clontarf",
+  "Collaroy",
+  "Collaroy Plateau",
+  "Cromer",
+  "Cromer Heights",
+  "Curl Curl",
+  "Dee Why",
+  "Elanora Heights",
   "Fairlight",
+  "Harbord",
+  "Ingleside",
+  "Manly",
+  "Manly Vale",
+  "Mona Vale",
+  "Narrabeen",
+  "Narraweena",
+  "Newport",
+  "North Curl Curl",
   "North Manly",
+  "North Narrabeen",
+  "Oxford Falls",
+  "Palm Beach",
+  "Queenscliff",
+  "Seaforth",
+  "Warriewood",
+  "Whale Beach",
+  "Wheeler Heights",
 ] as const;
 
 function SectionHeading({
@@ -1213,9 +1192,12 @@ function ServiceAreasPage() {
             <p className="mt-3 text-slate-600">
               If your suburb is listed below, our team can help with prompt plumbing service.
             </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-8 columns-1 gap-3 lg:columns-4">
               {northernBeachesSuburbs.map((suburb) => (
-                <div key={suburb} className="flex items-center gap-2 rounded-xl bg-slate-50 px-4 py-3 text-slate-700">
+                <div
+                  key={suburb}
+                  className="mb-3 flex break-inside-avoid items-center gap-2 rounded-xl bg-slate-50 px-4 py-3 text-slate-700"
+                >
                   <MapPin className="h-4 w-4 text-sky-700" />
                   <span className="text-sm font-medium">{suburb}</span>
                 </div>
@@ -1362,8 +1344,8 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
       </div>
 
-      <header className="sticky top-11 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-10 px-10 py-5">
+      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
+        <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-5">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
