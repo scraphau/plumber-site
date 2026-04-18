@@ -1096,22 +1096,29 @@ export default function NorthernBeachesPlumberDemo() {
 
   return (
     <div className="min-h-screen bg-white pt-12 text-slate-900">
-      <div className="fixed left-0 right-0 top-0 z-40 bg-purple-700 text-sm text-white shadow">
+      <div className="fixed left-0 right-0 top-0 z-40 bg-sky-700 text-sm text-white shadow">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4" />
+              <span aria-hidden="true">📞</span>
+              <a href="tel:0414248131" className="hover:underline">
+                0414 248 131
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <span aria-hidden="true">✉️</span>
+              <a href="mailto:paul@fixitnowplumbing.com.au" className="hover:underline">
+                paul@fixitnowplumbing.com.au
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <span aria-hidden="true">📍</span>
               <span>Sydney's Northern Beaches</span>
             </div>
           </div>
-          <div className="flex items-center gap-5">
-            <div className="flex items-center gap-2">
-              <Clock3 className="h-4 w-4" />
-              <span>Emergency plumbing available</span>
-            </div>
-            <a href="tel:0414248131" className="font-semibold hover:underline">
-              Call: 0414 248 131
-            </a>
+          <div className="flex items-center gap-2">
+            <Clock3 className="h-4 w-4" />
+            <span>Emergency plumbing available</span>
           </div>
         </div>
       </div>
