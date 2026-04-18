@@ -463,6 +463,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
     },
   ] as const;
 
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50">
@@ -650,31 +652,48 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
       <section className="border-t border-slate-200 bg-slate-50">
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <SectionHeading
-            eyebrow="FAQs"
-            title="Frequently asked plumbing questions"
-            text="Quick answers to common questions from Northern Beaches homeowners and property managers."
-          />
-          <div className="mt-10 space-y-4">
-            {faqs.map((faq) => (
-              <div key={faq.question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-slate-900">{faq.question}</h3>
-                <p className="mt-2 text-slate-600">
-                  {faq.answer}{" "}
-                  {"linkLabel" in faq ? (
-                    <>
-                      <button
-                        onClick={() => goTo("service-areas")}
-                        className="font-semibold text-sky-700 underline hover:text-sky-800"
-                      >
-                        {faq.linkLabel}
-                      </button>{" "}
-                      {faq.answerSuffix}
-                    </>
-                  ) : null}
-                </p>
-              </div>
-            ))}
+          <div className="overflow-hidden rounded-2xl border border-blue-300 bg-sky-700 text-white shadow-xl">
+            <div className="border-b border-white/30 px-6 py-7 md:px-8">
+              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Frequently Asked Questions</h2>
+            </div>
+
+            <div>
+              {faqs.map((faq, index) => {
+                const isOpen = openFaqIndex === index;
+
+                return (
+                  <div key={faq.question} className="border-b border-white/30 last:border-b-0">
+                    <button
+                      onClick={() => setOpenFaqIndex((prev) => (prev === index ? null : index))}
+                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left md:px-8"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="text-xl font-bold md:text-2xl">{faq.question}</span>
+                      <ChevronRight className={`h-5 w-5 shrink-0 transition-transform ${isOpen ? "rotate-90" : "rotate-0"}`} />
+                    </button>
+
+                    {isOpen ? (
+                      <div className="px-6 pb-6 md:px-8">
+                        <p className="text-base leading-relaxed text-white/95 md:text-lg">
+                          {faq.answer}{" "}
+                          {"linkLabel" in faq ? (
+                            <>
+                              <button
+                                onClick={() => goTo("service-areas")}
+                                className="font-semibold text-white underline decoration-2 underline-offset-2 hover:text-sky-100"
+                              >
+                                {faq.linkLabel}
+                              </button>{" "}
+                              {faq.answerSuffix}
+                            </>
+                          ) : null}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
