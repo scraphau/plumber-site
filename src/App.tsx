@@ -651,34 +651,46 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
       <section className="border-t border-slate-200 bg-slate-50">
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="overflow-hidden rounded-2xl border border-blue-300 bg-sky-700 text-white shadow-xl">
-            <div className="border-b border-white/30 px-6 py-7 md:px-8">
-              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Frequently Asked Questions</h2>
+          <div className="grid items-stretch gap-6 lg:grid-cols-2">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
+              <img
+                src={aboutImage}
+                alt="Plumber performing maintenance work"
+                className="h-full min-h-[560px] w-full object-cover"
+              />
             </div>
 
-            <div>
-              {faqs.map((faq, index) => {
-                const isOpen = openFaqIndex === index;
+            <div className="overflow-hidden rounded-2xl border border-blue-300 bg-sky-700 text-white shadow-xl">
+              <div className="border-b border-white/30 px-5 py-6 md:px-6">
+                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Frequently Asked Questions</h2>
+              </div>
 
-                return (
-                  <div key={faq.question} className="border-b border-white/30 last:border-b-0">
-                    <button
-                      onClick={() => setOpenFaqIndex((prev) => (prev === index ? null : index))}
-                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left md:px-8"
-                      aria-expanded={isOpen}
-                    >
-                      <span className="text-xl font-bold md:text-2xl">{faq.question}</span>
-                      <ChevronRight className={`h-5 w-5 shrink-0 transition-transform ${isOpen ? "rotate-90" : "rotate-0"}`} />
-                    </button>
+              <div>
+                {faqs.map((faq, index) => {
+                  const isOpen = openFaqIndex === index;
 
-                    {isOpen ? (
-                      <div className="px-6 pb-6 md:px-8">
-                        <p className="whitespace-pre-line text-base leading-relaxed text-white/95 md:text-lg">{faq.answer}</p>
+                  return (
+                    <div key={faq.question} className="border-b border-white/30 last:border-b-0">
+                      <button
+                        onClick={() => setOpenFaqIndex((prev) => (prev === index ? null : index))}
+                        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left md:px-6"
+                        aria-expanded={isOpen}
+                      >
+                        <span className="text-lg font-bold md:text-xl">{faq.question}</span>
+                        <ChevronRight className={`h-5 w-5 shrink-0 transition-transform duration-500 ${isOpen ? "rotate-90" : "rotate-0"}`} />
+                      </button>
+
+                      <div
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"}`}
+                      >
+                        <div className="px-5 pb-5 md:px-6">
+                          <p className="whitespace-pre-line text-sm leading-relaxed text-white/95 md:text-base">{faq.answer}</p>
+                        </div>
                       </div>
-                    ) : null}
-                  </div>
-                );
-              })}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
