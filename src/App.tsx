@@ -211,6 +211,7 @@ const galleryImages = [
 const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "home", label: "Home" },
   { key: "services", label: "Services" },
+  { key: "guarantee", label: "Guarantee" },
   { key: "testimonials", label: "Testimonials" },
   { key: "gallery", label: "Gallery" },
   { key: "about", label: "About" },
@@ -795,39 +796,33 @@ function TestimonialsPage() {
   const testimonials = [
     {
       quote:
-        "Mardy came to inspect the work on Sunday and presented professionally. He arrived on time the next day, completed the bathroom rough-in in one day, and the workmanship was excellent.",
-      name: "Mohsen",
-      location: "Pennant Hills",
+        "I have used Paul for plumbing services for over ten years now and he has always provided a great service ranging from tap replacement to external drainage issues earlier this year. Paul is very honest and helpful in providing advice and solutions and I would recommend his services.",
+      name: "Sarah J",
     },
     {
       quote:
-        "Mardy takes pride in his work, replied quickly, communicated clearly, and delivered a fantastic job at a reasonable price. Highly recommend.",
-      name: "Robyn",
-      location: "Homebush West",
+        "Paul from Fix It Now Plumbing has completed several plumbing jobs at our home over the past 5 years including the clearing of blocked drains, new taps and hot water systems. Paul is reliable, honest and professional and has always provided high quality work and solutions for us. I would strongly recommend Paul to anyone requiring a reliable quality plumber on the Northern Beaches.",
+      name: "Scott B",
     },
     {
       quote:
-        "Fantastic, honest and economic work done. Honest, on time, and very good at communicating. Great experience.",
-      name: "Arti",
-      location: "Claremont Meadows",
+        "We can’t speak more highly of our experience with Paul. He responded to our enquiry quickly and squeezed us in the next day (lifesaver!). Paul was very clear and competitive with his quote and completed the job faster than we anticipated. We’ll definitely be in touch for upcoming renovations!",
+      name: "Lauren C",
     },
     {
       quote:
-        "Called at 7am about a burst pipe and they had it sorted before lunch. Clean, professional and stress-free.",
-      name: "Matt H.",
-      location: "Northern Beaches",
+        "Paul is a fantastic plumber and a really friendly guy who I definitely would recommend to anyone. He has reliably helped me with a number of plumbing problems and improvements with three different houses over the past 7 years. I've had consistently high-quality service the whole time. What really stands out to me is a genuine interest in doing a really good job. If I have a question, he'll take the time to answer it in as much detail as I need. I can't fault his service in any way!",
+      name: "Mark A",
     },
     {
       quote:
-        "Clear pricing, great communication and quality workmanship. Exactly what you want from a plumber.",
-      name: "Sarah T.",
-      location: "Sydney",
+        "I never have any hesitation contacting Paul whenever I have plumbing or drainage problems at my home in Wheeler Heights. He is an extremely reliable and honest guy who always arrives on time and ready to work. On separate visits Paul has repaired a water pump and two submersible pumps and on each occasion he has needed to improvise solutions to suit the problem at hand. I would recommend Paul to anyone seeking his expertise and services.",
+      name: "Nick W",
     },
     {
       quote:
-        "They diagnosed our blocked drain quickly, explained the fix clearly, and gave practical advice to prevent it happening again.",
-      name: "James R.",
-      location: "Sydney",
+        "Paul was reliable, on time, and his quote was competitive. We had a new instantaneous hot water heater installed and upgraded our piping for the gas. Communication was great and he even came out quickly when we hit the water while digging a trench for the pipes. Would use him again.",
+      name: "Karen M",
     },
   ];
 
@@ -857,10 +852,9 @@ function TestimonialsPage() {
                   <Star key={idx} className="h-5 w-5 fill-current" />
                 ))}
               </div>
-              <p className="mt-8 text-[1.45rem] font-semibold leading-relaxed text-slate-900">“{item.quote}”</p>
+              <p className="mt-6 text-lg font-semibold leading-relaxed text-slate-900">“{item.quote}”</p>
               <div className="mt-8">
-                <div className="text-lg font-extrabold uppercase tracking-[0.15em] text-slate-900">{item.name}</div>
-                <div className="text-xl text-slate-600">from {item.location}</div>
+                <div className="text-base font-extrabold uppercase tracking-[0.15em] text-slate-900">{item.name}</div>
               </div>
             </div>
           ))}
@@ -1307,6 +1301,9 @@ export default function NorthernBeachesPlumberDemo() {
                 </div>
               ) : null}
             </div>
+            <button onClick={() => changePage("guarantee")} className="hover:text-sky-700">
+              Guarantee
+            </button>
             <button onClick={() => changePage("testimonials")} className="hover:text-sky-700">
               Testimonials
             </button>
