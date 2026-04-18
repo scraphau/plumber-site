@@ -220,6 +220,9 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "about", label: "About" },
   { key: "contact", label: "Contact Us" },
   { key: "privacy", label: "Privacy Policy" },
+=======
+  { key: "about", label: "About" },
+  { key: "contact", label: "Contact Us" },
   { key: "emergency", label: "Emergency Plumber" },
   { key: "blocked-drains", label: "Blocked Drains" },
   { key: "hot-water", label: "Hot Water" },
@@ -229,6 +232,9 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "kitchen-plumbing", label: "Kitchen Plumbing" },
   { key: "bathroom-plumbing", label: "Bathroom Plumbing" },
   { key: "laundry-plumbing", label: "Laundry Plumbing" },
+=======
+  { key: "guarantee", label: "Guarantee" },
+
 ];
 
 function SectionHeading({
@@ -251,7 +257,11 @@ function SectionHeading({
   );
 }
 
+
 async function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: string) {
+=======
+function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: string) {
+
   event.preventDefault();
 
   const form = event.currentTarget;
@@ -262,6 +272,7 @@ async function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subj
     .map(([key, value]) => `${key}: ${String(value).trim()}`);
 
   const body = lines.length > 0 ? lines.join("\n") : "New website enquiry.";
+
   const payload: Record<string, string> = Object.fromEntries(
     Array.from(formData.entries()).map(([key, value]) => [key, String(value)])
   );
@@ -287,6 +298,8 @@ async function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subj
   } catch {
     // fallback below
   }
+
+=======
 
   const mailtoUrl = `mailto:${enquiryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href = mailtoUrl;
@@ -353,7 +366,11 @@ function ContactPanel() {
 
         <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm md:p-10">
           <div className="text-2xl font-bold text-slate-900">Send an enquiry</div>
+
           <form onSubmit={(event) => void handleEnquirySubmit(event, "Website enquiry")} className="mt-6 space-y-4">
+=======
+          <form onSubmit={(event) => handleEnquirySubmit(event, "Website enquiry")} className="mt-6 space-y-4">
+
             <input
               name="Name"
               className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
@@ -428,6 +445,15 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-900/55 to-slate-900/35" />
         </div>
 
+        <div className="absolute left-6 top-6 z-10 rounded-2xl border border-white/40 bg-slate-900/70 px-4 py-3 text-white shadow-lg backdrop-blur">
+          <div className="flex gap-1 text-yellow-400">
+            {Array.from({ length: 5 }).map((_, idx) => (
+              <Star key={idx} className="h-4 w-4 fill-current" />
+            ))}
+          </div>
+          <div className="mt-2 text-sm font-semibold">20+ years in business</div>
+        </div>
+
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-3xl text-white">
             <div className="inline-block rounded-2xl border border-white/40 bg-slate-900/70 px-4 py-3 text-white shadow-lg backdrop-blur">
@@ -488,7 +514,11 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="rounded-3xl border border-white/30 bg-white/95 p-6 shadow-2xl backdrop-blur md:p-7">
             <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
             <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
+
             <form onSubmit={(event) => void handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
+=======
+            <form onSubmit={(event) => handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
+
               <input
                 name="Name"
                 className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
@@ -602,6 +632,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               </button>
             </div>
           </div>
+
         </div>
 
         <div className="mt-12 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
@@ -627,6 +658,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               </div>
             ))}
           </div>
+=======
+
         </div>
       </section>
     </>
@@ -811,10 +844,14 @@ function GalleryPage() {
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((item) => (
+
               <div
                 key={item.title}
                 className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl"
               >
+
+              <div key={item.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm">
+
                 <img src={item.image} alt={item.title} className="h-72 w-full object-contain" />
               </div>
             ))}
@@ -901,10 +938,14 @@ function TestimonialsPage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((item) => (
+
             <div
               key={`${item.name}-${item.quote}`}
               className="rounded-[1.8rem] border border-slate-200 bg-slate-100 p-8 transition hover:-translate-y-0.5 hover:shadow-xl"
             >
+
+            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-8">
+
               <div className="flex gap-1 text-amber-500">
                 {Array.from({ length: 5 }).map((_, idx) => (
                   <Star key={idx} className="h-5 w-5 fill-current" />
@@ -1323,7 +1364,11 @@ export default function NorthernBeachesPlumberDemo() {
   };
 
   return (
+
     <div className="min-h-screen bg-white pb-20 pt-11 text-slate-900 md:pb-0">
+
+    <div className="min-h-screen bg-white pt-11 text-slate-900">
+
       <div className="fixed left-0 right-0 top-0 z-40 bg-sky-700 text-sm text-white shadow">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <div className="flex flex-wrap items-center gap-4">
@@ -1352,7 +1397,11 @@ export default function NorthernBeachesPlumberDemo() {
       </div>
 
       <header className="sticky top-11 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+
         <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-8 px-10 py-5">
+
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-8 py-5">
+
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
@@ -1361,7 +1410,11 @@ export default function NorthernBeachesPlumberDemo() {
             />
           </button>
 
+
           <nav className="hidden items-center gap-14 text-base font-semibold text-slate-700 md:flex">
+
+          <nav className="hidden items-center gap-12 text-base font-semibold text-slate-700 md:flex">
+
             <button onClick={() => changePage("home")} className="hover:text-sky-700">
               Home
             </button>
@@ -1706,6 +1759,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "privacy" ? <PrivacyPage /> : null}
       {currentPage === "terms" ? <TermsPage /> : null}
 
+
       <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-7xl gap-3">
           <a
@@ -1723,6 +1777,7 @@ export default function NorthernBeachesPlumberDemo() {
           </button>
         </div>
       </div>
+
 
       <footer className="border-t border-slate-800 bg-black text-white">
         <div className="mx-auto max-w-7xl px-6 py-12">
@@ -1764,12 +1819,14 @@ export default function NorthernBeachesPlumberDemo() {
                 <button onClick={() => changePage("contact")} className="text-left hover:text-sky-300">
                   Contact Us
                 </button>
+
                 <button onClick={() => changePage("service-areas")} className="text-left hover:text-sky-300">
                   Service Areas
                 </button>
                 <button onClick={() => changePage("privacy")} className="text-left hover:text-sky-300">
                   Privacy Policy
                 </button>
+
                 <button onClick={() => changePage("terms")} className="text-left hover:text-sky-300">
                   Terms & Conditions
                 </button>
