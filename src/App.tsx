@@ -1305,6 +1305,7 @@ function TermsPage() {
 export default function NorthernBeachesPlumberDemo() {
   const [currentPage, setCurrentPage] = useState<PageKey>("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesMenuRef = useRef<HTMLDivElement | null>(null);
 
@@ -1325,6 +1326,7 @@ export default function NorthernBeachesPlumberDemo() {
   const changePage = (page: PageKey) => {
     setCurrentPage(page);
     setMobileMenuOpen(false);
+    setMobileServicesOpen(false);
     setServicesOpen(false);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1332,8 +1334,8 @@ export default function NorthernBeachesPlumberDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-11 text-slate-900">
-      <div className="fixed left-0 right-0 top-0 z-40 bg-sky-700 text-sm text-white shadow">
+    <div className="min-h-screen bg-white pt-0 text-slate-900 md:pt-11">
+      <div className="fixed left-0 right-0 top-0 z-40 hidden bg-sky-700 text-sm text-white shadow md:block">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
@@ -1366,7 +1368,7 @@ export default function NorthernBeachesPlumberDemo() {
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
               alt="Fix It Now Plumbing logo"
-              className="h-14 w-auto md:h-16"
+              className="h-10 w-auto md:h-16"
             />
           </button>
 
@@ -1485,6 +1487,10 @@ export default function NorthernBeachesPlumberDemo() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <a href="tel:0414248131" className="inline-flex items-center gap-2 text-xl font-bold text-slate-900 md:hidden">
+              <Phone className="h-5 w-5 text-sky-600" />
+              0414 248 131
+            </a>
             <a
               href="tel:0414248131"
               className="hidden items-center gap-2 rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white shadow-sm hover:bg-sky-800 md:inline-flex"
@@ -1494,31 +1500,85 @@ export default function NorthernBeachesPlumberDemo() {
             </a>
             <button
               onClick={() => setMobileMenuOpen((value) => !value)}
-              className="inline-flex rounded-xl border border-slate-300 p-3 md:hidden"
+              className="inline-flex rounded-xl p-1 text-purple-700 md:hidden"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileMenuOpen ? <X className="h-9 w-9" /> : <Menu className="h-9 w-9" />}
             </button>
           </div>
         </div>
 
-        {mobileMenuOpen ? (
-          <div className="border-t border-slate-200 bg-white px-6 py-4 md:hidden">
-            <div className="flex flex-col gap-3">
-              {mobileNavItems.map((item) => (
+        <div
+          className={`mx-2 mt-2 overflow-hidden rounded-2xl border border-sky-600 bg-sky-700 text-white transition-all duration-500 ease-in-out md:hidden ${
+            mobileMenuOpen ? "max-h-[75vh] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="h-[75vh] overflow-y-auto px-4 py-4">
+            <div className="flex flex-col items-center justify-start gap-5 text-center">
+              {[
+                { key: "home" as const, label: "Home" },
+                { key: "services" as const, label: "Services" },
+                { key: "testimonials" as const, label: "Testimonials" },
+                { key: "gallery" as const, label: "Gallery" },
+                { key: "about" as const, label: "About Us" },
+                { key: "contact" as const, label: "Contact Us" },
+                { key: "service-areas" as const, label: "Service Areas" },
+                { key: "guarantee" as const, label: "Guarantee" },
+              ].map((item) =>
+                item.key === "services" ? (
+                  <div key={item.key} className="w-full">
+                    <button
+                      onClick={() => setMobileServicesOpen((value) => !value)}
+                      className="flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-center text-lg font-medium text-white"
+                    >
+                      Services
+                      <ChevronDown
+                        className={`h-5 w-5 transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : "rotate-0"}`}
+                      />
+                    </button>
+
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${mobileServicesOpen ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"}`}
+                    >
+                      <div className="mt-2 space-y-2 rounded-xl bg-white/10 p-3 text-left">
+                        {[
+                          { key: "services" as const, label: "All Services" },
+                          { key: "emergency" as const, label: "Emergency Plumber" },
+                          { key: "blocked-drains" as const, label: "Blocked Drains" },
+                          { key: "hot-water" as const, label: "Hot Water" },
+                          { key: "taps-toilets" as const, label: "Taps & Toilets" },
+                          { key: "burst-pipes" as const, label: "Burst Pipes" },
+                          { key: "gas-fitting" as const, label: "Gas Fitting" },
+                          { key: "kitchen-plumbing" as const, label: "Kitchen Plumbing" },
+                          { key: "bathroom-plumbing" as const, label: "Bathroom Plumbing" },
+                          { key: "laundry-plumbing" as const, label: "Laundry Plumbing" },
+                        ].map((serviceItem) => (
+                          <button
+                            key={serviceItem.key}
+                            onClick={() => changePage(serviceItem.key)}
+                            className="block w-full rounded-lg px-3 py-2 text-left text-base font-medium text-white hover:bg-white/10"
+                          >
+                            {serviceItem.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
                 <button
                   key={item.key}
                   onClick={() => changePage(item.key)}
-                  className={`rounded-xl px-3 py-2 text-left font-medium ${
-                    currentPage === item.key ? "bg-sky-50 text-sky-700" : "text-slate-700"
+                  className={`w-full rounded-xl px-3 py-3 font-medium text-lg ${
+                    currentPage === item.key ? "bg-white/20 text-white" : "text-white"
                   }`}
                 >
                   {item.label}
                 </button>
-              ))}
+                ),
+              )}
             </div>
           </div>
-        ) : null}
+        </div>
       </header>
 
       {currentPage === "home" ? <HomePage goTo={changePage} /> : null}
