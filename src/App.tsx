@@ -1471,24 +1471,74 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "terms" ? <TermsPage /> : null}
 
       <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between">
-          <div>
-            <img
-              src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
-              alt="Fix It Now Plumbing logo"
-              className="h-12 w-auto"
-            />
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <div className="grid gap-10 md:grid-cols-3">
+            <div>
+              <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
+                <img
+                  src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
+                  alt="Fix It Now Plumbing logo"
+                  className="h-12 w-auto"
+                />
+              </button>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
+                Family owned and 20+ year operated plumbing business helping Sydney’s Northern Beaches with reliable service, clear communication and quality workmanship.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold text-slate-900">Quick Links</h3>
+              <div className="mt-4 flex flex-col gap-2 text-sm text-slate-700">
+                <button onClick={() => changePage("home")} className="text-left hover:text-sky-700">
+                  Home
+                </button>
+                <button onClick={() => changePage("about")} className="text-left hover:text-sky-700">
+                  About
+                </button>
+                <button onClick={() => changePage("services")} className="text-left hover:text-sky-700">
+                  Services
+                </button>
+                <button onClick={() => changePage("emergency")} className="text-left hover:text-sky-700">
+                  Emergency Plumber
+                </button>
+                <button onClick={() => changePage("gallery")} className="text-left hover:text-sky-700">
+                  Gallery
+                </button>
+                <button onClick={() => changePage("contact")} className="text-left hover:text-sky-700">
+                  Contact Us
+                </button>
+                <button onClick={() => changePage("terms")} className="text-left hover:text-sky-700">
+                  Terms & Conditions
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold text-slate-900">Get In Touch</h3>
+              <div className="mt-4 space-y-3 text-sm text-slate-700">
+                <a href="tel:0414248131" className="flex items-center gap-2 hover:text-sky-700">
+                  <Phone className="h-4 w-4 text-sky-700" />
+                  0414 248 131
+                </a>
+                <a href="mailto:paul@fixitnowplumbing.com.au" className="flex items-center gap-2 hover:text-sky-700">
+                  <Mail className="h-4 w-4 text-sky-700" />
+                  paul@fixitnowplumbing.com.au
+                </a>
+                <a
+                  href="https://www.google.com/maps/place/Plumber+Northern+Beaches+@+Fix+It+Now+Plumbing/@-33.6720467,151.2620779,12z/data=!3m1!4b1!4m6!3m5!1s0x6b12a542a9d25031:0xdebe3731c81deb0b!8m2!3d-33.6720468!4d151.2620779!16s%2Fg%2F11xl8trtt?entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 hover:text-sky-700"
+                >
+                  <MapPin className="h-4 w-4 text-sky-700" />
+                  Sydney’s Northern Beaches
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
-            <a href="tel:0414248131" className="hover:text-sky-700">
-              0414 248 131
-            </a>
-            <a href="mailto:paul@fixitnowplumbing.com.au" className="hover:text-sky-700">
-              paul@fixitnowplumbing.com.au
-            </a>
-            <button onClick={() => changePage("terms")} className="hover:text-sky-700">
-              Terms & Conditions
-            </button>
+
+          <div className="mt-10 border-t border-slate-200 pt-5 text-xs text-slate-500">
+            © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
           </div>
         </div>
       </footer>
