@@ -39,7 +39,7 @@ type PageKey =
   | "terms";
 
 const heroImage =
-  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80";
+  "https://cdn.seeklearning.com.au/media/images/career-guide/module/plumber-module.jpg";
 const aboutImage =
   "https://mrflowplumbing.com.au/wp-content/uploads/2024/07/male-plumber-working-fix-problems-client-s-house_23-2150990735.jpg";
 const enquiryEmail = "paul@fixitnowplumbing.com.au";
@@ -206,6 +206,14 @@ const galleryImages = [
   {
     title: "Cromer blocked drain tree roots 2",
     image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Cromer%20Blocked%20Drain%20Tree%20Roots%202.jpg",
+  },
+  {
+    title: "Warriewood new shower rail",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Warriewood%20new%20shower%20rail.JPG",
+  },
+  {
+    title: "Belrose dripping taps",
+    image: "https://www.fixitnowplumbing.com.au/wp-content/uploads/photo-gallery/thumb/Belrose%20dripping%20taps.jpg",
   },
 ] as const;
 
