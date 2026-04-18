@@ -1563,7 +1563,7 @@ export default function NorthernBeachesPlumberDemo() {
                 <img
                   src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
                   alt="Fix It Now Plumbing logo"
-                  className="h-12 w-auto"
+                  className="h-12 w-auto rounded-lg bg-white p-1.5"
                 />
               </button>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
@@ -1612,15 +1612,10 @@ export default function NorthernBeachesPlumberDemo() {
                   <Mail className="h-4 w-4 text-sky-700" />
                   paul@fixitnowplumbing.com.au
                 </a>
-                <a
-                  href="https://www.google.com/maps/place/Plumber+Northern+Beaches+@+Fix+It+Now+Plumbing/@-33.6720467,151.2620779,12z/data=!3m1!4b1!4m6!3m5!1s0x6b12a542a9d25031:0xdebe3731c81deb0b!8m2!3d-33.6720468!4d151.2620779!16s%2Fg%2F11xl8trtt?entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 hover:text-sky-300"
-                >
-                  <MapPin className="h-4 w-4 text-sky-700" />
-                  Sydney’s Northern Beaches
-                </a>
+                <div className="flex items-center gap-2">
+                  <Clock3 className="h-4 w-4 text-purple-400" />
+                  <span>Hours: Mon-Sun 24/7</span>
+                </div>
               </div>
             </div>
           </div>
