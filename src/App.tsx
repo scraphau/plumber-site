@@ -903,8 +903,9 @@ function TestimonialsPage() {
           {testimonials.map((item) => (
             <div
               key={`${item.name}-${item.quote}`}
-              className="rounded-[1.8rem] border border-slate-200 bg-slate-100 p-8 transition hover:-translate-y-0.5 hover:shadow-xl"
+              className="relative rounded-[1.8rem] border border-slate-200 bg-slate-100 p-8 transition hover:-translate-y-0.5 hover:shadow-xl"
             >
+              <div className="absolute right-6 top-5 text-4xl font-bold text-slate-300">G+</div>
               <div className="flex gap-1 text-amber-500">
                 {Array.from({ length: 5 }).map((_, idx) => (
                   <Star key={idx} className="h-5 w-5 fill-current" />
