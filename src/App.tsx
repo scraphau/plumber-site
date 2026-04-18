@@ -462,7 +462,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
     },
   ] as const;
 
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   return (
     <>
