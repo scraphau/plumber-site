@@ -21,6 +21,7 @@ import {
 type PageKey =
   | "home"
   | "about"
+  | "service-areas"
   | "services"
   | "testimonials"
   | "gallery"
@@ -211,6 +212,7 @@ const galleryImages = [
 const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "home", label: "Home" },
   { key: "services", label: "Services" },
+  { key: "service-areas", label: "Service Areas" },
   { key: "guarantee", label: "Guarantee" },
   { key: "testimonials", label: "Testimonials" },
   { key: "gallery", label: "Gallery" },
@@ -227,6 +229,47 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "laundry-plumbing", label: "Laundry Plumbing" },
   { key: "guarantee", label: "Guarantee" },
 ];
+
+const northernBeachesSuburbs = [
+  "Allambie Heights",
+  "Clareville",
+  "Harbord",
+  "North Narrabeen",
+  "Avalon",
+  "Clontarf",
+  "Ingleside",
+  "Oxford Falls",
+  "Balgowlah Heights",
+  "Collaroy",
+  "Manly",
+  "Palm Beach",
+  "Bayview",
+  "Collaroy Plateau",
+  "Manly Vale",
+  "Queenscliff",
+  "Beacon Hill",
+  "Cromer",
+  "Mona Vale",
+  "Seaforth",
+  "Bilgola",
+  "Cromer Heights",
+  "Narrabeen",
+  "Warriewood",
+  "Brookvale",
+  "Curl Curl",
+  "Narraweena",
+  "Whale Beach",
+  "Bungan Head",
+  "Dee Why",
+  "Newport",
+  "Wheeler Heights",
+  "Careel Bay",
+  "Elanora Heights",
+  "North Curl Curl",
+  "Church Point",
+  "Fairlight",
+  "North Manly",
+] as const;
 
 function SectionHeading({
   eyebrow,
@@ -1060,6 +1103,44 @@ function ContactPage() {
   return <ContactPanel />;
 }
 
+function ServiceAreasPage() {
+  return (
+    <main className="bg-white">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
+          <SectionHeading
+            eyebrow="Service Areas"
+            title="Northern Beaches plumbing service areas"
+            text="Fix It Now Plumbing provides local plumbing support throughout Sydney’s Northern Beaches, including emergency callouts, blocked drains, hot water repairs, and general maintenance."
+          />
+          <p className="mt-6 max-w-4xl text-lg text-slate-600">
+            We service homes and businesses right across the region and aim to provide fast, clear communication and reliable workmanship wherever you are based on the Northern Beaches.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm md:p-10">
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Suburbs we service</h2>
+            <p className="mt-3 text-slate-600">
+              If your suburb is listed below, our team can help with prompt plumbing service.
+            </p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {northernBeachesSuburbs.map((suburb) => (
+                <div key={suburb} className="flex items-center gap-2 rounded-xl bg-slate-50 px-4 py-3 text-slate-700">
+                  <MapPin className="h-4 w-4 text-sky-700" />
+                  <span className="text-sm font-medium">{suburb}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function TermsPage() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-20">
@@ -1193,7 +1274,7 @@ export default function NorthernBeachesPlumberDemo() {
       </div>
 
       <header className="sticky top-11 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-8 py-5">
+        <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-10 px-10 py-5">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
@@ -1202,7 +1283,7 @@ export default function NorthernBeachesPlumberDemo() {
             />
           </button>
 
-          <nav className="hidden items-center gap-12 text-base font-semibold text-slate-700 md:flex">
+          <nav className="hidden items-center gap-14 text-base font-semibold text-slate-700 md:flex">
             <button onClick={() => changePage("home")} className="hover:text-sky-700">
               Home
             </button>
@@ -1311,6 +1392,9 @@ export default function NorthernBeachesPlumberDemo() {
             <button onClick={() => changePage("contact")} className="hover:text-sky-700">
               Contact Us
             </button>
+            <button onClick={() => changePage("service-areas")} className="hover:text-sky-700">
+              Service Areas
+            </button>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -1352,6 +1436,7 @@ export default function NorthernBeachesPlumberDemo() {
 
       {currentPage === "home" ? <HomePage goTo={changePage} /> : null}
       {currentPage === "about" ? <AboutPage /> : null}
+      {currentPage === "service-areas" ? <ServiceAreasPage /> : null}
       {currentPage === "services" ? <ServicesPage goTo={changePage} /> : null}
       {currentPage === "testimonials" ? <TestimonialsPage /> : null}
       {currentPage === "gallery" ? <GalleryPage /> : null}
