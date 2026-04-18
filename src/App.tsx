@@ -396,7 +396,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50">
         <div className="absolute inset-0">
           <img src={heroImage} alt="Plumber working on site" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-slate-950/45" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-900/55 to-slate-900/35" />
         </div>
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
@@ -421,14 +421,14 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <button
                 onClick={() => goTo("contact")}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white hover:bg-sky-700"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white shadow-lg shadow-sky-900/30 transition hover:-translate-y-0.5 hover:bg-sky-700"
               >
                 Request a Quote
                 <ChevronRight className="h-4 w-4" />
               </button>
               <a
                 href="tel:0414248131"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-semibold text-sky-800"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-semibold text-sky-800 shadow-lg shadow-slate-950/20 transition hover:-translate-y-0.5"
               >
                 <Phone className="h-4 w-4" />
                 Call 0414 248 131
@@ -456,7 +456,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl md:p-7">
+          <div className="rounded-3xl border border-white/30 bg-white/95 p-6 shadow-2xl backdrop-blur md:p-7">
             <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
             <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
             <form onSubmit={(event) => handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
@@ -637,7 +637,10 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
             {serviceRows.map((service) => {
               const ServiceIcon = service.icon;
               return (
-                <div key={service.title} className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm lg:grid-cols-2">
+                <div
+                  key={service.title}
+                  className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl lg:grid-cols-2"
+                >
                   <div>
                     <img src={service.image} alt={service.title} className="h-[320px] w-full object-cover" />
                   </div>
@@ -754,7 +757,10 @@ function GalleryPage() {
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((item) => (
-              <div key={item.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm">
+              <div
+                key={item.title}
+                className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl"
+              >
                 <img src={item.image} alt={item.title} className="h-72 w-full object-contain" />
               </div>
             ))}
@@ -841,7 +847,10 @@ function TestimonialsPage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((item) => (
-            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-8">
+            <div
+              key={`${item.name}-${item.quote}`}
+              className="rounded-[1.8rem] border border-slate-200 bg-slate-100 p-8 transition hover:-translate-y-0.5 hover:shadow-xl"
+            >
               <div className="flex gap-1 text-amber-500">
                 {Array.from({ length: 5 }).map((_, idx) => (
                   <Star key={idx} className="h-5 w-5 fill-current" />
