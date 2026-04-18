@@ -399,20 +399,11 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="absolute inset-0 bg-slate-950/45" />
         </div>
 
-        <div className="absolute left-6 top-6 z-10 rounded-2xl border border-white/40 bg-slate-900/70 px-4 py-3 text-white shadow-lg backdrop-blur">
-          <div className="flex gap-1 text-yellow-400">
-            {Array.from({ length: 5 }).map((_, idx) => (
-              <Star key={idx} className="h-4 w-4 fill-current" />
-            ))}
-          </div>
-          <div className="mt-2 text-sm font-semibold">20+ years in business</div>
-        </div>
-
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-3xl text-white">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur">
               <CheckCircle2 className="h-4 w-4" />
-              Licensed local plumbers serving Sydney's Northern Beaches
+              20+ years in business
             </div>
 
             <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
