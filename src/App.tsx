@@ -755,13 +755,10 @@ function GalleryPage() {
             title="Recent plumbing work and job gallery"
             text="Thank you for visiting the Fix It Now Plumbing Gallery Page. Here are some pictures of the jobs completed regularly!"
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((item) => (
               <div key={item.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
-                <img src={item.image} alt={item.title} className="h-36 w-full object-cover" />
-                <div className="p-5">
-                  <div className="text-lg font-semibold text-slate-900">{item.title}</div>
-                </div>
+                <img src={item.image} alt={item.title} className="h-72 w-full object-cover" />
               </div>
             ))}
           </div>
