@@ -14,6 +14,7 @@ import {
   Home,
   Flame,
   Hammer,
+  Menu,
 } from "lucide-react";
 
 type PageKey =
@@ -1304,6 +1305,7 @@ function TermsPage() {
 
 export default function NorthernBeachesPlumberDemo() {
   const [currentPage, setCurrentPage] = useState<PageKey>("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesMenuRef = useRef<HTMLDivElement | null>(null);
 
@@ -1323,6 +1325,7 @@ export default function NorthernBeachesPlumberDemo() {
 
   const changePage = (page: PageKey) => {
     setCurrentPage(page);
+    setMobileMenuOpen(false);
     setServicesOpen(false);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1330,8 +1333,8 @@ export default function NorthernBeachesPlumberDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-11 text-slate-900">
-      <div className="fixed left-0 right-0 top-0 z-40 bg-sky-700 text-sm text-white shadow">
+    <div className="min-h-screen bg-white pt-0 text-slate-900 md:pt-11">
+      <div className="fixed left-0 right-0 top-0 z-40 hidden bg-sky-700 text-sm text-white shadow md:block">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
@@ -1358,13 +1361,13 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
       </div>
 
-      <header className="sticky top-11 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-10 px-10 py-5">
+      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
+        <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-5">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
               alt="Fix It Now Plumbing logo"
-              className="h-14 w-auto md:h-16"
+              className="h-12 w-auto md:h-16"
             />
           </button>
 
@@ -1483,23 +1486,10 @@ export default function NorthernBeachesPlumberDemo() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="flex flex-col items-end gap-2 md:hidden">
-              <a href="tel:0414248131" className="text-sm font-semibold text-sky-800">
-                📞 0414 248 131
-              </a>
-              <select
-                value={currentPage}
-                onChange={(event) => changePage(event.target.value as PageKey)}
-                className="w-52 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700"
-                aria-label="Select a page"
-              >
-                {mobileNavItems.map((item) => (
-                  <option key={item.key} value={item.key}>
-                    {item.label}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <a href="tel:0414248131" className="inline-flex items-center gap-2 text-xl font-bold text-slate-900 md:hidden">
+              <Phone className="h-5 w-5 text-purple-700" />
+              0414 248 131
+            </a>
             <a
               href="tel:0414248131"
               className="hidden items-center gap-2 rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white shadow-sm hover:bg-sky-800 md:inline-flex"
@@ -1507,8 +1497,33 @@ export default function NorthernBeachesPlumberDemo() {
               <Phone className="h-4 w-4" />
               0414 248 131
             </a>
+            <button
+              onClick={() => setMobileMenuOpen((value) => !value)}
+              className="inline-flex rounded-xl p-1 text-purple-700 md:hidden"
+              aria-label="Toggle menu"
+            >
+              <Menu className="h-9 w-9" />
+            </button>
           </div>
         </div>
+
+        {mobileMenuOpen ? (
+          <div className="border-t border-slate-200 bg-white px-4 py-3 md:hidden">
+            <div className="flex flex-col gap-2">
+              {mobileNavItems.map((item) => (
+                <button
+                  key={item.key}
+                  onClick={() => changePage(item.key)}
+                  className={`rounded-xl px-3 py-2 text-left font-medium ${
+                    currentPage === item.key ? "bg-purple-50 text-purple-700" : "text-slate-700"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </header>
 
       {currentPage === "home" ? <HomePage goTo={changePage} /> : null}
