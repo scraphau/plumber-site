@@ -681,10 +681,12 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                       </button>
 
                       <div
-                        className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"}`}
+                        className={`grid transition-all duration-500 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
                       >
-                        <div className="px-5 pb-5 md:px-6">
-                          <p className="whitespace-pre-line text-sm leading-relaxed text-white/95 md:text-base">{faq.answer}</p>
+                        <div className="overflow-hidden">
+                          <div className="px-5 pb-5 md:px-6">
+                            <p className="whitespace-pre-line text-sm leading-relaxed text-white/95 md:text-base">{faq.answer}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
