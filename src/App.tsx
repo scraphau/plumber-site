@@ -651,7 +651,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
       <section className="border-t border-slate-200 bg-slate-50">
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="grid items-stretch gap-6 lg:grid-cols-2">
+          <div className="grid items-start gap-6 lg:grid-cols-2">
             <div className="h-[560px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
               <img
                 src="https://www.yourhome.gov.au/sites/default/files/inline-images/E_Hot%20water_11_0.jpg"
@@ -660,12 +660,12 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               />
             </div>
 
-            <div className="h-[560px] overflow-hidden rounded-2xl border border-blue-300 bg-sky-700 text-white shadow-xl">
+            <div className="overflow-hidden rounded-2xl border border-blue-300 bg-sky-700 text-white shadow-xl">
               <div className="border-b border-white/30 px-5 py-6 md:px-6">
                 <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Frequently Asked Questions</h2>
               </div>
 
-              <div className="h-[calc(560px-92px)] overflow-y-auto">
+              <div>
                 {faqs.map((faq, index) => {
                   const isOpen = openFaqIndex === index;
 
