@@ -22,6 +22,7 @@ type PageKey =
   | "home"
   | "about"
   | "services"
+  | "testimonials"
   | "gallery"
   | "blocked-drains"
   | "hot-water"
@@ -211,6 +212,7 @@ const mobileNavItems: Array<{ key: PageKey; label: string }> = [
   { key: "home", label: "Home" },
   { key: "about", label: "About" },
   { key: "services", label: "Services" },
+  { key: "testimonials", label: "Testimonials" },
   { key: "emergency", label: "Emergency Plumber" },
   { key: "gallery", label: "Gallery" },
   { key: "blocked-drains", label: "Blocked Drains" },
@@ -789,6 +791,31 @@ function GalleryPage() {
   );
 }
 
+function TestimonialsPage() {
+  return (
+    <section className="border-b border-slate-200 bg-slate-50">
+      <div className="mx-auto max-w-7xl px-6 py-20">
+        <SectionHeading
+          eyebrow="Testimonials"
+          title="Customer reviews and feedback"
+          text="See what customers are saying about their experience with Fix It Now Plumbing."
+        />
+        <div className="mt-8">
+          <a
+            href="https://www.google.com/search?q=fix+it+now+plumbing#lrd=0x6b12a542a9d25031:0xdebe3731c81deb0b,1,,,,"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-sky-700 px-6 py-3 font-semibold text-white hover:bg-sky-800"
+          >
+            View all Google reviews
+          </a>
+        </div>
+        <ReviewCards />
+      </div>
+    </section>
+  );
+}
+
 function EmergencyPage() {
   const emergencySupportPoints = [
     "Genuine 24/7 emergency plumbing, 365 days a year",
@@ -1139,6 +1166,9 @@ export default function NorthernBeachesPlumberDemo() {
             <button onClick={() => changePage("about")} className="hover:text-sky-700">
               About
             </button>
+            <button onClick={() => changePage("testimonials")} className="hover:text-sky-700">
+              Testimonials
+            </button>
 
             <div className="relative" ref={servicesMenuRef}>
               <button
@@ -1282,6 +1312,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "home" ? <HomePage goTo={changePage} /> : null}
       {currentPage === "about" ? <AboutPage /> : null}
       {currentPage === "services" ? <ServicesPage goTo={changePage} /> : null}
+      {currentPage === "testimonials" ? <TestimonialsPage /> : null}
       {currentPage === "gallery" ? <GalleryPage /> : null}
       {currentPage === "blocked-drains" ? (
         <>
@@ -1497,6 +1528,9 @@ export default function NorthernBeachesPlumberDemo() {
                 </button>
                 <button onClick={() => changePage("services")} className="text-left hover:text-sky-700">
                   Services
+                </button>
+                <button onClick={() => changePage("testimonials")} className="text-left hover:text-sky-700">
+                  Testimonials
                 </button>
                 <button onClick={() => changePage("emergency")} className="text-left hover:text-sky-700">
                   Emergency Plumber
