@@ -1183,23 +1183,6 @@ function ContactPage() {
 }
 
 function ServiceAreasPage() {
-  const suburbsByColumnOrder = (() => {
-    const columns = 4;
-    const rows = Math.ceil(northernBeachesSuburbs.length / columns);
-    const arranged: string[] = [];
-
-    for (let row = 0; row < rows; row += 1) {
-      for (let col = 0; col < columns; col += 1) {
-        const index = col * rows + row;
-        if (index < northernBeachesSuburbs.length) {
-          arranged.push(northernBeachesSuburbs[index]);
-        }
-      }
-    }
-
-    return arranged;
-  })();
-
   return (
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
@@ -1222,9 +1205,12 @@ function ServiceAreasPage() {
             <p className="mt-3 text-slate-600">
               If your suburb is listed below, our team can help with prompt plumbing service.
             </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {suburbsByColumnOrder.map((suburb) => (
-                <div key={suburb} className="flex items-center gap-2 rounded-xl bg-slate-50 px-4 py-3 text-slate-700">
+            <div className="mt-8 columns-1 gap-3 sm:columns-2 lg:columns-4">
+              {northernBeachesSuburbs.map((suburb) => (
+                <div
+                  key={suburb}
+                  className="mb-3 flex break-inside-avoid items-center gap-2 rounded-xl bg-slate-50 px-4 py-3 text-slate-700"
+                >
                   <MapPin className="h-4 w-4 text-sky-700" />
                   <span className="text-sm font-medium">{suburb}</span>
                 </div>
