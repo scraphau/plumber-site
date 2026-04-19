@@ -1587,7 +1587,7 @@ export default function NorthernBeachesPlumberDemo() {
               aria-label="Fix It Now Plumbing on Facebook"
               className="inline-flex items-center text-white hover:text-sky-200"
             >
-              <FacebookIcon className="h-[18px] w-[18px]" />
+              <FacebookIcon className="h-[20px] w-[20px]" />
             </a>
             <a
               href="https://www.instagram.com/fixitnowplumbing/"
@@ -2010,7 +2010,7 @@ export default function NorthernBeachesPlumberDemo() {
                   aria-label="Fix It Now Plumbing on Facebook"
                   className="inline-flex items-center text-white hover:text-sky-300"
                 >
-                  <FacebookIcon className="h-[30px] w-[30px]" />
+                  <FacebookIcon className="h-[34px] w-[34px]" />
                 </a>
                 <a
                   href="https://www.instagram.com/fixitnowplumbing/"
