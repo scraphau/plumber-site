@@ -2044,7 +2044,7 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
           </div>
 
-          <div className="relative mt-12 pt-6 text-xs text-slate-400">
+          <div className="relative mt-12 pt-6 text-center text-base text-slate-400">
             <div className="absolute left-1/2 top-0 h-px w-screen -translate-x-1/2 bg-sky-700" />
             © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
           </div>
