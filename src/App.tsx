@@ -1344,7 +1344,7 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
+      <header className="relative sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
         <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-5">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
@@ -1491,7 +1491,7 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
 
         <div
-          className={`mx-2 mt-2 overflow-hidden rounded-2xl border border-sky-700 bg-sky-700 text-white transition-all duration-500 ease-in-out md:hidden ${
+          className={`absolute left-2 right-2 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-sky-700 bg-sky-700 text-white shadow-xl transition-all duration-500 ease-in-out md:hidden ${
             mobileMenuOpen ? "max-h-[75vh] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
