@@ -686,8 +686,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                   ))}
                 </div>
                 <div className={`mt-5 text-[16px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
-                <div className={`mt-2 text-[15.5px] font-light font-['Montserrat'] ${review.locationClass}`}>{review.location}</div>
-                <p className="mt-6 text-center text-[15.5px] font-light leading-relaxed font-['Montserrat']">“{review.quote}”</p>
+                <div className={`mt-2 text-[17px] font-light font-['Montserrat',sans-serif] ${review.locationClass}`}>{review.location}</div>
+                <p className="mt-6 text-center text-[17px] font-light leading-relaxed font-['Montserrat',sans-serif]">“{review.quote}”</p>
               </div>
             ))}
           </div>
@@ -1028,7 +1028,7 @@ function TestimonialsPage() {
                   loading="lazy"
                 />
               </div>
-              <p className="mt-6 text-[16px] font-semibold leading-relaxed text-slate-900">“{item.quote}”</p>
+              <p className="mt-6 text-[16px] font-semibold leading-relaxed text-[#101218]">“{item.quote}”</p>
               <div className="mt-8">
                 <div className="text-[14px] font-extrabold uppercase tracking-[0.15em] text-slate-900">{item.name}</div>
                 <div className="mt-1 text-[14px] font-medium text-[#494B51]">from {item.location}</div>
