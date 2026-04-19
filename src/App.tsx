@@ -1421,7 +1421,14 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>Sydney's Northern Beaches</span>
+              <a
+                href="https://www.google.com/maps/place/Plumber+Northern+Beaches+@+Fix+It+Now+Plumbing/@-33.6720467,151.2620779,30023m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6b12a542a9d25031:0xdebe3731c81deb0b!8m2!3d-33.6720468!4d151.2620779!16s%2Fg%2F11xl8trtt?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline"
+              >
+                Sydney's Northern Beaches
+              </a>
             </div>
           </div>
           <div className="flex items-center gap-2">
