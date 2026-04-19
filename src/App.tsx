@@ -678,14 +678,16 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 key={`${review.name}-${review.location}`}
                 className={`rounded-2xl border border-slate-200 p-6 text-center shadow-sm md:p-8 ${review.cardClass}`}
               >
-                <div className={`mx-auto flex w-1/3 items-center justify-between ${review.starClass}`}>
+                <div className={`mx-auto flex w-1/3 items-center justify-between text-2xl leading-none ${review.starClass}`}>
                   {Array.from({ length: 5 }).map((_, idx) => (
-                    <Star key={idx} className="h-5 w-5 fill-current" aria-hidden="true" />
+                    <span key={idx} aria-hidden="true">
+                      ★
+                    </span>
                   ))}
                 </div>
-                <div className={`mt-5 text-2xl font-semibold tracking-tight ${review.nameClass}`}>{review.name}</div>
-                <div className={`mt-2 text-xl font-light ${review.locationClass}`}>{review.location}</div>
-                <p className="mt-6 text-lg font-light leading-relaxed md:text-xl">“{review.quote}”</p>
+                <div className={`mt-5 text-xl font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
+                <div className={`mt-2 text-xl font-light font-['Montserrat'] ${review.locationClass}`}>{review.location}</div>
+                <p className="mt-6 text-lg font-light leading-relaxed font-['Montserrat'] md:text-xl">“{review.quote}”</p>
               </div>
             ))}
           </div>
