@@ -75,6 +75,14 @@ function InstagramIcon(props: ComponentPropsWithoutRef<"svg">) {
   );
 }
 
+function FacebookIcon(props: ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M14 8h-2c-1.1 0-2 .9-2 2v2h4l-.5 3H10v7H7v-7H5v-3h2v-2a4 4 0 0 1 4-4h3z" />
+    </svg>
+  );
+}
+
 const reviews = [
   {
     quote: "Called at 7am about a burst pipe and they had it sorted before lunch. Clean, professional and stress-free.",
@@ -1579,7 +1587,7 @@ export default function NorthernBeachesPlumberDemo() {
               aria-label="Fix It Now Plumbing on Facebook"
               className="inline-flex items-center text-white hover:text-sky-200"
             >
-              <span className="inline-flex h-[18px] w-[18px] items-center justify-center text-[18px] font-bold leading-none">f</span>
+              <FacebookIcon className="h-[18px] w-[18px]" />
             </a>
             <a
               href="https://www.instagram.com/fixitnowplumbing/"
@@ -2002,7 +2010,7 @@ export default function NorthernBeachesPlumberDemo() {
                   aria-label="Fix It Now Plumbing on Facebook"
                   className="inline-flex items-center text-white hover:text-sky-300"
                 >
-                  <span className="inline-flex h-[23px] w-[23px] items-center justify-center text-[23px] font-bold leading-none">f</span>
+                  <FacebookIcon className="h-[23px] w-[23px]" />
                 </a>
                 <a
                   href="https://www.instagram.com/fixitnowplumbing/"
