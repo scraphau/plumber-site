@@ -1951,7 +1951,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "terms" ? <TermsPage /> : null}
 
       <footer className="border-t border-slate-800 bg-black text-white">
-        <div className="mx-auto w-full max-w-[92rem] px-6 py-14 md:px-10 md:py-16">
+        <div className="mx-auto w-full max-w-[1350px] px-6 py-14 md:min-h-[508px] md:px-10 md:py-16">
           <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
             <div>
               <PageAnchor page="home" onNavigate={changePage} className="text-left" aria-label="Fix It Now Plumbing home">
@@ -1961,14 +1961,14 @@ export default function NorthernBeachesPlumberDemo() {
                   className="h-24 w-auto rounded-lg bg-white p-3"
                 />
               </PageAnchor>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
+              <p className="mt-4 max-w-sm text-base leading-relaxed text-slate-300">
                 Family owned and 20+ year operated plumbing business helping Sydney’s Northern Beaches with reliable service, clear communication and quality workmanship.
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-white">Quick Links</h3>
-              <div className="mt-4 flex flex-col gap-2 text-sm text-slate-200">
+              <h3 className="text-[22px] font-bold text-white">Quick Links</h3>
+              <div className="mt-4 flex flex-col gap-2 text-base text-slate-200">
                 <PageAnchor page="home" onNavigate={changePage} className="text-left hover:text-sky-300">
                   Home
                 </PageAnchor>
@@ -2000,8 +2000,8 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-white">Services</h3>
-              <div className="mt-4 flex flex-col gap-2 text-sm text-slate-200">
+              <h3 className="text-[22px] font-bold text-white">Services</h3>
+              <div className="mt-4 flex flex-col gap-2 text-base text-slate-200">
                 {serviceRows.map((service) => (
                   <PageAnchor key={service.key} page={service.key} onNavigate={changePage} className="text-left hover:text-sky-300">
                     {service.title}
@@ -2011,8 +2011,8 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-white">Get In Touch</h3>
-              <div className="mt-4 space-y-3 text-sm text-slate-200">
+              <h3 className="text-[22px] font-bold text-white">Get In Touch</h3>
+              <div className="mt-4 space-y-3 text-base text-slate-200">
                 <a href="tel:0414248131" className="flex items-center gap-2 hover:text-sky-300">
                   <Phone className="h-4 w-4 text-sky-700" />
                   0414 248 131
