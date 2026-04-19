@@ -1008,7 +1008,7 @@ function TestimonialsPage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((item) => (
-            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-8">
+            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-12">
               <div className="flex gap-1 text-amber-500">
                 {Array.from({ length: 5 }).map((_, idx) => (
                   <Star key={idx} className="h-5 w-5 fill-current" />
