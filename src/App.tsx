@@ -761,7 +761,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
       <section className="border-t border-slate-200 bg-slate-50">
         <div className="mx-auto max-w-[92rem] px-6 py-20">
-          <div className="grid items-start gap-6 lg:grid-cols-2">
+          <div className="grid items-start gap-6 lg:grid-cols-[3fr_2fr]">
             <div className="h-[560px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
               <img
                 src="https://www.yourhome.gov.au/sites/default/files/inline-images/E_Hot%20water_11_0.jpg"
@@ -869,7 +869,7 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
             {serviceRows.map((service) => {
               const ServiceIcon = service.icon;
               return (
-                <div key={service.title} className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm lg:grid-cols-2">
+                <div key={service.title} className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm lg:grid-cols-[3fr_2fr]">
                   <div>
                     <img src={service.image} alt={service.title} className="h-[320px] w-full object-cover" />
                   </div>
@@ -1320,7 +1320,7 @@ function ServiceAreasPage() {
   return (
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto grid max-w-[92rem] items-center gap-10 px-6 py-20 md:py-24 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-[92rem] items-center gap-10 px-6 py-20 md:py-24 lg:grid-cols-[3fr_2fr]">
           <div>
             <SectionHeading
               eyebrow="Service Areas"
