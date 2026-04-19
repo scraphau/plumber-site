@@ -1951,9 +1951,9 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "terms" ? <TermsPage /> : null}
 
       <footer className="border-t border-slate-800 bg-black text-white">
-        <div className="mx-auto w-full px-6 py-10 md:h-[508.41px] md:w-[1350px] md:px-[108px] md:py-[54px]">
+        <div className="mx-auto w-full px-6 py-10 md:min-h-[508.41px] md:w-[1350px] md:px-[108px] md:py-[54px]">
           <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
-            <div className="xl:-ml-8">
+            <div>
               <PageAnchor page="home" onNavigate={changePage} className="text-left" aria-label="Fix It Now Plumbing home">
                 <img
                   src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
@@ -2008,7 +2008,7 @@ export default function NorthernBeachesPlumberDemo() {
               </div>
             </div>
 
-            <div className="xl:ml-14 xl:justify-self-end">
+            <div>
               <h3 className="text-[22px] font-bold text-white">Services</h3>
               <div className="mt-4 flex flex-col gap-2 text-base text-slate-200">
                 {serviceRows.map((service) => (
@@ -2025,7 +2025,7 @@ export default function NorthernBeachesPlumberDemo() {
               </div>
             </div>
 
-            <div className="xl:ml-20 xl:justify-self-end">
+            <div className="xl:justify-self-end">
               <h3 className="text-[22px] font-bold text-white">Get In Touch</h3>
               <div className="mt-4 space-y-3 text-base text-slate-200">
                 <a href="tel:0414248131" className="flex items-center gap-2 hover:text-sky-300">
