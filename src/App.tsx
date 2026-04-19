@@ -1368,7 +1368,7 @@ export default function NorthernBeachesPlumberDemo() {
     clearServicesCloseTimeout();
     servicesCloseTimeoutRef.current = setTimeout(() => {
       setServicesOpen(false);
-    }, 1000);
+    }, 500);
   };
 
   const toggleServicesMenu = () => {
@@ -1464,7 +1464,7 @@ export default function NorthernBeachesPlumberDemo() {
               </button>
               {servicesOpen ? (
                 <div
-                  className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white py-2 shadow-lg"
+                  className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-sky-600 bg-white py-2 shadow-lg"
                   role="menu"
                 >
                   <button
