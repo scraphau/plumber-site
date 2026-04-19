@@ -1231,15 +1231,25 @@ function ServiceAreasPage() {
   return (
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
-          <SectionHeading
-            eyebrow="Service Areas"
-            title="Northern Beaches plumbing service areas"
-            text="Fix It Now Plumbing provides local plumbing support throughout Sydney’s Northern Beaches, including emergency callouts, blocked drains, hot water repairs, and general maintenance."
-          />
-          <p className="mt-6 max-w-4xl text-lg text-slate-600">
-            We service homes and businesses right across the region and aim to provide fast, clear communication and reliable workmanship wherever you are based on the Northern Beaches.
-          </p>
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-24 lg:grid-cols-[minmax(0,1fr)_380px]">
+          <div>
+            <SectionHeading
+              eyebrow="Service Areas"
+              title="Northern Beaches plumbing service areas"
+              text="Fix It Now Plumbing provides local plumbing support throughout Sydney’s Northern Beaches, including emergency callouts, blocked drains, hot water repairs, and general maintenance."
+            />
+            <p className="mt-6 max-w-4xl text-lg text-slate-600">
+              We service homes and businesses right across the region and aim to provide fast, clear communication and reliable workmanship wherever you are based on the Northern Beaches.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-2xl border-2 border-sky-600 bg-white shadow-sm">
+            <img
+              src="https://staticmap.openstreetmap.de/staticmap.php?center=-33.6720468,151.2620779&zoom=11&size=760x560"
+              alt="Northern Beaches service area map"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
