@@ -346,7 +346,7 @@ function ContactPanel() {
                 rel="noreferrer"
                 className="hover:underline"
               >
-                Sydney Wide Plumbing Service Area
+                Northen Beaches Wide Plumbing Service Area
               </a>
             </div>
           </div>
@@ -449,6 +449,39 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
     },
   ] as const;
 
+  const featuredHomeReviews = [
+    {
+      name: "Sarah",
+      location: "Avalon, NSW",
+      quote:
+        "I have used Paul for plumbing services for over ten years now and he has always provided a great service ranging from tap replacement to external drainage issues earlier this year. Paul is very honest and helpful in providing advice and solutions and I would recommend his services.",
+      cardClass: "bg-sky-700 text-white",
+      starClass: "text-white",
+      nameClass: "text-white",
+      locationClass: "text-sky-100",
+    },
+    {
+      name: "Scott",
+      location: "Narrabeen, NSW",
+      quote:
+        "Paul from Fix It Now Plumbing has completed several plumbing jobs at our home over the past 5 years including the clearing of blocked drains, new taps and hot water systems. Paul is reliable, honest and professional and has always provided high quality work and solutions for us. I would strongly recommend Paul to anyone requiring a reliable quality plumber on the Northern Beaches.",
+      cardClass: "bg-slate-100 text-slate-900",
+      starClass: "text-sky-700",
+      nameClass: "text-slate-900",
+      locationClass: "text-slate-600",
+    },
+    {
+      name: "Lauren",
+      location: "Dee Why, NSW",
+      quote:
+        "We can’t speak more highly of our experience with Paul. He responded to our enquiry quickly and squeezed us in the next day (lifesaver!). Paul was very clear and competitive with his quote and completed the job faster than we anticipated. We’ll definitely be in touch for upcoming renovations!",
+      cardClass: "bg-sky-700 text-white",
+      starClass: "text-white",
+      nameClass: "text-white",
+      locationClass: "text-sky-100",
+    },
+  ] as const;
+
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   return (
@@ -459,7 +492,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="absolute inset-0 bg-slate-950/45" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="relative mx-auto grid min-h-[calc(100vh-7rem)] max-w-7xl items-center gap-8 px-6 py-10 md:py-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-3xl text-white">
             <div className="inline-flex flex-col rounded-2xl border border-white/40 bg-slate-900/70 px-5 py-3 text-white shadow-lg backdrop-blur">
               <div className="flex gap-1 text-yellow-400">
@@ -470,15 +503,15 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               <div className="mt-2 text-sm font-semibold">20+ years in business</div>
             </div>
 
-            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
+            <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
               Fast, reliable plumbing done right the first time.
             </h1>
 
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-100">
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-100">
               From emergency leaks and blocked drains to hot water repairs and ongoing maintenance, Fix It Now Plumbing delivers prompt service, upfront communication, and workmanship you can trust.
             </p>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row">
               <button
                 onClick={() => goTo("contact")}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white hover:bg-sky-700"
@@ -495,7 +528,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               </a>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-6 text-white">
+            <div className="mt-6 flex flex-wrap items-center gap-5 text-white">
               <div className="flex items-center gap-2">
                 <div className="flex gap-1 text-yellow-400">
                   {Array.from({ length: 5 }).map((_, idx) => (
@@ -516,10 +549,10 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl md:p-7">
-            <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-2xl md:p-6">
+            <div className="text-xl font-bold text-slate-900 md:text-2xl">Request a plumbing quote</div>
             <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
-            <form onSubmit={(event) => handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
+            <form onSubmit={(event) => handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-5 space-y-3">
               <input
                 name="Name"
                 className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
@@ -632,6 +665,31 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 Request a quote
               </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">Customer Reviews</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {featuredHomeReviews.map((review) => (
+              <div
+                key={`${review.name}-${review.location}`}
+                className={`rounded-2xl border border-slate-200 p-6 text-center shadow-sm md:p-8 ${review.cardClass}`}
+              >
+                <div className={`mx-auto flex w-1/3 items-center justify-between text-2xl leading-none ${review.starClass}`}>
+                  {Array.from({ length: 5 }).map((_, idx) => (
+                    <span key={idx} aria-hidden="true">
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <div className={`mt-5 text-[14px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
+                <div className={`mt-2 text-[15.5px] font-light font-['Montserrat'] ${review.locationClass}`}>{review.location}</div>
+                <p className="mt-6 text-[15.5px] font-light leading-relaxed font-['Montserrat']">“{review.quote}”</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -950,7 +1008,7 @@ function TestimonialsPage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((item) => (
-            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-8">
+            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-12">
               <div className="flex gap-1 text-amber-500">
                 {Array.from({ length: 5 }).map((_, idx) => (
                   <Star key={idx} className="h-5 w-5 fill-current" />
@@ -1276,7 +1334,10 @@ function TermsPage() {
             <a href="tel:0414248131" className="text-sky-700 underline">
               0414 248 131
             </a>{" "}
-            or email at paul@fixitnowplumbing.com.au.
+            or email at {" "}
+            <a href="mailto:paul@fixitnowplumbing.com.au" className="text-sky-700 underline">
+              paul@fixitnowplumbing.com.au
+            </a>.
           </p>
         </div>
       </div>
@@ -1344,7 +1405,7 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
+      <header className="relative sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
         <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-5">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
@@ -1482,7 +1543,7 @@ export default function NorthernBeachesPlumberDemo() {
             </a>
             <button
               onClick={() => setMobileMenuOpen((value) => !value)}
-              className="inline-flex rounded-xl p-1 text-purple-700 md:hidden"
+              className="inline-flex rounded-xl p-1 text-sky-700 md:hidden"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="h-9 w-9" /> : <Menu className="h-9 w-9" />}
@@ -1491,7 +1552,7 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
 
         <div
-          className={`mx-2 mt-2 overflow-hidden rounded-2xl border border-sky-600 bg-sky-700 text-white transition-all duration-500 ease-in-out md:hidden ${
+          className={`absolute left-2 right-2 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-sky-700 bg-sky-700 text-white shadow-xl transition-all duration-500 ease-in-out md:hidden ${
             mobileMenuOpen ? "max-h-[75vh] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
@@ -1500,12 +1561,12 @@ export default function NorthernBeachesPlumberDemo() {
               {[
                 { key: "home" as const, label: "Home" },
                 { key: "services" as const, label: "Services" },
+                { key: "guarantee" as const, label: "Guarantee" },
                 { key: "testimonials" as const, label: "Testimonials" },
                 { key: "gallery" as const, label: "Gallery" },
                 { key: "about" as const, label: "About Us" },
                 { key: "contact" as const, label: "Contact Us" },
                 { key: "service-areas" as const, label: "Service Areas" },
-                { key: "guarantee" as const, label: "Guarantee" },
               ].map((item) =>
                 item.key === "services" ? (
                   <div key={item.key} className="w-full">
@@ -1522,7 +1583,7 @@ export default function NorthernBeachesPlumberDemo() {
                     <div
                       className={`overflow-hidden transition-all duration-300 ${mobileServicesOpen ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"}`}
                     >
-                      <div className="mt-2 space-y-2 rounded-xl bg-white/10 p-3 text-left">
+                      <div className="mt-2 space-y-2 rounded-xl bg-sky-800/40 p-3 text-left">
                         {[
                           { key: "services" as const, label: "All Services" },
                           { key: "emergency" as const, label: "Emergency Plumber" },
