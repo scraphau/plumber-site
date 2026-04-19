@@ -65,6 +65,16 @@ const aboutImage =
   "https://mrflowplumbing.com.au/wp-content/uploads/2024/07/male-plumber-working-fix-problems-client-s-house_23-2150990735.jpg";
 const enquiryEmail = "paul@fixitnowplumbing.com.au";
 
+function InstagramIcon(props: ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+      <circle cx="12" cy="12" r="4.5" />
+      <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 const reviews = [
   {
     quote: "Called at 7am about a burst pipe and they had it sorted before lunch. Clean, professional and stress-free.",
@@ -1557,9 +1567,29 @@ export default function NorthernBeachesPlumberDemo() {
               </a>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Clock3 className="h-4 w-4" />
-            <span>Emergency plumbing available</span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <Clock3 className="h-4 w-4" />
+              <span>Emergency plumbing available</span>
+            </div>
+            <a
+              href="https://www.facebook.com/FixItNowPlumbing/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Fix It Now Plumbing on Facebook"
+              className="inline-flex items-center text-white hover:text-sky-200"
+            >
+              <span className="text-base font-bold leading-none">f</span>
+            </a>
+            <a
+              href="https://www.instagram.com/fixitnowplumbing/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Fix It Now Plumbing on Instagram"
+              className="inline-flex items-center text-white hover:text-sky-200"
+            >
+              <InstagramIcon className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </div>
@@ -1970,23 +2000,18 @@ export default function NorthernBeachesPlumberDemo() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Fix It Now Plumbing on Facebook"
-                  className="inline-flex text-[44px] font-bold leading-none text-white hover:text-sky-300"
+                  className="inline-flex items-center text-white hover:text-sky-300"
                 >
-                  f
+                  <span className="text-[44px] font-bold leading-none">f</span>
                 </a>
                 <a
                   href="https://www.instagram.com/fixitnowplumbing/"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Fix It Now Plumbing on Instagram"
-                  className="inline-flex items-center"
+                  className="inline-flex items-center text-white hover:text-sky-300"
                 >
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                    alt="Instagram logo"
-                    className="h-11 w-11"
-                    loading="lazy"
-                  />
+                  <InstagramIcon className="h-11 w-11" />
                 </a>
               </div>
             </div>
