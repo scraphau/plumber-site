@@ -2008,7 +2008,7 @@ export default function NorthernBeachesPlumberDemo() {
               </div>
             </div>
 
-            <div>
+            <div className="xl:ml-14 xl:justify-self-end">
               <h3 className="text-[22px] font-bold text-white">Services</h3>
               <div className="mt-4 flex flex-col gap-2 text-base text-slate-200">
                 {serviceRows.map((service) => (
@@ -2025,7 +2025,7 @@ export default function NorthernBeachesPlumberDemo() {
               </div>
             </div>
 
-            <div className="xl:ml-10 xl:justify-self-end">
+            <div className="xl:ml-20 xl:justify-self-end">
               <h3 className="text-[22px] font-bold text-white">Get In Touch</h3>
               <div className="mt-4 space-y-3 text-base text-slate-200">
                 <a href="tel:0414248131" className="flex items-center gap-2 hover:text-sky-300">
