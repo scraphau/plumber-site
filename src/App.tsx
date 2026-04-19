@@ -1320,7 +1320,7 @@ function ServiceAreasPage() {
   return (
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto grid max-w-[92rem] items-center gap-10 px-6 py-20 md:py-24 lg:grid-cols-[minmax(0,1fr)_380px]">
+        <div className="mx-auto grid max-w-[92rem] items-center gap-10 px-6 py-20 md:py-24 lg:grid-cols-2">
           <div>
             <SectionHeading
               eyebrow="Service Areas"
