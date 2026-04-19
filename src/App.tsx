@@ -451,7 +451,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
 
   const featuredHomeReviews = [
     {
-      name: "Sarah J",
+      name: "Sarah",
       location: "Avalon, NSW",
       quote:
         "I have used Paul for plumbing services for over ten years now and he has always provided a great service ranging from tap replacement to external drainage issues earlier this year. Paul is very honest and helpful in providing advice and solutions and I would recommend his services.",
@@ -461,7 +461,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       locationClass: "text-sky-100",
     },
     {
-      name: "Scott B",
+      name: "Scott",
       location: "Narrabeen, NSW",
       quote:
         "Paul from Fix It Now Plumbing has completed several plumbing jobs at our home over the past 5 years including the clearing of blocked drains, new taps and hot water systems. Paul is reliable, honest and professional and has always provided high quality work and solutions for us. I would strongly recommend Paul to anyone requiring a reliable quality plumber on the Northern Beaches.",
@@ -471,7 +471,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       locationClass: "text-slate-600",
     },
     {
-      name: "Lauren C",
+      name: "Lauren",
       location: "Dee Why, NSW",
       quote:
         "We can’t speak more highly of our experience with Paul. He responded to our enquiry quickly and squeezed us in the next day (lifesaver!). Paul was very clear and competitive with his quote and completed the job faster than we anticipated. We’ll definitely be in touch for upcoming renovations!",
@@ -685,9 +685,9 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                     </span>
                   ))}
                 </div>
-                <div className={`mt-5 text-xl font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
-                <div className={`mt-2 text-xl font-light font-['Montserrat'] ${review.locationClass}`}>{review.location}</div>
-                <p className="mt-6 text-lg font-light leading-relaxed font-['Montserrat'] md:text-xl">“{review.quote}”</p>
+                <div className={`mt-5 text-[14px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
+                <div className={`mt-2 text-[15.5px] font-light font-['Montserrat'] ${review.locationClass}`}>{review.location}</div>
+                <p className="mt-6 text-[15.5px] font-light leading-relaxed font-['Montserrat']">“{review.quote}”</p>
               </div>
             ))}
           </div>
