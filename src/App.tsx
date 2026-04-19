@@ -1951,7 +1951,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "terms" ? <TermsPage /> : null}
 
       <footer className="bg-black text-white">
-        <div className="mx-auto w-full max-w-[1350px] px-8 py-16 md:px-12">
+        <div className="mx-auto w-full max-w-[92rem] px-8 py-16 md:px-12">
           <div className="grid items-start gap-14 md:grid-cols-2 xl:grid-cols-[1.1fr_1fr_1fr_1fr]">
             <div>
               <PageAnchor page="home" onNavigate={changePage} className="text-left" aria-label="Fix It Now Plumbing home">
@@ -2023,7 +2023,7 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
 
         <div className="border-t border-sky-700 bg-black">
-          <div className="mx-auto flex h-[45px] w-full max-w-[1350px] items-center justify-center text-center text-base text-white">
+          <div className="mx-auto flex h-[45px] w-full max-w-[92rem] items-center justify-center text-center text-base text-white">
             © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
           </div>
         </div>
