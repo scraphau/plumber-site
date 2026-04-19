@@ -1021,7 +1021,12 @@ function TestimonialsPage() {
                     <Star key={idx} className="h-5 w-5 fill-current" />
                   ))}
                 </div>
-                <span className="text-2xl font-semibold leading-none text-[#c6d4ea]">G+</span>
+                <img
+                  src="https://cdn.iconscout.com/icon/free/png-256/free-google-icon-svg-download-png-189824.png?f=webp&w=128"
+                  alt="Google"
+                  className="h-7 w-7 object-contain"
+                  loading="lazy"
+                />
               </div>
               <p className="mt-6 text-[16px] font-semibold leading-relaxed text-slate-900">“{item.quote}”</p>
               <div className="mt-8">
