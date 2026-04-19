@@ -1951,8 +1951,8 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "terms" ? <TermsPage /> : null}
 
       <footer className="border-t border-slate-800 bg-black text-white">
-        <div className="mx-auto max-w-7xl px-6 py-12">
-          <div className="grid gap-10 md:grid-cols-3">
+        <div className="mx-auto w-full max-w-[92rem] px-6 py-14 md:px-10 md:py-16">
+          <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
             <div>
               <PageAnchor page="home" onNavigate={changePage} className="text-left" aria-label="Fix It Now Plumbing home">
                 <img
@@ -2000,6 +2000,17 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
 
             <div>
+              <h3 className="text-lg font-bold text-white">Services</h3>
+              <div className="mt-4 flex flex-col gap-2 text-sm text-slate-200">
+                {serviceRows.map((service) => (
+                  <PageAnchor key={service.key} page={service.key} onNavigate={changePage} className="text-left hover:text-sky-300">
+                    {service.title}
+                  </PageAnchor>
+                ))}
+              </div>
+            </div>
+
+            <div>
               <h3 className="text-lg font-bold text-white">Get In Touch</h3>
               <div className="mt-4 space-y-3 text-sm text-slate-200">
                 <a href="tel:0414248131" className="flex items-center gap-2 hover:text-sky-300">
@@ -2018,7 +2029,7 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
           </div>
 
-          <div className="mt-10 border-t border-slate-700 pt-5 text-xs text-slate-400">
+          <div className="mt-12 border-t border-slate-700 pt-6 text-xs text-slate-400">
             © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
           </div>
         </div>
