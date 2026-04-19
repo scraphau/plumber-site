@@ -346,7 +346,7 @@ function ContactPanel() {
                 rel="noreferrer"
                 className="hover:underline"
               >
-                Sydney Wide Plumbing Service Area
+                Northen Beaches Wide Plumbing Service Area
               </a>
             </div>
           </div>
