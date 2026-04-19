@@ -2012,8 +2012,14 @@ export default function NorthernBeachesPlumberDemo() {
               <h3 className="text-[22px] font-bold text-white">Services</h3>
               <div className="mt-4 flex flex-col gap-2 text-base text-slate-200">
                 {serviceRows.map((service) => (
-                  <PageAnchor key={service.key} page={service.key} onNavigate={changePage} className="text-left hover:text-sky-300">
-                    {service.title}
+                  <PageAnchor
+                    key={service.key}
+                    page={service.key}
+                    onNavigate={changePage}
+                    className="inline-flex items-center gap-2 text-left hover:text-sky-300"
+                  >
+                    <CheckCircle2 className="h-4 w-4 text-sky-300" />
+                    <span>{service.title}</span>
                   </PageAnchor>
                 ))}
               </div>
