@@ -1464,7 +1464,7 @@ export default function NorthernBeachesPlumberDemo() {
               </button>
               {servicesOpen ? (
                 <div
-                  className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-sky-600 bg-white py-2 shadow-lg"
+                  className="absolute left-0 top-full mt-2 w-56 rounded-xl border-4 border-sky-600 bg-white py-2 shadow-lg"
                   role="menu"
                 >
                   <button
