@@ -676,7 +676,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             {featuredHomeReviews.map((review) => (
               <div
                 key={`${review.name}-${review.location}`}
-                className={`flex flex-col items-center rounded-2xl border border-slate-200 p-6 text-center shadow-sm md:p-8 ${review.cardClass}`}
+                className={`flex flex-col items-center rounded-2xl border border-slate-200 p-6 text-center antialiased shadow-sm md:p-8 ${review.cardClass}`}
               >
                 <div className={`mx-auto flex items-center justify-center gap-1 text-2xl leading-none ${review.starClass}`}>
                   {Array.from({ length: 5 }).map((_, idx) => (
@@ -686,8 +686,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                   ))}
                 </div>
                 <div className={`mt-5 text-[16px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
-                <div className={`mt-2 text-[17px] font-light font-['Montserrat',sans-serif] ${review.locationClass}`}>{review.location}</div>
-                <p className="mt-6 text-center text-[17px] font-light leading-relaxed font-['Montserrat',sans-serif]">“{review.quote}”</p>
+                <div className={`mt-2 text-[17px] font-medium font-['Montserrat',sans-serif] ${review.locationClass}`}>{review.location}</div>
+                <p className="mt-6 text-center text-[17px] font-normal leading-relaxed text-slate-800 font-['Montserrat',sans-serif]">“{review.quote}”</p>
               </div>
             ))}
           </div>
@@ -1030,7 +1030,7 @@ function TestimonialsPage() {
               </div>
               <p className="mt-6 text-[16px] font-semibold leading-relaxed text-[#101218]">“{item.quote}”</p>
               <div className="mt-8">
-                <div className="text-[14px] font-extrabold uppercase tracking-[0.15em] text-slate-900">{item.name}</div>
+                <div className="text-[14px] font-extrabold uppercase tracking-[0.15em] text-[#101218]">{item.name}</div>
                 <div className="mt-1 text-[14px] font-medium text-[#494B51]">from {item.location}</div>
               </div>
             </div>
