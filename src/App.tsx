@@ -1331,7 +1331,7 @@ function ServiceAreasPage() {
               We service homes and businesses right across the region and aim to provide fast, clear communication and reliable workmanship wherever you are based on the Northern Beaches.
             </p>
           </div>
-          <div className="overflow-hidden rounded-2xl border-2 border-sky-600 bg-white shadow-sm">
+          <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
             <img
               src="https://www.google.com/maps/vt/data=AuCy0KaAvPmueshM5i1Zb3rIQGKXbix2meJcmnkkbbVeWzJ-XxQYMO-IQVNn-t0E_Rc6ieSKUdK30GKayW7eeFlqYi1Ya74Zo8336TPKl4ekNZERvcar_M2M2vi4iFuxwJbGRrPEPUmDhwD2wMe6yQWZHk3XPGRKxttrbIVxfTYGmO-uI4FwA9fVXOZBRYF3LdkvyeIbMjOjf4himUH4JjgeoeNlqYtwrrB9SRNyhSwDQ5_LnfnC20vjqAwRZ5x9mZ3qMgi7GNQM7DQ54CK1SoH1nnWLrBqgb-Gu2Od1oZZh54_7mIC9qsQ"
               alt="Northern Beaches service area map"
@@ -1964,15 +1964,31 @@ export default function NorthernBeachesPlumberDemo() {
               <p className="mt-5 max-w-sm text-base leading-relaxed text-slate-200">
                 Family owned and 20+ year operated plumbing business helping Sydney’s Northern Beaches with reliable service, clear communication and quality workmanship.
               </p>
-              <a
-                href="https://www.facebook.com/FixItNowPlumbing/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Fix It Now Plumbing on Facebook"
-                className="mt-5 inline-flex text-[44px] font-bold leading-none text-white hover:text-sky-300"
-              >
-                f
-              </a>
+              <div className="mt-5 flex items-center gap-3">
+                <a
+                  href="https://www.facebook.com/FixItNowPlumbing/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Fix It Now Plumbing on Facebook"
+                  className="inline-flex text-[44px] font-bold leading-none text-white hover:text-sky-300"
+                >
+                  f
+                </a>
+                <a
+                  href="https://www.instagram.com/fixitnowplumbing/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Fix It Now Plumbing on Instagram"
+                  className="inline-flex items-center"
+                >
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                    alt="Instagram logo"
+                    className="h-11 w-11"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
             </div>
 
             <div>
