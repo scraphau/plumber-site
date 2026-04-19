@@ -455,7 +455,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       location: "Avalon, NSW",
       quote:
         "I have used Paul for plumbing services for over ten years now and he has always provided a great service ranging from tap replacement to external drainage issues earlier this year. Paul is very honest and helpful in providing advice and solutions and I would recommend his services.",
-      cardClass: "bg-sky-700 text-white",
+      cardClass: "bg-[#15659a] text-white",
       starClass: "text-white",
       nameClass: "text-white",
       locationClass: "text-white",
@@ -466,18 +466,18 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       location: "Narrabeen, NSW",
       quote:
         "Paul from Fix It Now Plumbing has completed several plumbing jobs at our home over the past 5 years including the clearing of blocked drains, new taps and hot water systems. Paul is reliable, honest and professional and has always provided high quality work and solutions for us. I would strongly recommend Paul to anyone requiring a reliable quality plumber on the Northern Beaches.",
-      cardClass: "bg-slate-100 text-slate-900",
+      cardClass: "bg-slate-100 text-[#454545]",
       starClass: "text-sky-700",
-      nameClass: "text-slate-900",
-      locationClass: "text-[#494B51]",
-      quoteClass: "text-[#494B51]",
+      nameClass: "text-[#040404]",
+      locationClass: "text-[#454545]",
+      quoteClass: "text-[#454545]",
     },
     {
       name: "Lauren",
       location: "Dee Why, NSW",
       quote:
         "We can’t speak more highly of our experience with Paul. He responded to our enquiry quickly and squeezed us in the next day (lifesaver!). Paul was very clear and competitive with his quote and completed the job faster than we anticipated. We’ll definitely be in touch for upcoming renovations!",
-      cardClass: "bg-sky-700 text-white",
+      cardClass: "bg-[#15659a] text-white",
       starClass: "text-white",
       nameClass: "text-white",
       locationClass: "text-white",
