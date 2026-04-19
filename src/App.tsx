@@ -459,7 +459,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="absolute inset-0 bg-slate-950/45" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="relative mx-auto grid min-h-[calc(100vh-7rem)] max-w-7xl items-center gap-8 px-6 py-10 md:py-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-3xl text-white">
             <div className="inline-flex flex-col rounded-2xl border border-white/40 bg-slate-900/70 px-5 py-3 text-white shadow-lg backdrop-blur">
               <div className="flex gap-1 text-yellow-400">
@@ -470,15 +470,15 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               <div className="mt-2 text-sm font-semibold">20+ years in business</div>
             </div>
 
-            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
+            <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
               Fast, reliable plumbing done right the first time.
             </h1>
 
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-100">
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-100">
               From emergency leaks and blocked drains to hot water repairs and ongoing maintenance, Fix It Now Plumbing delivers prompt service, upfront communication, and workmanship you can trust.
             </p>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row">
               <button
                 onClick={() => goTo("contact")}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white hover:bg-sky-700"
@@ -495,7 +495,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
               </a>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-6 text-white">
+            <div className="mt-6 flex flex-wrap items-center gap-5 text-white">
               <div className="flex items-center gap-2">
                 <div className="flex gap-1 text-yellow-400">
                   {Array.from({ length: 5 }).map((_, idx) => (
@@ -516,10 +516,10 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl md:p-7">
-            <div className="text-2xl font-bold text-slate-900">Request a plumbing quote</div>
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-2xl md:p-6">
+            <div className="text-xl font-bold text-slate-900 md:text-2xl">Request a plumbing quote</div>
             <p className="mt-2 text-slate-600">Tell us what you need and we’ll get back to you quickly with clear next steps.</p>
-            <form onSubmit={(event) => handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-6 space-y-4">
+            <form onSubmit={(event) => handleEnquirySubmit(event, "Request a plumbing quote")} className="mt-5 space-y-3">
               <input
                 name="Name"
                 className="w-full rounded-xl border border-slate-300 px-4 py-3.5 outline-none focus:border-sky-600"
