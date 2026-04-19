@@ -1032,9 +1032,17 @@ function TestimonialsPage() {
                 />
               </div>
               <p className="mt-6 text-[16px] font-semibold leading-relaxed text-[#101218]">“{item.quote}”</p>
-              <div className="mt-8">
-                <div className="text-[14px] font-extrabold uppercase tracking-[0.15em] text-[#101218]">{item.name}</div>
-                <div className="mt-1 text-[14px] font-medium text-[#494B51]">from {item.location}</div>
+              <div className="mt-8 flex items-center gap-3">
+                <img
+                  src="https://swpb.com.au/wp-content/uploads/2024/01/placeholder-1-1-1.png"
+                  alt="Reviewer profile"
+                  className="h-12 w-12 rounded-full object-cover"
+                  loading="lazy"
+                />
+                <div>
+                  <div className="text-[14px] font-extrabold uppercase tracking-[0.15em] text-[#101218]">{item.name}</div>
+                  <div className="mt-1 text-[14px] font-medium text-[#494B51]">from {item.location}</div>
+                </div>
               </div>
             </div>
           ))}
