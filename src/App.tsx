@@ -636,6 +636,25 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
         </div>
       </section>
 
+      <section className="border-t border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">Customer Reviews</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {reviews.slice(0, 3).map((review, index) => (
+              <div key={`${review.name}-${index}`} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
+                <div className="flex gap-1 text-yellow-400">
+                  {Array.from({ length: 5 }).map((_, idx) => (
+                    <Star key={idx} className="h-4 w-4 fill-current" />
+                  ))}
+                </div>
+                <p className="mt-5 text-lg leading-relaxed text-slate-700">“{review.quote}”</p>
+                <div className="mt-6 text-sm font-medium text-slate-500">{review.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-t border-slate-200 bg-slate-50">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="grid items-start gap-6 lg:grid-cols-2">
