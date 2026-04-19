@@ -1429,8 +1429,8 @@ export default function NorthernBeachesPlumberDemo() {
 
   return (
     <div className="min-h-screen bg-white pt-0 text-slate-900 md:pt-11">
-      <div className="fixed left-0 right-0 top-0 z-40 hidden bg-sky-700 text-sm text-white shadow md:block">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
+      <div className="fixed left-0 right-0 top-0 z-40 hidden h-[54px] bg-sky-700 text-sm text-white shadow md:block">
+        <div className="mx-auto flex h-full max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-0">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
@@ -1463,8 +1463,8 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
       </div>
 
-      <header className="relative sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
-        <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-5">
+      <header className="relative sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-[54px] md:h-[123px]">
+        <div className="mx-auto flex h-full w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-0">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
