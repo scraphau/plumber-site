@@ -346,7 +346,7 @@ function ContactPanel() {
                 rel="noreferrer"
                 className="hover:underline"
               >
-                Sydney Wide Plumbing Service Area
+                Northen Beaches Wide Plumbing Service Area
               </a>
             </div>
           </div>
@@ -1276,7 +1276,10 @@ function TermsPage() {
             <a href="tel:0414248131" className="text-sky-700 underline">
               0414 248 131
             </a>{" "}
-            or email at paul@fixitnowplumbing.com.au.
+            or email at {" "}
+            <a href="mailto:paul@fixitnowplumbing.com.au" className="text-sky-700 underline">
+              paul@fixitnowplumbing.com.au
+            </a>.
           </p>
         </div>
       </div>
@@ -1344,7 +1347,7 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
+      <header className="relative sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
         <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-5">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
@@ -1482,7 +1485,7 @@ export default function NorthernBeachesPlumberDemo() {
             </a>
             <button
               onClick={() => setMobileMenuOpen((value) => !value)}
-              className="inline-flex rounded-xl p-1 text-purple-700 md:hidden"
+              className="inline-flex rounded-xl p-1 text-sky-700 md:hidden"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="h-9 w-9" /> : <Menu className="h-9 w-9" />}
@@ -1491,7 +1494,7 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
 
         <div
-          className={`mx-2 mt-2 overflow-hidden rounded-2xl border border-sky-600 bg-sky-700 text-white transition-all duration-500 ease-in-out md:hidden ${
+          className={`absolute left-2 right-2 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-sky-700 bg-sky-700 text-white shadow-xl transition-all duration-500 ease-in-out md:hidden ${
             mobileMenuOpen ? "max-h-[75vh] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
@@ -1500,12 +1503,12 @@ export default function NorthernBeachesPlumberDemo() {
               {[
                 { key: "home" as const, label: "Home" },
                 { key: "services" as const, label: "Services" },
+                { key: "guarantee" as const, label: "Guarantee" },
                 { key: "testimonials" as const, label: "Testimonials" },
                 { key: "gallery" as const, label: "Gallery" },
                 { key: "about" as const, label: "About Us" },
                 { key: "contact" as const, label: "Contact Us" },
                 { key: "service-areas" as const, label: "Service Areas" },
-                { key: "guarantee" as const, label: "Guarantee" },
               ].map((item) =>
                 item.key === "services" ? (
                   <div key={item.key} className="w-full">
@@ -1522,7 +1525,7 @@ export default function NorthernBeachesPlumberDemo() {
                     <div
                       className={`overflow-hidden transition-all duration-300 ${mobileServicesOpen ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"}`}
                     >
-                      <div className="mt-2 space-y-2 rounded-xl bg-white/10 p-3 text-left">
+                      <div className="mt-2 space-y-2 rounded-xl bg-sky-800/40 p-3 text-left">
                         {[
                           { key: "services" as const, label: "All Services" },
                           { key: "emergency" as const, label: "Emergency Plumber" },
