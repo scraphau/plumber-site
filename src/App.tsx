@@ -1505,7 +1505,6 @@ export default function NorthernBeachesPlumberDemo() {
                 { key: "about" as const, label: "About Us" },
                 { key: "contact" as const, label: "Contact Us" },
                 { key: "service-areas" as const, label: "Service Areas" },
-                { key: "guarantee" as const, label: "Guarantee" },
               ].map((item) =>
                 item.key === "services" ? (
                   <div key={item.key} className="w-full">
@@ -1534,6 +1533,7 @@ export default function NorthernBeachesPlumberDemo() {
                           { key: "kitchen-plumbing" as const, label: "Kitchen Plumbing" },
                           { key: "bathroom-plumbing" as const, label: "Bathroom Plumbing" },
                           { key: "laundry-plumbing" as const, label: "Laundry Plumbing" },
+                          { key: "guarantee" as const, label: "Guarantee" },
                         ].map((serviceItem) => (
                           <button
                             key={serviceItem.key}
