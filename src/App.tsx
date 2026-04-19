@@ -678,14 +678,16 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 key={`${review.name}-${review.location}`}
                 className={`rounded-[2rem] p-7 text-center shadow-sm md:p-8 ${review.cardClass}`}
               >
-                <div className={`flex justify-center gap-1 ${review.starClass}`}>
+                <div className={`flex justify-center gap-2 text-4xl leading-none ${review.starClass}`}>
                   {Array.from({ length: 5 }).map((_, idx) => (
-                    <Star key={idx} className="h-4 w-4 fill-current" />
+                    <span key={idx} aria-hidden="true">
+                      ★
+                    </span>
                   ))}
                 </div>
-                <div className={`mt-5 text-3xl font-bold tracking-tight ${review.nameClass}`}>{review.name}</div>
-                <div className={`mt-2 text-xl ${review.locationClass}`}>{review.location}</div>
-                <p className="mt-6 text-lg leading-relaxed">“{review.quote}”</p>
+                <div className={`mt-5 text-4xl font-semibold tracking-tight ${review.nameClass}`}>{review.name}</div>
+                <div className={`mt-2 text-2xl font-light md:text-3xl ${review.locationClass}`}>{review.location}</div>
+                <p className="mt-6 text-2xl font-light leading-relaxed md:text-3xl">“{review.quote}”</p>
               </div>
             ))}
           </div>
