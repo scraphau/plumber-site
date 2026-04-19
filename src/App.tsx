@@ -373,7 +373,7 @@ function ReviewCards() {
 
 function ContactPanel() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
+    <section className="mx-auto max-w-[92rem] px-6 py-20">
       <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="rounded-[2rem] bg-sky-800 p-8 text-white shadow-xl md:p-10">
           <div className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-100">
@@ -555,7 +555,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
           <div className="absolute inset-0 bg-slate-950/45" />
         </div>
 
-        <div className="relative mx-auto grid min-h-[calc(100vh-7rem)] max-w-7xl items-center gap-8 px-6 py-10 md:py-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="relative mx-auto grid min-h-[calc(100vh-7rem)] max-w-[92rem] items-center gap-8 px-6 py-10 md:py-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-3xl text-white">
             <div className="inline-flex flex-col rounded-2xl border border-white/40 bg-slate-900/70 px-5 py-3 text-white shadow-lg backdrop-blur">
               <div className="flex gap-1 text-yellow-400">
@@ -646,7 +646,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       </section>
 
       <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto grid max-w-7xl gap-4 px-6 py-6 md:grid-cols-4">
+        <div className="mx-auto grid max-w-[92rem] gap-4 px-6 py-6 md:grid-cols-4">
           {[
             "Upfront, honest advice and pricing",
             "Rapid response for urgent callouts",
@@ -661,7 +661,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-[92rem] px-6 py-20">
         <SectionHeading
           eyebrow="Fix It Now Plumbing"
           title="Family owned, fully licensed, and available for urgent plumbing work"
@@ -735,7 +735,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       </section>
 
       <section className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-[92rem] px-6 py-20">
           <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">Customer Reviews</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {featuredHomeReviews.map((review) => (
@@ -760,7 +760,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       </section>
 
       <section className="border-t border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-[92rem] px-6 py-20">
           <div className="grid items-start gap-6 lg:grid-cols-2">
             <div className="h-[560px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
               <img
@@ -820,7 +820,7 @@ function AboutPage() {
   ];
 
   return (
-    <section className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr]">
+    <section className="mx-auto grid max-w-[92rem] items-center gap-10 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr]">
       <div>
         <SectionHeading eyebrow="About us" title="You can rely on us for plumbing emergencies and everyday repairs" />
         <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-600">
@@ -858,7 +858,7 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
   return (
     <>
       <section className="border-y border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-[92rem] px-6 py-20">
           <SectionHeading
             eyebrow="Services"
             title="Professional plumbing services across Sydney"
@@ -904,7 +904,7 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-[92rem] px-6 py-20">
         <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <SectionHeading
@@ -941,7 +941,7 @@ function ServiceDetailPage({
   return (
     <>
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 lg:grid-cols-[1fr_0.9fr]">
+        <div className="mx-auto grid max-w-[92rem] items-center gap-10 px-6 py-20 lg:grid-cols-[1fr_0.9fr]">
           <div>
             <SectionHeading eyebrow="Service page" title={title} text={intro} />
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -967,7 +967,7 @@ function ServiceDetailPage({
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-[92rem] px-6 py-20">
         <SectionHeading eyebrow="Why choose us" title={`Why customers choose us for ${title.toLowerCase()}`} />
         <ReviewCards />
       </section>
@@ -979,7 +979,7 @@ function GalleryPage() {
   return (
     <>
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-[92rem] px-6 py-20">
           <SectionHeading
             eyebrow="Gallery"
             title="Recent plumbing work and job gallery"
@@ -995,7 +995,7 @@ function GalleryPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-[92rem] px-6 py-20">
         <SectionHeading
           eyebrow="Why it matters"
           title="Real plumbing work, completed by our team"
@@ -1062,7 +1062,7 @@ function TestimonialsPage() {
 
   return (
     <section className="border-b border-slate-200 bg-slate-50">
-      <div className="mx-auto max-w-7xl px-6 py-20">
+      <div className="mx-auto max-w-[92rem] px-6 py-20">
         <SectionHeading
           eyebrow="Testimonials"
           title="Customer reviews and feedback"
@@ -1148,7 +1148,7 @@ function EmergencyPage() {
   return (
     <>
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-[92rem] px-6 py-20">
           <SectionHeading
             eyebrow="Emergency"
             title="24/7 Emergency Plumber Northern Beaches"
@@ -1188,7 +1188,7 @@ function EmergencyPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-[92rem] px-6 py-20">
         <SectionHeading
           eyebrow="Common urgent jobs"
           title="Emergency plumbing issues we handle"
@@ -1207,7 +1207,7 @@ function EmergencyPage() {
       </section>
 
       <section className="border-y border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-[92rem] px-6 py-20">
           <SectionHeading
             eyebrow="Why call us now"
             title="Whatever your emergency plumbing needs"
@@ -1226,7 +1226,7 @@ function EmergencyPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-[92rem] px-6 py-20">
         <SectionHeading eyebrow="Reviews" title="Reliable emergency plumbing when it matters most" />
         <ReviewCards />
       </section>
@@ -1256,7 +1256,7 @@ function GuaranteePage() {
   return (
     <>
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-[92rem] px-6 py-20">
           <SectionHeading
             eyebrow="Guarantee"
             title="Plumbing Guarantee"
@@ -1275,7 +1275,7 @@ function GuaranteePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-[92rem] px-6 py-20">
         <SectionHeading
           eyebrow="Pricing Guarantee"
           title="Clear pricing before any work starts"
@@ -1320,7 +1320,7 @@ function ServiceAreasPage() {
   return (
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-24 lg:grid-cols-[minmax(0,1fr)_380px]">
+        <div className="mx-auto grid max-w-[92rem] items-center gap-10 px-6 py-20 md:py-24 lg:grid-cols-[minmax(0,1fr)_380px]">
           <div>
             <SectionHeading
               eyebrow="Service Areas"
@@ -1343,7 +1343,7 @@ function ServiceAreasPage() {
       </section>
 
       <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[92rem] px-6">
           <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm md:p-10">
             <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Suburbs we service</h2>
             <p className="mt-3 text-slate-600">
@@ -1772,7 +1772,7 @@ export default function NorthernBeachesPlumberDemo() {
             ]}
           />
 
-          <section className="mx-auto max-w-7xl px-6 py-20">
+          <section className="mx-auto max-w-[92rem] px-6 py-20">
             <SectionHeading
               eyebrow="Why choose us"
               title="Northern Beaches blocked drain specialists"
@@ -1801,7 +1801,7 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
           </section>
 
-          <section className="mx-auto max-w-7xl px-6 pb-20">
+          <section className="mx-auto max-w-[92rem] px-6 pb-20">
             <SectionHeading eyebrow="How we fix it" title="Our blocked drain process" />
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               {[
