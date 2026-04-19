@@ -455,30 +455,33 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       location: "Avalon, NSW",
       quote:
         "I have used Paul for plumbing services for over ten years now and he has always provided a great service ranging from tap replacement to external drainage issues earlier this year. Paul is very honest and helpful in providing advice and solutions and I would recommend his services.",
-      cardClass: "bg-sky-700 text-white",
+      cardClass: "bg-[#15659a] text-white",
       starClass: "text-white",
       nameClass: "text-white",
-      locationClass: "text-sky-100",
+      locationClass: "text-white",
+      quoteClass: "text-white",
     },
     {
       name: "Scott",
       location: "Narrabeen, NSW",
       quote:
         "Paul from Fix It Now Plumbing has completed several plumbing jobs at our home over the past 5 years including the clearing of blocked drains, new taps and hot water systems. Paul is reliable, honest and professional and has always provided high quality work and solutions for us. I would strongly recommend Paul to anyone requiring a reliable quality plumber on the Northern Beaches.",
-      cardClass: "bg-slate-100 text-slate-900",
+      cardClass: "bg-slate-100 text-[#454545]",
       starClass: "text-sky-700",
-      nameClass: "text-slate-900",
-      locationClass: "text-slate-600",
+      nameClass: "text-[#101218]",
+      locationClass: "text-[#454545]",
+      quoteClass: "text-[#454545]",
     },
     {
       name: "Lauren",
       location: "Dee Why, NSW",
       quote:
         "We can’t speak more highly of our experience with Paul. He responded to our enquiry quickly and squeezed us in the next day (lifesaver!). Paul was very clear and competitive with his quote and completed the job faster than we anticipated. We’ll definitely be in touch for upcoming renovations!",
-      cardClass: "bg-sky-700 text-white",
+      cardClass: "bg-[#15659a] text-white",
       starClass: "text-white",
       nameClass: "text-white",
-      locationClass: "text-sky-100",
+      locationClass: "text-white",
+      quoteClass: "text-white",
     },
   ] as const;
 
@@ -676,18 +679,18 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             {featuredHomeReviews.map((review) => (
               <div
                 key={`${review.name}-${review.location}`}
-                className={`rounded-2xl border border-slate-200 p-6 text-center shadow-sm md:p-8 ${review.cardClass}`}
+                className={`flex flex-col items-center rounded-2xl border border-slate-200 p-6 text-center antialiased shadow-sm md:p-8 ${review.cardClass}`}
               >
-                <div className={`mx-auto flex w-1/3 items-center justify-between text-2xl leading-none ${review.starClass}`}>
+                <div className={`mx-auto flex items-center justify-center gap-1 text-2xl leading-none ${review.starClass}`}>
                   {Array.from({ length: 5 }).map((_, idx) => (
                     <span key={idx} aria-hidden="true">
                       ★
                     </span>
                   ))}
                 </div>
-                <div className={`mt-5 text-[14px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
-                <div className={`mt-2 text-[15.5px] font-light font-['Montserrat'] ${review.locationClass}`}>{review.location}</div>
-                <p className="mt-6 text-[15.5px] font-light leading-relaxed font-['Montserrat']">“{review.quote}”</p>
+                <div className={`mt-5 text-[17px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
+                <div className={`mt-2 text-[17px] font-medium font-['Montserrat',sans-serif] ${review.locationClass}`}>{review.location}</div>
+                <p className={`mt-6 text-center text-[17px] font-normal leading-relaxed font-['Montserrat',sans-serif] ${review.quoteClass}`}>“{review.quote}”</p>
               </div>
             ))}
           </div>
@@ -960,31 +963,37 @@ function TestimonialsPage() {
       quote:
         "I have used Paul for plumbing services for over ten years now and he has always provided a great service ranging from tap replacement to external drainage issues earlier this year. Paul is very honest and helpful in providing advice and solutions and I would recommend his services.",
       name: "Sarah J",
+      location: "Avalon",
     },
     {
       quote:
         "Paul from Fix It Now Plumbing has completed several plumbing jobs at our home over the past 5 years including the clearing of blocked drains, new taps and hot water systems. Paul is reliable, honest and professional and has always provided high quality work and solutions for us. I would strongly recommend Paul to anyone requiring a reliable quality plumber on the Northern Beaches.",
       name: "Scott B",
+      location: "Narrabeen",
     },
     {
       quote:
         "We can’t speak more highly of our experience with Paul. He responded to our enquiry quickly and squeezed us in the next day (lifesaver!). Paul was very clear and competitive with his quote and completed the job faster than we anticipated. We’ll definitely be in touch for upcoming renovations!",
       name: "Lauren C",
+      location: "Dee Why",
     },
     {
       quote:
         "Paul is a fantastic plumber and a really friendly guy who I definitely would recommend to anyone. He has reliably helped me with a number of plumbing problems and improvements with three different houses over the past 7 years. I've had consistently high-quality service the whole time. What really stands out to me is a genuine interest in doing a really good job. If I have a question, he'll take the time to answer it in as much detail as I need. I can't fault his service in any way!",
       name: "Mark A",
+      location: "Manly",
     },
     {
       quote:
         "I never have any hesitation contacting Paul whenever I have plumbing or drainage problems at my home in Wheeler Heights. He is an extremely reliable and honest guy who always arrives on time and ready to work. On separate visits Paul has repaired a water pump and two submersible pumps and on each occasion he has needed to improvise solutions to suit the problem at hand. I would recommend Paul to anyone seeking his expertise and services.",
       name: "Nick W",
+      location: "Palm Beach",
     },
     {
       quote:
         "Paul was reliable, on time, and his quote was competitive. We had a new instantaneous hot water heater installed and upgraded our piping for the gas. Communication was great and he even came out quickly when we hit the water while digging a trench for the pipes. Would use him again.",
       name: "Karen M",
+      location: "Bayview",
     },
   ];
 
@@ -1008,15 +1017,32 @@ function TestimonialsPage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((item) => (
-            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-12">
-              <div className="flex gap-1 text-amber-500">
-                {Array.from({ length: 5 }).map((_, idx) => (
-                  <Star key={idx} className="h-5 w-5 fill-current" />
-                ))}
+            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-12 font-['Montserrat']">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex gap-1 text-amber-500">
+                  {Array.from({ length: 5 }).map((_, idx) => (
+                    <Star key={idx} className="h-5 w-5 fill-current" />
+                  ))}
+                </div>
+                <img
+                  src="https://cdn.iconscout.com/icon/free/png-256/free-google-icon-svg-download-png-189824.png?f=webp&w=128"
+                  alt="Google"
+                  className="h-7 w-7 object-contain"
+                  loading="lazy"
+                />
               </div>
-              <p className="mt-6 text-lg font-semibold leading-relaxed text-slate-900">“{item.quote}”</p>
-              <div className="mt-8">
-                <div className="text-base font-extrabold uppercase tracking-[0.15em] text-slate-900">{item.name}</div>
+              <p className="mt-6 text-[16px] font-semibold leading-relaxed text-[#101218]">“{item.quote}”</p>
+              <div className="mt-8 flex items-center gap-3">
+                <img
+                  src="https://swpb.com.au/wp-content/uploads/2024/01/placeholder-1-1-1.png"
+                  alt="Reviewer profile"
+                  className="h-10 w-10 rounded-full object-cover"
+                  loading="lazy"
+                />
+                <div>
+                  <div className="text-[14px] font-extrabold uppercase tracking-[0.15em] text-[#101218]">{item.name}</div>
+                  <div className="text-[14px] font-medium leading-tight text-[#494B51]">from {item.location}</div>
+                </div>
               </div>
             </div>
           ))}
@@ -1231,15 +1257,25 @@ function ServiceAreasPage() {
   return (
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
-          <SectionHeading
-            eyebrow="Service Areas"
-            title="Northern Beaches plumbing service areas"
-            text="Fix It Now Plumbing provides local plumbing support throughout Sydney’s Northern Beaches, including emergency callouts, blocked drains, hot water repairs, and general maintenance."
-          />
-          <p className="mt-6 max-w-4xl text-lg text-slate-600">
-            We service homes and businesses right across the region and aim to provide fast, clear communication and reliable workmanship wherever you are based on the Northern Beaches.
-          </p>
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-24 lg:grid-cols-[minmax(0,1fr)_380px]">
+          <div>
+            <SectionHeading
+              eyebrow="Service Areas"
+              title="Northern Beaches plumbing service areas"
+              text="Fix It Now Plumbing provides local plumbing support throughout Sydney’s Northern Beaches, including emergency callouts, blocked drains, hot water repairs, and general maintenance."
+            />
+            <p className="mt-6 max-w-4xl text-lg text-slate-600">
+              We service homes and businesses right across the region and aim to provide fast, clear communication and reliable workmanship wherever you are based on the Northern Beaches.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-2xl border-2 border-sky-600 bg-white shadow-sm">
+            <img
+              src="https://www.google.com/maps/vt/data=AuCy0KaAvPmueshM5i1Zb3rIQGKXbix2meJcmnkkbbVeWzJ-XxQYMO-IQVNn-t0E_Rc6ieSKUdK30GKayW7eeFlqYi1Ya74Zo8336TPKl4ekNZERvcar_M2M2vi4iFuxwJbGRrPEPUmDhwD2wMe6yQWZHk3XPGRKxttrbIVxfTYGmO-uI4FwA9fVXOZBRYF3LdkvyeIbMjOjf4himUH4JjgeoeNlqYtwrrB9SRNyhSwDQ5_LnfnC20vjqAwRZ5x9mZ3qMgi7GNQM7DQ54CK1SoH1nnWLrBqgb-Gu2Od1oZZh54_7mIC9qsQ"
+              alt="Northern Beaches service area map"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
@@ -1351,17 +1387,43 @@ export default function NorthernBeachesPlumberDemo() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesMenuRef = useRef<HTMLDivElement | null>(null);
+  const servicesCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearServicesCloseTimeout = () => {
+    if (!servicesCloseTimeoutRef.current) return;
+    clearTimeout(servicesCloseTimeoutRef.current);
+    servicesCloseTimeoutRef.current = null;
+  };
+
+  const openServicesMenu = () => {
+    clearServicesCloseTimeout();
+    setServicesOpen(true);
+  };
+
+  const closeServicesMenuWithDelay = () => {
+    clearServicesCloseTimeout();
+    servicesCloseTimeoutRef.current = setTimeout(() => {
+      setServicesOpen(false);
+    }, 500);
+  };
+
+  const toggleServicesMenu = () => {
+    clearServicesCloseTimeout();
+    setServicesOpen((value) => !value);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (!servicesMenuRef.current) return;
       if (!servicesMenuRef.current.contains(event.target as Node)) {
+        clearServicesCloseTimeout();
         setServicesOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
+      clearServicesCloseTimeout();
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
@@ -1378,8 +1440,8 @@ export default function NorthernBeachesPlumberDemo() {
 
   return (
     <div className="min-h-screen bg-white pt-0 text-slate-900 md:pt-11">
-      <div className="fixed left-0 right-0 top-0 z-40 hidden bg-sky-700 text-sm text-white shadow md:block">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-3">
+      <div className="fixed left-0 right-0 top-0 z-40 hidden h-[54px] bg-sky-700 text-sm text-white shadow md:block">
+        <div className="mx-auto flex h-full max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-0">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
@@ -1395,7 +1457,14 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>Sydney's Northern Beaches</span>
+              <a
+                href="https://www.google.com/maps/place/Plumber+Northern+Beaches+@+Fix+It+Now+Plumbing/@-33.6720467,151.2620779,30023m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6b12a542a9d25031:0xdebe3731c81deb0b!8m2!3d-33.6720468!4d151.2620779!16s%2Fg%2F11xl8trtt?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline"
+              >
+                Sydney's Northern Beaches
+              </a>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -1405,8 +1474,8 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
       </div>
 
-      <header className="relative sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-11">
-        <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-5">
+      <header className="relative sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-[54px] md:h-[123px]">
+        <div className="mx-auto flex h-full w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-0">
           <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
@@ -1419,9 +1488,14 @@ export default function NorthernBeachesPlumberDemo() {
             <button onClick={() => changePage("home")} className="hover:text-sky-700">
               Home
             </button>
-            <div className="relative" ref={servicesMenuRef}>
+            <div
+              className="relative"
+              ref={servicesMenuRef}
+              onMouseEnter={openServicesMenu}
+              onMouseLeave={closeServicesMenuWithDelay}
+            >
               <button
-                onClick={() => setServicesOpen((value) => !value)}
+                onClick={toggleServicesMenu}
                 className="inline-flex items-center gap-1 hover:text-sky-700"
                 aria-expanded={servicesOpen}
                 aria-haspopup="menu"
@@ -1433,7 +1507,7 @@ export default function NorthernBeachesPlumberDemo() {
               </button>
               {servicesOpen ? (
                 <div
-                  className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white py-2 shadow-lg"
+                  className="absolute left-0 top-full mt-2 w-56 rounded-xl border-4 border-sky-600 bg-white py-2 shadow-lg"
                   role="menu"
                 >
                   <button
@@ -1771,14 +1845,21 @@ export default function NorthernBeachesPlumberDemo() {
         <ServiceDetailPage
           title="Kitchen Plumbing"
           image="https://goldcoastplumbingexperts.com.au/wp-content/uploads/2023/10/plumber-under-new-sink-optimized.jpg"
-          intro="From leaking sinks to dishwasher and water filter installations, we handle kitchen plumbing jobs quickly and properly so your kitchen stays practical and reliable."
+          intro="Looking for an experienced plumber for your kitchen plumbing? Do you want your job fixed now, done properly and competitively priced? Whether you are renovating your kitchen, a blocked drain, have a leaking tap, ba dishwasher to install or smelly old unused insinkerator to be removed, Fix It Now Plumbing are here to help you."
           points={[
-            "Sink, mixer and trap repairs",
-            "Dishwasher and water filter installations",
-            "Leaking pipe and fixture repairs",
-            "Blocked kitchen waste line assistance",
-            "Clear recommendations and practical solutions",
-            "Property left clean at completion",
+            "Blocked Sink",
+            "Mixer Tap Installations And Repairs",
+            "Dripping Tap Repairs",
+            "Gas Oven And Cook Top",
+            "Dishwasher Connections",
+            "Water Filters",
+            "Insinkerator",
+            "Leaks",
+            "Smelly Drain",
+            "Moving Pipes",
+            "Arthritis Taps",
+            "Burst Pipe Repairs",
+            "Noisy Or Hammering Pipes",
           ]}
         />
       ) : null}
