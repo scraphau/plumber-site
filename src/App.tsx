@@ -960,31 +960,37 @@ function TestimonialsPage() {
       quote:
         "I have used Paul for plumbing services for over ten years now and he has always provided a great service ranging from tap replacement to external drainage issues earlier this year. Paul is very honest and helpful in providing advice and solutions and I would recommend his services.",
       name: "Sarah J",
+      location: "Avalon",
     },
     {
       quote:
         "Paul from Fix It Now Plumbing has completed several plumbing jobs at our home over the past 5 years including the clearing of blocked drains, new taps and hot water systems. Paul is reliable, honest and professional and has always provided high quality work and solutions for us. I would strongly recommend Paul to anyone requiring a reliable quality plumber on the Northern Beaches.",
       name: "Scott B",
+      location: "Narrabeen",
     },
     {
       quote:
         "We can’t speak more highly of our experience with Paul. He responded to our enquiry quickly and squeezed us in the next day (lifesaver!). Paul was very clear and competitive with his quote and completed the job faster than we anticipated. We’ll definitely be in touch for upcoming renovations!",
       name: "Lauren C",
+      location: "Dee Why",
     },
     {
       quote:
         "Paul is a fantastic plumber and a really friendly guy who I definitely would recommend to anyone. He has reliably helped me with a number of plumbing problems and improvements with three different houses over the past 7 years. I've had consistently high-quality service the whole time. What really stands out to me is a genuine interest in doing a really good job. If I have a question, he'll take the time to answer it in as much detail as I need. I can't fault his service in any way!",
       name: "Mark A",
+      location: "Manly",
     },
     {
       quote:
         "I never have any hesitation contacting Paul whenever I have plumbing or drainage problems at my home in Wheeler Heights. He is an extremely reliable and honest guy who always arrives on time and ready to work. On separate visits Paul has repaired a water pump and two submersible pumps and on each occasion he has needed to improvise solutions to suit the problem at hand. I would recommend Paul to anyone seeking his expertise and services.",
       name: "Nick W",
+      location: "Palm Beach",
     },
     {
       quote:
         "Paul was reliable, on time, and his quote was competitive. We had a new instantaneous hot water heater installed and upgraded our piping for the gas. Communication was great and he even came out quickly when we hit the water while digging a trench for the pipes. Would use him again.",
       name: "Karen M",
+      location: "Bayview",
     },
   ];
 
@@ -1008,15 +1014,19 @@ function TestimonialsPage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((item) => (
-            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-12">
-              <div className="flex gap-1 text-amber-500">
-                {Array.from({ length: 5 }).map((_, idx) => (
-                  <Star key={idx} className="h-5 w-5 fill-current" />
-                ))}
+            <div key={`${item.name}-${item.quote}`} className="rounded-[1.8rem] bg-slate-100 p-12 font-['Montserrat']">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex gap-1 text-amber-500">
+                  {Array.from({ length: 5 }).map((_, idx) => (
+                    <Star key={idx} className="h-5 w-5 fill-current" />
+                  ))}
+                </div>
+                <span className="text-2xl font-semibold leading-none text-[#c6d4ea]">G+</span>
               </div>
               <p className="mt-6 text-lg font-semibold leading-relaxed text-slate-900">“{item.quote}”</p>
               <div className="mt-8">
                 <div className="text-base font-extrabold uppercase tracking-[0.15em] text-slate-900">{item.name}</div>
+                <div className="mt-1 text-base font-medium text-[#494B51]">from {item.location}</div>
               </div>
             </div>
           ))}
