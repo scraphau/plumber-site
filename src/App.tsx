@@ -1244,7 +1244,7 @@ function ServiceAreasPage() {
           </div>
           <div className="overflow-hidden rounded-2xl border-2 border-sky-600 bg-white shadow-sm">
             <img
-              src="https://staticmap.openstreetmap.de/staticmap.php?center=-33.6720468,151.2620779&zoom=11&size=760x560"
+              src="https://www.google.com/maps/vt/data=AuCy0KaAvPmueshM5i1Zb3rIQGKXbix2meJcmnkkbbVeWzJ-XxQYMO-IQVNn-t0E_Rc6ieSKUdK30GKayW7eeFlqYi1Ya74Zo8336TPKl4ekNZERvcar_M2M2vi4iFuxwJbGRrPEPUmDhwD2wMe6yQWZHk3XPGRKxttrbIVxfTYGmO-uI4FwA9fVXOZBRYF3LdkvyeIbMjOjf4himUH4JjgeoeNlqYtwrrB9SRNyhSwDQ5_LnfnC20vjqAwRZ5x9mZ3qMgi7GNQM7DQ54CK1SoH1nnWLrBqgb-Gu2Od1oZZh54_7mIC9qsQ"
               alt="Northern Beaches service area map"
               className="h-full w-full object-cover"
               loading="lazy"
