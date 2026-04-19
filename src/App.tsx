@@ -1964,6 +1964,15 @@ export default function NorthernBeachesPlumberDemo() {
               <p className="mt-4 max-w-sm text-base leading-relaxed text-slate-300">
                 Family owned and 20+ year operated plumbing business helping Sydney’s Northern Beaches with reliable service, clear communication and quality workmanship.
               </p>
+              <a
+                href="https://www.facebook.com/FixItNowPlumbing/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Fix It Now Plumbing on Facebook"
+                className="mt-5 inline-flex h-11 w-11 items-center justify-center rounded-md bg-black text-[32px] font-bold leading-none text-white hover:opacity-90"
+              >
+                f
+              </a>
             </div>
 
             <div>
