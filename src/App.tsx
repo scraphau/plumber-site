@@ -676,9 +676,9 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             {featuredHomeReviews.map((review) => (
               <div
                 key={`${review.name}-${review.location}`}
-                className={`rounded-2xl border border-slate-200 p-6 text-center shadow-sm md:p-8 ${review.cardClass}`}
+                className={`flex flex-col items-center rounded-2xl border border-slate-200 p-6 text-center shadow-sm md:p-8 ${review.cardClass}`}
               >
-                <div className={`mx-auto flex w-1/3 items-center justify-between text-2xl leading-none ${review.starClass}`}>
+                <div className={`mx-auto flex items-center justify-center gap-1 text-2xl leading-none ${review.starClass}`}>
                   {Array.from({ length: 5 }).map((_, idx) => (
                     <span key={idx} aria-hidden="true">
                       ★
@@ -687,7 +687,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 </div>
                 <div className={`mt-5 text-[14px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
                 <div className={`mt-2 text-[15.5px] font-light font-['Montserrat'] ${review.locationClass}`}>{review.location}</div>
-                <p className="mt-6 text-[15.5px] font-light leading-relaxed font-['Montserrat']">“{review.quote}”</p>
+                <p className="mt-6 text-center text-[15.5px] font-light leading-relaxed font-['Montserrat']">“{review.quote}”</p>
               </div>
             ))}
           </div>
