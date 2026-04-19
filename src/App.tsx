@@ -1276,7 +1276,10 @@ function TermsPage() {
             <a href="tel:0414248131" className="text-sky-700 underline">
               0414 248 131
             </a>{" "}
-            or email at paul@fixitnowplumbing.com.au.
+            or email at {" "}
+            <a href="mailto:paul@fixitnowplumbing.com.au" className="text-sky-700 underline">
+              paul@fixitnowplumbing.com.au
+            </a>.
           </p>
         </div>
       </div>
