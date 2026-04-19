@@ -1951,7 +1951,7 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "terms" ? <TermsPage /> : null}
 
       <footer className="border-t border-slate-800 bg-black text-white">
-        <div className="mx-auto w-full max-w-[1350px] px-6 py-14 md:min-h-[508px] md:px-10 md:py-16">
+        <div className="mx-auto w-full px-6 py-10 md:h-[508.41px] md:w-[1350px] md:px-[108px] md:py-[54px]">
           <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
             <div className="xl:-ml-8">
               <PageAnchor page="home" onNavigate={changePage} className="text-left" aria-label="Fix It Now Plumbing home">
