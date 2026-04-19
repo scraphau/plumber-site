@@ -1579,7 +1579,7 @@ export default function NorthernBeachesPlumberDemo() {
               aria-label="Fix It Now Plumbing on Facebook"
               className="inline-flex items-center text-white hover:text-sky-200"
             >
-              <span className="text-[18px] font-bold leading-none">f</span>
+              <span className="inline-flex h-[18px] w-[18px] items-center justify-center text-[18px] font-bold leading-none">f</span>
             </a>
             <a
               href="https://www.instagram.com/fixitnowplumbing/"
@@ -2002,7 +2002,7 @@ export default function NorthernBeachesPlumberDemo() {
                   aria-label="Fix It Now Plumbing on Facebook"
                   className="inline-flex items-center text-white hover:text-sky-300"
                 >
-                  <span className="text-[44px] font-bold leading-none">f</span>
+                  <span className="inline-flex h-[23px] w-[23px] items-center justify-center text-[23px] font-bold leading-none">f</span>
                 </a>
                 <a
                   href="https://www.instagram.com/fixitnowplumbing/"
@@ -2011,7 +2011,7 @@ export default function NorthernBeachesPlumberDemo() {
                   aria-label="Fix It Now Plumbing on Instagram"
                   className="inline-flex items-center text-white hover:text-sky-300"
                 >
-                  <InstagramIcon className="h-[44px] w-[44px]" />
+                  <InstagramIcon className="h-[23px] w-[23px]" />
                 </a>
               </div>
             </div>
