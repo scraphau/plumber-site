@@ -1491,7 +1491,7 @@ export default function NorthernBeachesPlumberDemo() {
         </div>
 
         <div
-          className={`mx-2 mt-2 overflow-hidden rounded-2xl border border-sky-600 bg-sky-700 text-white transition-all duration-500 ease-in-out md:hidden ${
+          className={`mx-2 mt-2 overflow-hidden rounded-2xl border border-blue-700 bg-blue-700 text-white transition-all duration-500 ease-in-out md:hidden ${
             mobileMenuOpen ? "max-h-[75vh] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
@@ -1521,7 +1521,7 @@ export default function NorthernBeachesPlumberDemo() {
                     <div
                       className={`overflow-hidden transition-all duration-300 ${mobileServicesOpen ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"}`}
                     >
-                      <div className="mt-2 space-y-2 rounded-xl bg-white/10 p-3 text-left">
+                      <div className="mt-2 space-y-2 rounded-xl bg-blue-800/40 p-3 text-left">
                         {[
                           { key: "services" as const, label: "All Services" },
                           { key: "emergency" as const, label: "Emergency Plumber" },
