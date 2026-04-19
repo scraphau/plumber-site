@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentPropsWithoutRef, type MouseEvent as ReactMouseEvent, type ReactNode } from "react";
 import {
   Phone,
   Wrench,
@@ -37,6 +37,27 @@ type PageKey =
   | "guarantee"
   | "contact"
   | "terms";
+
+const allPageKeys: readonly PageKey[] = [
+  "home",
+  "about",
+  "service-areas",
+  "services",
+  "testimonials",
+  "gallery",
+  "blocked-drains",
+  "hot-water",
+  "emergency",
+  "taps-toilets",
+  "burst-pipes",
+  "gas-fitting",
+  "kitchen-plumbing",
+  "bathroom-plumbing",
+  "laundry-plumbing",
+  "guarantee",
+  "contact",
+  "terms",
+] as const;
 
 const heroImage =
   "https://cdn.seeklearning.com.au/media/images/career-guide/module/plumber-module.jpg";
@@ -278,6 +299,45 @@ function SectionHeading({
   );
 }
 
+function pageToHref(page: PageKey) {
+  return page === "home" ? "/" : `/#/${page}`;
+}
+
+function isPlainLeftClick(event: ReactMouseEvent<HTMLAnchorElement>) {
+  return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+}
+
+function PageAnchor({
+  page,
+  className,
+  children,
+  onNavigate,
+  role,
+  ...anchorProps
+}: {
+  page: PageKey;
+  className?: string;
+  children: ReactNode;
+  onNavigate: (page: PageKey) => void;
+  role?: string;
+} & Omit<ComponentPropsWithoutRef<"a">, "href" | "onClick" | "children">) {
+  return (
+    <a
+      href={pageToHref(page)}
+      className={className}
+      role={role}
+      {...anchorProps}
+      onClick={(event) => {
+        if (event.defaultPrevented || !isPlainLeftClick(event)) return;
+        event.preventDefault();
+        onNavigate(page);
+      }}
+    >
+      {children}
+    </a>
+  );
+}
+
 function handleEnquirySubmit(event: React.FormEvent<HTMLFormElement>, subject: string) {
   event.preventDefault();
 
@@ -515,13 +575,14 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
             </p>
 
             <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-              <button
-                onClick={() => goTo("contact")}
+              <PageAnchor
+                page="contact"
+                onNavigate={goTo}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-4 font-semibold text-white hover:bg-sky-700"
               >
                 Request a Quote
                 <ChevronRight className="h-4 w-4" />
-              </button>
+              </PageAnchor>
               <a
                 href="tel:0414248131"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-semibold text-sky-800"
@@ -661,12 +722,13 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                 <Phone className="h-4 w-4" />
                 Call 0414 248 131
               </a>
-              <button
-                onClick={() => goTo("contact")}
+              <PageAnchor
+                page="contact"
+                onNavigate={goTo}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-4 font-semibold text-slate-800 hover:bg-slate-100"
               >
                 Request a quote
-              </button>
+              </PageAnchor>
             </div>
           </div>
         </div>
@@ -819,12 +881,13 @@ function ServicesPage({ goTo }: { goTo: (page: PageKey) => void }) {
                     <h3 className="mt-4 text-3xl font-bold tracking-tight">{service.title}</h3>
                     <p className="mt-4 text-lg leading-relaxed text-slate-600">{service.desc}</p>
                     <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                      <button
-                        onClick={() => goTo(service.key)}
+                      <PageAnchor
+                        page={service.key}
+                        onNavigate={goTo}
                         className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-700 px-5 py-3 font-semibold text-white hover:bg-sky-800"
                       >
                         View page
-                      </button>
+                      </PageAnchor>
                       <a
                         href="tel:0414248131"
                         className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 px-5 py-3 font-semibold text-slate-800"
@@ -1382,7 +1445,14 @@ function TermsPage() {
 }
 
 export default function NorthernBeachesPlumberDemo() {
-  const [currentPage, setCurrentPage] = useState<PageKey>("home");
+  const getPageFromHash = () => {
+    if (typeof window === "undefined") return "home" as PageKey;
+    const hashPath = window.location.hash.replace(/^#\/?/, "");
+    if (!hashPath) return "home" as PageKey;
+    return (allPageKeys.includes(hashPath as PageKey) ? hashPath : "home") as PageKey;
+  };
+
+  const [currentPage, setCurrentPage] = useState<PageKey>(() => getPageFromHash());
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -1428,12 +1498,32 @@ export default function NorthernBeachesPlumberDemo() {
     };
   }, []);
 
-  const changePage = (page: PageKey) => {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const syncPageWithHash = () => {
+      const nextPage = getPageFromHash();
+      setCurrentPage(nextPage);
+      setMobileMenuOpen(false);
+      setMobileServicesOpen(false);
+      setServicesOpen(false);
+    };
+
+    window.addEventListener("hashchange", syncPageWithHash);
+    return () => {
+      window.removeEventListener("hashchange", syncPageWithHash);
+    };
+  }, []);
+
+  const changePage = (page: PageKey, updateHash = true) => {
     setCurrentPage(page);
     setMobileMenuOpen(false);
     setMobileServicesOpen(false);
     setServicesOpen(false);
     if (typeof window !== "undefined") {
+      if (updateHash) {
+        window.history.pushState(null, "", pageToHref(page));
+      }
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -1476,18 +1566,18 @@ export default function NorthernBeachesPlumberDemo() {
 
       <header className="relative sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur md:top-[54px] md:h-[123px]">
         <div className="mx-auto flex h-full w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-4 md:gap-10 md:px-10 md:py-0">
-          <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
+          <PageAnchor page="home" onNavigate={changePage} className="text-left" aria-label="Fix It Now Plumbing home">
             <img
               src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
               alt="Fix It Now Plumbing logo"
               className="h-10 w-auto md:h-16"
             />
-          </button>
+          </PageAnchor>
 
           <nav className="hidden items-center gap-14 text-base font-semibold text-slate-700 md:flex">
-            <button onClick={() => changePage("home")} className="hover:text-sky-700">
+            <PageAnchor page="home" onNavigate={changePage} className="hover:text-sky-700">
               Home
-            </button>
+            </PageAnchor>
             <div
               className="relative"
               ref={servicesMenuRef}
@@ -1510,97 +1600,57 @@ export default function NorthernBeachesPlumberDemo() {
                   className="absolute left-0 top-full mt-2 w-56 rounded-xl border-4 border-sky-600 bg-white py-2 shadow-lg"
                   role="menu"
                 >
-                  <button
-                    onClick={() => changePage("services")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  <PageAnchor page="services" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     All Services
-                  </button>
-                  <button
-                    onClick={() => changePage("emergency")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  </PageAnchor>
+                  <PageAnchor page="emergency" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     Emergency Plumber
-                  </button>
-                  <button
-                    onClick={() => changePage("blocked-drains")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  </PageAnchor>
+                  <PageAnchor page="blocked-drains" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     Blocked Drains
-                  </button>
-                  <button
-                    onClick={() => changePage("hot-water")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  </PageAnchor>
+                  <PageAnchor page="hot-water" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     Hot Water
-                  </button>
-                  <button
-                    onClick={() => changePage("taps-toilets")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  </PageAnchor>
+                  <PageAnchor page="taps-toilets" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     Taps & Toilets
-                  </button>
-                  <button
-                    onClick={() => changePage("burst-pipes")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  </PageAnchor>
+                  <PageAnchor page="burst-pipes" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     Burst Pipes
-                  </button>
-                  <button
-                    onClick={() => changePage("gas-fitting")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  </PageAnchor>
+                  <PageAnchor page="gas-fitting" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     Gas Fitting
-                  </button>
-                  <button
-                    onClick={() => changePage("kitchen-plumbing")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  </PageAnchor>
+                  <PageAnchor page="kitchen-plumbing" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     Kitchen Plumbing
-                  </button>
-                  <button
-                    onClick={() => changePage("bathroom-plumbing")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  </PageAnchor>
+                  <PageAnchor page="bathroom-plumbing" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     Bathroom Plumbing
-                  </button>
-                  <button
-                    onClick={() => changePage("laundry-plumbing")}
-                    className="block w-full px-4 py-3 text-left hover:bg-slate-50"
-                    role="menuitem"
-                  >
+                  </PageAnchor>
+                  <PageAnchor page="laundry-plumbing" onNavigate={changePage} className="block w-full px-4 py-3 text-left hover:bg-slate-50" role="menuitem">
                     Laundry Plumbing
-                  </button>
+                  </PageAnchor>
                 </div>
               ) : null}
             </div>
-            <button onClick={() => changePage("guarantee")} className="hover:text-sky-700">
+            <PageAnchor page="guarantee" onNavigate={changePage} className="hover:text-sky-700">
               Guarantee
-            </button>
-            <button onClick={() => changePage("testimonials")} className="hover:text-sky-700">
+            </PageAnchor>
+            <PageAnchor page="testimonials" onNavigate={changePage} className="hover:text-sky-700">
               Testimonials
-            </button>
-            <button onClick={() => changePage("gallery")} className="hover:text-sky-700">
+            </PageAnchor>
+            <PageAnchor page="gallery" onNavigate={changePage} className="hover:text-sky-700">
               Gallery
-            </button>
-            <button onClick={() => changePage("about")} className="hover:text-sky-700">
+            </PageAnchor>
+            <PageAnchor page="about" onNavigate={changePage} className="hover:text-sky-700">
               About
-            </button>
-            <button onClick={() => changePage("contact")} className="hover:text-sky-700">
+            </PageAnchor>
+            <PageAnchor page="contact" onNavigate={changePage} className="hover:text-sky-700">
               Contact Us
-            </button>
-            <button onClick={() => changePage("service-areas")} className="hover:text-sky-700">
+            </PageAnchor>
+            <PageAnchor page="service-areas" onNavigate={changePage} className="hover:text-sky-700">
               Service Areas
-            </button>
+            </PageAnchor>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -1670,27 +1720,29 @@ export default function NorthernBeachesPlumberDemo() {
                           { key: "bathroom-plumbing" as const, label: "Bathroom Plumbing" },
                           { key: "laundry-plumbing" as const, label: "Laundry Plumbing" },
                         ].map((serviceItem) => (
-                          <button
+                          <PageAnchor
                             key={serviceItem.key}
-                            onClick={() => changePage(serviceItem.key)}
+                            page={serviceItem.key}
+                            onNavigate={changePage}
                             className="block w-full rounded-lg px-3 py-2 text-left text-base font-medium text-white hover:bg-white/10"
                           >
                             {serviceItem.label}
-                          </button>
+                          </PageAnchor>
                         ))}
                       </div>
                     </div>
                   </div>
                 ) : (
-                <button
+                <PageAnchor
                   key={item.key}
-                  onClick={() => changePage(item.key)}
+                  page={item.key}
+                  onNavigate={changePage}
                   className={`w-full rounded-xl px-3 py-3 font-medium text-lg ${
                     currentPage === item.key ? "bg-white/20 text-white" : "text-white"
                   }`}
                 >
                   {item.label}
-                </button>
+                </PageAnchor>
                 ),
               )}
             </div>
@@ -1902,13 +1954,13 @@ export default function NorthernBeachesPlumberDemo() {
         <div className="mx-auto max-w-7xl px-6 py-12">
           <div className="grid gap-10 md:grid-cols-3">
             <div>
-              <button onClick={() => changePage("home")} className="text-left" aria-label="Fix It Now Plumbing home">
+              <PageAnchor page="home" onNavigate={changePage} className="text-left" aria-label="Fix It Now Plumbing home">
                 <img
                   src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
                   alt="Fix It Now Plumbing logo"
                   className="h-24 w-auto rounded-lg bg-white p-3"
                 />
-              </button>
+              </PageAnchor>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
                 Family owned and 20+ year operated plumbing business helping Sydney’s Northern Beaches with reliable service, clear communication and quality workmanship.
               </p>
@@ -1917,33 +1969,33 @@ export default function NorthernBeachesPlumberDemo() {
             <div>
               <h3 className="text-lg font-bold text-white">Quick Links</h3>
               <div className="mt-4 flex flex-col gap-2 text-sm text-slate-200">
-                <button onClick={() => changePage("home")} className="text-left hover:text-sky-300">
+                <PageAnchor page="home" onNavigate={changePage} className="text-left hover:text-sky-300">
                   Home
-                </button>
-                <button onClick={() => changePage("about")} className="text-left hover:text-sky-300">
+                </PageAnchor>
+                <PageAnchor page="about" onNavigate={changePage} className="text-left hover:text-sky-300">
                   About
-                </button>
-                <button onClick={() => changePage("services")} className="text-left hover:text-sky-300">
+                </PageAnchor>
+                <PageAnchor page="services" onNavigate={changePage} className="text-left hover:text-sky-300">
                   Services
-                </button>
-                <button onClick={() => changePage("testimonials")} className="text-left hover:text-sky-300">
+                </PageAnchor>
+                <PageAnchor page="testimonials" onNavigate={changePage} className="text-left hover:text-sky-300">
                   Testimonials
-                </button>
-                <button onClick={() => changePage("emergency")} className="text-left hover:text-sky-300">
+                </PageAnchor>
+                <PageAnchor page="emergency" onNavigate={changePage} className="text-left hover:text-sky-300">
                   Emergency Plumber
-                </button>
-                <button onClick={() => changePage("gallery")} className="text-left hover:text-sky-300">
+                </PageAnchor>
+                <PageAnchor page="gallery" onNavigate={changePage} className="text-left hover:text-sky-300">
                   Gallery
-                </button>
-                <button onClick={() => changePage("contact")} className="text-left hover:text-sky-300">
+                </PageAnchor>
+                <PageAnchor page="contact" onNavigate={changePage} className="text-left hover:text-sky-300">
                   Contact Us
-                </button>
-                <button onClick={() => changePage("service-areas")} className="text-left hover:text-sky-300">
+                </PageAnchor>
+                <PageAnchor page="service-areas" onNavigate={changePage} className="text-left hover:text-sky-300">
                   Service Areas
-                </button>
-                <button onClick={() => changePage("terms")} className="text-left hover:text-sky-300">
+                </PageAnchor>
+                <PageAnchor page="terms" onNavigate={changePage} className="text-left hover:text-sky-300">
                   Terms & Conditions
-                </button>
+                </PageAnchor>
               </div>
             </div>
 
