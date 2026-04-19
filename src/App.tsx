@@ -1819,14 +1819,21 @@ export default function NorthernBeachesPlumberDemo() {
         <ServiceDetailPage
           title="Kitchen Plumbing"
           image="https://goldcoastplumbingexperts.com.au/wp-content/uploads/2023/10/plumber-under-new-sink-optimized.jpg"
-          intro="From leaking sinks to dishwasher and water filter installations, we handle kitchen plumbing jobs quickly and properly so your kitchen stays practical and reliable."
+          intro="Looking for an experienced plumber for your kitchen plumbing? Do you want your job fixed now, done properly and competitively priced? Whether you are renovating your kitchen, a blocked drain, have a leaking tap, ba dishwasher to install or smelly old unused insinkerator to be removed, Fix It Now Plumbing are here to help you."
           points={[
-            "Sink, mixer and trap repairs",
-            "Dishwasher and water filter installations",
-            "Leaking pipe and fixture repairs",
-            "Blocked kitchen waste line assistance",
-            "Clear recommendations and practical solutions",
-            "Property left clean at completion",
+            "Blocked Sink",
+            "Mixer Tap Installations And Repairs",
+            "Dripping Tap Repairs",
+            "Gas Oven And Cook Top",
+            "Dishwasher Connections",
+            "Water Filters",
+            "Insinkerator",
+            "Leaks",
+            "Smelly Drain",
+            "Moving Pipes",
+            "Arthritis Taps",
+            "Burst Pipe Repairs",
+            "Noisy Or Hammering Pipes",
           ]}
         />
       ) : null}
