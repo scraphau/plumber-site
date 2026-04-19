@@ -1023,10 +1023,10 @@ function TestimonialsPage() {
                 </div>
                 <span className="text-2xl font-semibold leading-none text-[#c6d4ea]">G+</span>
               </div>
-              <p className="mt-6 text-lg font-semibold leading-relaxed text-slate-900">“{item.quote}”</p>
+              <p className="mt-6 text-[16px] font-semibold leading-relaxed text-slate-900">“{item.quote}”</p>
               <div className="mt-8">
-                <div className="text-base font-extrabold uppercase tracking-[0.15em] text-slate-900">{item.name}</div>
-                <div className="mt-1 text-base font-medium text-[#494B51]">from {item.location}</div>
+                <div className="text-[14px] font-extrabold uppercase tracking-[0.15em] text-slate-900">{item.name}</div>
+                <div className="mt-1 text-[14px] font-medium text-[#494B51]">from {item.location}</div>
               </div>
             </div>
           ))}
