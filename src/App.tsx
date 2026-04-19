@@ -458,7 +458,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       cardClass: "bg-sky-700 text-white",
       starClass: "text-white",
       nameClass: "text-white",
-      locationClass: "text-sky-100",
+      locationClass: "text-white",
+      quoteClass: "text-white",
     },
     {
       name: "Scott",
@@ -468,7 +469,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       cardClass: "bg-slate-100 text-slate-900",
       starClass: "text-sky-700",
       nameClass: "text-slate-900",
-      locationClass: "text-slate-600",
+      locationClass: "text-[#494B51]",
+      quoteClass: "text-[#494B51]",
     },
     {
       name: "Lauren",
@@ -478,7 +480,8 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
       cardClass: "bg-sky-700 text-white",
       starClass: "text-white",
       nameClass: "text-white",
-      locationClass: "text-sky-100",
+      locationClass: "text-white",
+      quoteClass: "text-white",
     },
   ] as const;
 
@@ -685,9 +688,9 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                     </span>
                   ))}
                 </div>
-                <div className={`mt-5 text-[16px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
+                <div className={`mt-5 text-[17px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
                 <div className={`mt-2 text-[17px] font-medium font-['Montserrat',sans-serif] ${review.locationClass}`}>{review.location}</div>
-                <p className="mt-6 text-center text-[17px] font-normal leading-relaxed text-slate-800 font-['Montserrat',sans-serif]">“{review.quote}”</p>
+                <p className={`mt-6 text-center text-[17px] font-normal leading-relaxed font-['Montserrat',sans-serif] ${review.quoteClass}`}>“{review.quote}”</p>
               </div>
             ))}
           </div>
