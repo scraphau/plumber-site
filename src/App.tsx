@@ -1950,9 +1950,9 @@ export default function NorthernBeachesPlumberDemo() {
       {currentPage === "contact" ? <ContactPage /> : null}
       {currentPage === "terms" ? <TermsPage /> : null}
 
-      <footer className="border-t border-slate-800 bg-black text-white">
-        <div className="mx-auto w-full px-6 py-10 md:min-h-[508.41px] md:w-[1350px] md:px-[108px] md:py-[54px]">
-          <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <footer className="bg-black text-white">
+        <div className="mx-auto w-full max-w-[1350px] px-8 py-16 md:px-12">
+          <div className="grid items-start gap-14 md:grid-cols-2 xl:grid-cols-[1.1fr_1fr_1fr_1fr]">
             <div>
               <PageAnchor page="home" onNavigate={changePage} className="text-left" aria-label="Fix It Now Plumbing home">
                 <img
@@ -1961,7 +1961,7 @@ export default function NorthernBeachesPlumberDemo() {
                   className="h-24 w-auto rounded-lg bg-white p-3"
                 />
               </PageAnchor>
-              <p className="mt-4 max-w-sm text-base leading-relaxed text-slate-300">
+              <p className="mt-5 max-w-sm text-base leading-relaxed text-slate-200">
                 Family owned and 20+ year operated plumbing business helping Sydney’s Northern Beaches with reliable service, clear communication and quality workmanship.
               </p>
               <a
@@ -1969,7 +1969,7 @@ export default function NorthernBeachesPlumberDemo() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Fix It Now Plumbing on Facebook"
-                className="mt-5 inline-flex h-11 w-11 items-center justify-center rounded-md bg-black text-[32px] font-bold leading-none text-white hover:opacity-90"
+                className="mt-5 inline-flex text-[44px] font-bold leading-none text-white hover:text-sky-300"
               >
                 f
               </a>
@@ -1977,63 +1977,40 @@ export default function NorthernBeachesPlumberDemo() {
 
             <div>
               <h3 className="text-[22px] font-bold text-white">Quick Links</h3>
-              <div className="mt-4 flex flex-col gap-2 text-base text-slate-200">
-                <PageAnchor page="home" onNavigate={changePage} className="text-left hover:text-sky-300">
-                  Home
-                </PageAnchor>
-                <PageAnchor page="about" onNavigate={changePage} className="text-left hover:text-sky-300">
-                  About
-                </PageAnchor>
-                <PageAnchor page="services" onNavigate={changePage} className="text-left hover:text-sky-300">
-                  Services
-                </PageAnchor>
-                <PageAnchor page="testimonials" onNavigate={changePage} className="text-left hover:text-sky-300">
-                  Testimonials
-                </PageAnchor>
-                <PageAnchor page="emergency" onNavigate={changePage} className="text-left hover:text-sky-300">
-                  Emergency Plumber
-                </PageAnchor>
-                <PageAnchor page="gallery" onNavigate={changePage} className="text-left hover:text-sky-300">
-                  Gallery
-                </PageAnchor>
-                <PageAnchor page="contact" onNavigate={changePage} className="text-left hover:text-sky-300">
-                  Contact Us
-                </PageAnchor>
-                <PageAnchor page="service-areas" onNavigate={changePage} className="text-left hover:text-sky-300">
-                  Service Areas
-                </PageAnchor>
-                <PageAnchor page="terms" onNavigate={changePage} className="text-left hover:text-sky-300">
-                  Terms & Conditions
-                </PageAnchor>
+              <div className="mt-4 flex flex-col gap-2 text-base text-slate-100">
+                <PageAnchor page="home" onNavigate={changePage} className="text-left hover:text-sky-300">Home</PageAnchor>
+                <PageAnchor page="about" onNavigate={changePage} className="text-left hover:text-sky-300">About</PageAnchor>
+                <PageAnchor page="services" onNavigate={changePage} className="text-left hover:text-sky-300">Services</PageAnchor>
+                <PageAnchor page="testimonials" onNavigate={changePage} className="text-left hover:text-sky-300">Testimonials</PageAnchor>
+                <PageAnchor page="emergency" onNavigate={changePage} className="text-left hover:text-sky-300">Emergency Plumber</PageAnchor>
+                <PageAnchor page="gallery" onNavigate={changePage} className="text-left hover:text-sky-300">Gallery</PageAnchor>
+                <PageAnchor page="contact" onNavigate={changePage} className="text-left hover:text-sky-300">Contact Us</PageAnchor>
+                <PageAnchor page="service-areas" onNavigate={changePage} className="text-left hover:text-sky-300">Service Areas</PageAnchor>
+                <PageAnchor page="terms" onNavigate={changePage} className="text-left hover:text-sky-300">Terms & Conditions</PageAnchor>
               </div>
             </div>
 
             <div>
               <h3 className="text-[22px] font-bold text-white">Services</h3>
-              <div className="mt-4 flex flex-col gap-2 text-base text-slate-200">
+              <div className="mt-4 flex flex-col gap-2 text-base text-slate-100">
                 {serviceRows.map((service) => (
-                  <PageAnchor
-                    key={service.key}
-                    page={service.key}
-                    onNavigate={changePage}
-                    className="inline-flex items-center gap-2 text-left hover:text-sky-300"
-                  >
-                    <CheckCircle2 className="h-4 w-4 text-sky-700" />
+                  <PageAnchor key={service.key} page={service.key} onNavigate={changePage} className="inline-flex items-center gap-2 text-left hover:text-sky-300">
+                    <CheckCircle2 className="h-4 w-4 text-sky-500" />
                     <span>{service.title}</span>
                   </PageAnchor>
                 ))}
               </div>
             </div>
 
-            <div className="xl:justify-self-end">
+            <div>
               <h3 className="text-[22px] font-bold text-white">Get In Touch</h3>
-              <div className="mt-4 space-y-3 text-base text-slate-200">
+              <div className="mt-4 space-y-3 text-base text-slate-100">
                 <a href="tel:0414248131" className="flex items-center gap-2 hover:text-sky-300">
-                  <Phone className="h-4 w-4 text-sky-700" />
+                  <Phone className="h-4 w-4 text-sky-500" />
                   0414 248 131
                 </a>
                 <a href="mailto:paul@fixitnowplumbing.com.au" className="flex items-center gap-2 hover:text-sky-300">
-                  <Mail className="h-4 w-4 text-sky-700" />
+                  <Mail className="h-4 w-4 text-sky-500" />
                   paul@fixitnowplumbing.com.au
                 </a>
                 <div className="flex items-center gap-2">
@@ -2043,11 +2020,10 @@ export default function NorthernBeachesPlumberDemo() {
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="relative mt-12 pt-6 text-center text-base text-slate-400">
-            <div className="absolute left-1/2 top-0 h-px w-screen -translate-x-1/2 bg-sky-700" />
-            © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
-          </div>
+        <div className="border-t border-sky-700 bg-slate-100 py-6 text-center text-base text-slate-500">
+          © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
         </div>
       </footer>
     </div>
