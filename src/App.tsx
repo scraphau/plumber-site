@@ -1585,7 +1585,7 @@ export default function NorthernBeachesPlumberDemo() {
               target="_blank"
               rel="noreferrer"
               aria-label="Fix It Now Plumbing on Facebook"
-              className="inline-flex h-[18px] w-[18px] items-center justify-center text-white hover:text-sky-200"
+              className="inline-flex items-center text-white hover:text-sky-200"
             >
               <FacebookIcon className="h-[20px] w-[20px]" />
             </a>
@@ -2008,7 +2008,7 @@ export default function NorthernBeachesPlumberDemo() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Fix It Now Plumbing on Facebook"
-                  className="inline-flex h-[30px] w-[30px] items-center justify-center text-white hover:text-sky-300"
+                  className="inline-flex items-center text-white hover:text-sky-300"
                 >
                   <FacebookIcon className="h-[34px] w-[34px]" />
                 </a>
