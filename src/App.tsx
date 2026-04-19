@@ -1953,7 +1953,7 @@ export default function NorthernBeachesPlumberDemo() {
       <footer className="border-t border-slate-800 bg-black text-white">
         <div className="mx-auto w-full max-w-[1350px] px-6 py-14 md:min-h-[508px] md:px-10 md:py-16">
           <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
-            <div>
+            <div className="xl:-ml-8">
               <PageAnchor page="home" onNavigate={changePage} className="text-left" aria-label="Fix It Now Plumbing home">
                 <img
                   src="https://www.fixitnowplumbing.com.au/wp-content/themes/fixitnow/images/logo.png"
@@ -2019,7 +2019,7 @@ export default function NorthernBeachesPlumberDemo() {
               </div>
             </div>
 
-            <div>
+            <div className="xl:ml-10 xl:justify-self-end">
               <h3 className="text-[22px] font-bold text-white">Get In Touch</h3>
               <div className="mt-4 space-y-3 text-base text-slate-200">
                 <a href="tel:0414248131" className="flex items-center gap-2 hover:text-sky-300">
@@ -2038,7 +2038,8 @@ export default function NorthernBeachesPlumberDemo() {
             </div>
           </div>
 
-          <div className="mt-12 border-t border-slate-700 pt-6 text-xs text-slate-400">
+          <div className="relative mt-12 pt-6 text-xs text-slate-400">
+            <div className="absolute left-1/2 top-0 h-px w-screen -translate-x-1/2 bg-sky-700" />
             © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
           </div>
         </div>
