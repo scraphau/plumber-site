@@ -65,6 +65,24 @@ const aboutImage =
   "https://mrflowplumbing.com.au/wp-content/uploads/2024/07/male-plumber-working-fix-problems-client-s-house_23-2150990735.jpg";
 const enquiryEmail = "paul@fixitnowplumbing.com.au";
 
+function InstagramIcon(props: ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+      <circle cx="12" cy="12" r="4.5" />
+      <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function FacebookIcon(props: ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M14 8h-2c-1.1 0-2 .9-2 2v2h4l-.5 3H10v7H7v-7H5v-3h2v-2a4 4 0 0 1 4-4h3z" />
+    </svg>
+  );
+}
+
 const reviews = [
   {
     quote: "Called at 7am about a burst pipe and they had it sorted before lunch. Clean, professional and stress-free.",
@@ -1331,7 +1349,7 @@ function ServiceAreasPage() {
               We service homes and businesses right across the region and aim to provide fast, clear communication and reliable workmanship wherever you are based on the Northern Beaches.
             </p>
           </div>
-          <div className="overflow-hidden rounded-2xl border-2 border-sky-600 bg-white shadow-sm">
+          <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
             <img
               src="https://www.google.com/maps/vt/data=AuCy0KaAvPmueshM5i1Zb3rIQGKXbix2meJcmnkkbbVeWzJ-XxQYMO-IQVNn-t0E_Rc6ieSKUdK30GKayW7eeFlqYi1Ya74Zo8336TPKl4ekNZERvcar_M2M2vi4iFuxwJbGRrPEPUmDhwD2wMe6yQWZHk3XPGRKxttrbIVxfTYGmO-uI4FwA9fVXOZBRYF3LdkvyeIbMjOjf4himUH4JjgeoeNlqYtwrrB9SRNyhSwDQ5_LnfnC20vjqAwRZ5x9mZ3qMgi7GNQM7DQ54CK1SoH1nnWLrBqgb-Gu2Od1oZZh54_7mIC9qsQ"
               alt="Northern Beaches service area map"
@@ -1557,9 +1575,29 @@ export default function NorthernBeachesPlumberDemo() {
               </a>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Clock3 className="h-4 w-4" />
-            <span>Emergency plumbing available</span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <Clock3 className="h-4 w-4" />
+              <span>Emergency plumbing available</span>
+            </div>
+            <a
+              href="https://www.facebook.com/FixItNowPlumbing/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Fix It Now Plumbing on Facebook"
+              className="inline-flex items-center text-white hover:text-sky-200"
+            >
+              <FacebookIcon className="h-[20px] w-[20px]" />
+            </a>
+            <a
+              href="https://www.instagram.com/fixitnowplumbing/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Fix It Now Plumbing on Instagram"
+              className="inline-flex items-center text-white hover:text-sky-200"
+            >
+              <InstagramIcon className="h-[18px] w-[18px]" />
+            </a>
           </div>
         </div>
       </div>
@@ -1964,15 +2002,26 @@ export default function NorthernBeachesPlumberDemo() {
               <p className="mt-5 max-w-sm text-base leading-relaxed text-slate-200">
                 Family owned and 20+ year operated plumbing business helping Sydney’s Northern Beaches with reliable service, clear communication and quality workmanship.
               </p>
-              <a
-                href="https://www.facebook.com/FixItNowPlumbing/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Fix It Now Plumbing on Facebook"
-                className="mt-5 inline-flex text-[44px] font-bold leading-none text-white hover:text-sky-300"
-              >
-                f
-              </a>
+              <div className="mt-5 flex items-center gap-5">
+                <a
+                  href="https://www.facebook.com/FixItNowPlumbing/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Fix It Now Plumbing on Facebook"
+                  className="inline-flex items-center text-white hover:text-sky-300"
+                >
+                  <FacebookIcon className="h-[34px] w-[34px]" />
+                </a>
+                <a
+                  href="https://www.instagram.com/fixitnowplumbing/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Fix It Now Plumbing on Instagram"
+                  className="inline-flex items-center text-white hover:text-sky-300"
+                >
+                  <InstagramIcon className="h-[30px] w-[30px]" />
+                </a>
+              </div>
             </div>
 
             <div>
