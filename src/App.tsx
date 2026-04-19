@@ -449,6 +449,39 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
     },
   ] as const;
 
+  const featuredHomeReviews = [
+    {
+      name: "Sarah J",
+      location: "Avalon, NSW",
+      quote:
+        "I have used Paul for plumbing services for over ten years now and he has always provided a great service ranging from tap replacement to external drainage issues earlier this year. Paul is very honest and helpful in providing advice and solutions and I would recommend his services.",
+      cardClass: "bg-sky-700 text-white",
+      starClass: "text-white",
+      nameClass: "text-white",
+      locationClass: "text-sky-100",
+    },
+    {
+      name: "Scott B",
+      location: "Narrabeen, NSW",
+      quote:
+        "Paul from Fix It Now Plumbing has completed several plumbing jobs at our home over the past 5 years including the clearing of blocked drains, new taps and hot water systems. Paul is reliable, honest and professional and has always provided high quality work and solutions for us. I would strongly recommend Paul to anyone requiring a reliable quality plumber on the Northern Beaches.",
+      cardClass: "bg-slate-100 text-slate-900",
+      starClass: "text-sky-700",
+      nameClass: "text-slate-900",
+      locationClass: "text-slate-600",
+    },
+    {
+      name: "Lauren C",
+      location: "Dee Why, NSW",
+      quote:
+        "We can’t speak more highly of our experience with Paul. He responded to our enquiry quickly and squeezed us in the next day (lifesaver!). Paul was very clear and competitive with his quote and completed the job faster than we anticipated. We’ll definitely be in touch for upcoming renovations!",
+      cardClass: "bg-sky-700 text-white",
+      starClass: "text-white",
+      nameClass: "text-white",
+      locationClass: "text-sky-100",
+    },
+  ] as const;
+
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   return (
@@ -640,15 +673,19 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
         <div className="mx-auto max-w-7xl px-6 py-20">
           <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">Customer Reviews</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {reviews.slice(0, 3).map((review, index) => (
-              <div key={`${review.name}-${index}`} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
-                <div className="flex gap-1 text-yellow-400">
+            {featuredHomeReviews.map((review) => (
+              <div
+                key={`${review.name}-${review.location}`}
+                className={`rounded-[2rem] p-7 text-center shadow-sm md:p-8 ${review.cardClass}`}
+              >
+                <div className={`flex justify-center gap-1 ${review.starClass}`}>
                   {Array.from({ length: 5 }).map((_, idx) => (
                     <Star key={idx} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <p className="mt-5 text-lg leading-relaxed text-slate-700">“{review.quote}”</p>
-                <div className="mt-6 text-sm font-medium text-slate-500">{review.name}</div>
+                <div className={`mt-5 text-3xl font-bold tracking-tight ${review.nameClass}`}>{review.name}</div>
+                <div className={`mt-2 text-xl ${review.locationClass}`}>{review.location}</div>
+                <p className="mt-6 text-lg leading-relaxed">“{review.quote}”</p>
               </div>
             ))}
           </div>
