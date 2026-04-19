@@ -1351,17 +1351,43 @@ export default function NorthernBeachesPlumberDemo() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesMenuRef = useRef<HTMLDivElement | null>(null);
+  const servicesCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearServicesCloseTimeout = () => {
+    if (!servicesCloseTimeoutRef.current) return;
+    clearTimeout(servicesCloseTimeoutRef.current);
+    servicesCloseTimeoutRef.current = null;
+  };
+
+  const openServicesMenu = () => {
+    clearServicesCloseTimeout();
+    setServicesOpen(true);
+  };
+
+  const closeServicesMenuWithDelay = () => {
+    clearServicesCloseTimeout();
+    servicesCloseTimeoutRef.current = setTimeout(() => {
+      setServicesOpen(false);
+    }, 1000);
+  };
+
+  const toggleServicesMenu = () => {
+    clearServicesCloseTimeout();
+    setServicesOpen((value) => !value);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (!servicesMenuRef.current) return;
       if (!servicesMenuRef.current.contains(event.target as Node)) {
+        clearServicesCloseTimeout();
         setServicesOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
+      clearServicesCloseTimeout();
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
@@ -1419,9 +1445,14 @@ export default function NorthernBeachesPlumberDemo() {
             <button onClick={() => changePage("home")} className="hover:text-sky-700">
               Home
             </button>
-            <div className="relative" ref={servicesMenuRef}>
+            <div
+              className="relative"
+              ref={servicesMenuRef}
+              onMouseEnter={openServicesMenu}
+              onMouseLeave={closeServicesMenuWithDelay}
+            >
               <button
-                onClick={() => setServicesOpen((value) => !value)}
+                onClick={toggleServicesMenu}
                 className="inline-flex items-center gap-1 hover:text-sky-700"
                 aria-expanded={servicesOpen}
                 aria-haspopup="menu"
