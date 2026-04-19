@@ -468,7 +468,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
         "Paul from Fix It Now Plumbing has completed several plumbing jobs at our home over the past 5 years including the clearing of blocked drains, new taps and hot water systems. Paul is reliable, honest and professional and has always provided high quality work and solutions for us. I would strongly recommend Paul to anyone requiring a reliable quality plumber on the Northern Beaches.",
       cardClass: "bg-slate-100 text-[#454545]",
       starClass: "text-sky-700",
-      nameClass: "text-[#040404]",
+      nameClass: "text-[#101218]",
       locationClass: "text-[#454545]",
       quoteClass: "text-[#454545]",
     },
