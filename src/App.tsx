@@ -685,7 +685,7 @@ function HomePage({ goTo }: { goTo: (page: PageKey) => void }) {
                     </span>
                   ))}
                 </div>
-                <div className={`mt-5 text-[14px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
+                <div className={`mt-5 text-[16px] font-semibold tracking-tight font-['Archivo'] ${review.nameClass}`}>{review.name}</div>
                 <div className={`mt-2 text-[15.5px] font-light font-['Montserrat'] ${review.locationClass}`}>{review.location}</div>
                 <p className="mt-6 text-center text-[15.5px] font-light leading-relaxed font-['Montserrat']">“{review.quote}”</p>
               </div>
