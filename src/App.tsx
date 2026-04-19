@@ -2022,8 +2022,10 @@ export default function NorthernBeachesPlumberDemo() {
           </div>
         </div>
 
-        <div className="border-t border-sky-700 bg-black py-6 text-center text-base text-white">
-          © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
+        <div className="border-t border-sky-700 bg-black">
+          <div className="mx-auto flex h-[45px] w-full max-w-[1350px] items-center justify-center text-center text-base text-white">
+            © {new Date().getFullYear()} Fix It Now Plumbing. All rights reserved.
+          </div>
         </div>
       </footer>
     </div>
